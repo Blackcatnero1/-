@@ -1,0 +1,333 @@
+<mxfile host="app.diagrams.net" modified="2024-05-14T07:32:36.253Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="75QY-1lQXq7T1FPdgGPR" version="24.4.0" type="device">
+  <diagram name="Page-1" id="kyr7tqSVovzey2PkgYmp">
+    <mxGraphModel dx="2027" dy="2261" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bweJAc-0gD3AUuflECtK-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="-46" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-3" target="bweJAc-0gD3AUuflECtK-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-3" value="매물 존재 여부" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="-290" y="-146" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-6" target="bweJAc-0gD3AUuflECtK-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="-500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="610" y="455" />
+              <mxPoint x="610" y="-500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-6" value="다른 매물을&lt;div&gt;조회 하시겠습니까?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="-292.5" y="430" width="135" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-11" target="bweJAc-0gD3AUuflECtK-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-11" value="조회 매물 DB 저장" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="16" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-12" value="시작" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="-570" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-13" value="종료" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-295" y="576" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-15" target="bweJAc-0gD3AUuflECtK-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-15" value="DB에서 매물 조회" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="-211" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="bweJAc-0gD3AUuflECtK-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="-370.0000000000002" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-101" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-16">
+          <mxGeometry x="0.3334" y="-2" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-20" target="bweJAc-0gD3AUuflECtK-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="287" y="-290" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="310" y="-270" />
+              <mxPoint x="120" y="-270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-20" target="bweJAc-0gD3AUuflECtK-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-20" target="bweJAc-0gD3AUuflECtK-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-20" value="구 별 분석 정보 조회&lt;div&gt;(서브기능)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="225" y="-330" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-22" target="bweJAc-0gD3AUuflECtK-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-22" value="매물 상세 조회요청&lt;div&gt;(메인기능)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="-330" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-24" target="bweJAc-0gD3AUuflECtK-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-24" value="해당 매물 지도 조회" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-295" y="250" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-26" value="면적당 매매가" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="-250" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-28" value="매물 거래량 랭킹 조회" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="435" y="-251" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="bweJAc-0gD3AUuflECtK-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-160" y="-390.0000000000002" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-102" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-29">
+          <mxGeometry x="-0.6629" y="-2" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="-500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-400" y="-308" />
+              <mxPoint x="-399" y="-308" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-31" value="매물 정보 없음" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-470" y="-126" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-33" target="bweJAc-0gD3AUuflECtK-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-10" y="184" />
+              <mxPoint x="-10" y="-310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-33" value="&lt;div&gt;해당 매물&lt;/div&gt;지역 정보 조회" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="180" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="bweJAc-0gD3AUuflECtK-87" source="bweJAc-0gD3AUuflECtK-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="124" as="sourcePoint" />
+            <mxPoint x="-230" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-86" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-34">
+          <mxGeometry x="-0.0279" y="4" relative="1" as="geometry">
+            <mxPoint x="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-37" value="YES" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="-221" y="-66" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-40" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="-126" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-42" target="bweJAc-0gD3AUuflECtK-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-42" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;구 &amp;amp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;아파트 입력&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="-270" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startSize=6;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-229" y="-10" as="sourcePoint" />
+            <mxPoint x="-229" y="16" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="118.56000000000017" y="-47.940000000000055" as="sourcePoint" />
+            <mxPoint x="-150" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="119" y="330" />
+              <mxPoint x="-20" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-50" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="487.96000000000004" y="-54.008000000000266" as="sourcePoint" />
+            <mxPoint x="-150" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="500" y="330" />
+              <mxPoint x="180" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-51" value="&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;선택기능 == 지역조회&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="-420" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="bweJAc-0gD3AUuflECtK-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="124" as="sourcePoint" />
+            <mxPoint x="-230" y="326" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-53" target="bweJAc-0gD3AUuflECtK-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-450" y="124" />
+              <mxPoint x="-450" y="591" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-98" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-97">
+          <mxGeometry x="-0.0164" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-53" value="해당 매물에&amp;nbsp;&lt;div&gt;더 많은 정보를 원하십니까?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="97" width="140" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-12" target="bweJAc-0gD3AUuflECtK-51">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="-540" as="sourcePoint" />
+            <mxPoint x="-230" y="-470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-56" target="bweJAc-0gD3AUuflECtK-61">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="330" />
+            </Array>
+            <mxPoint x="-160" y="396" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-56" value="연평균 증가율" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="-250" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-57" value="매물조회여부" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-240" y="650" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-58" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-57">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-340" y="740" as="sourcePoint" />
+            <mxPoint x="-360" y="840" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-360" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-59" value="선택기능 == 지역조회" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-155" y="-480" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-61" target="bweJAc-0gD3AUuflECtK-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-230" y="376" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-61" value="매물 정보 출력" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-310" y="310" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-63" value="매물 정보 출력&lt;div&gt;(최근거래가)&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-315" y="-46" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-65" value="더 많은 정보를 원하십니까?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="165" y="536" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-66" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-65">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="115" y="546" as="sourcePoint" />
+            <mxPoint x="250" y="656" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-68" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-66">
+          <mxGeometry x="-0.3667" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-67" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-65">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="566" as="sourcePoint" />
+            <mxPoint x="405" y="566" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-69" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-67">
+          <mxGeometry x="-0.2056" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-74" value="해당 매물 지도 조회하시겠습니까?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="652" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-75" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-74">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="606" as="sourcePoint" />
+            <mxPoint x="250" y="796" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-76" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-75">
+          <mxGeometry x="-0.3667" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-77" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-74" target="bweJAc-0gD3AUuflECtK-79">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="430" as="sourcePoint" />
+            <mxPoint x="210" y="546" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-78" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-77">
+          <mxGeometry x="-0.2056" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-79" value="해당매물 지역정보 조회" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="435" y="662" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-81" value="해당 매물 지도 조회" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="796" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-87" value="해당 매물 지도 조회하시겠습니까?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-330" y="180" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-89" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-230" y="220" as="sourcePoint" />
+            <mxPoint x="-230" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-90" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-89">
+          <mxGeometry x="-0.3667" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-39" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="-221" y="480" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="bweJAc-0gD3AUuflECtK-87" target="bweJAc-0gD3AUuflECtK-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bweJAc-0gD3AUuflECtK-95" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bweJAc-0gD3AUuflECtK-93">
+          <mxGeometry x="-0.3034" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
