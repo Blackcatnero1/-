@@ -1,3 +1,17 @@
+-- system 계정에서 시작
+CREATE USER boo IDENTIFIED BY 12345 ACCOUNT UNLOCK;
+GRANT UNLIMITED TABLESPACE TO boo;
+ALTER USER boo DEFAULT TABLESPACE USERS;
+ALTER USER boo TEMPORARY TABLESPACE TEMP;
+GRANT CREATE SESSION TO boo;
+GRANT CONNECT, RESOURCE TO boo;
+GRANT SELECT ANY TABLE TO boo;
+GRANT CREATE SYNONYM TO boo;
+GRANT CREATE PUBLIC SYNONYM TO boo;
+GRANT CREATE VIEW TO boo;
+commit;
+
+conn boo/12345;
 
 
 -- 매물 테이블 만들기 (sales)
@@ -24,12 +38,6 @@ CREATE TABLE sales(
     req_gbn VARCHAR2(10 CHAR),
     rdealer_lawdnm VARCHAR2(30 CHAR)
 );
-SELECT
-    COUNT(*)
-FROM
-    sales
-;
-COMMIT;
 
 -- 구별인구 테이블 만들기(population)
 CREATE TABLE population(
@@ -41,7 +49,6 @@ CREATE TABLE population(
         CONSTRAINT POP_GP_NN NOT NULL
 );
 
-drop table population;
 
 
 
