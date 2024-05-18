@@ -40,13 +40,11 @@ CREATE TABLE sales(
 );
 
 -- 구별인구 테이블 만들기(population)
-CREATE TABLE population(
-    gu_code NUMBER(5)
-        CONSTRAINT POP_GC_NN NOT NULL,
-    gu_name VARCHAR2(10 CHAR)
-        CONSTRAINT POP_GN_NN NOT NULL,
-    gu_pop NUMBER
-        CONSTRAINT POP_GP_NN NOT NULL
+CREATE TABLE population (
+    gu_code VARCHAR2(10),
+    gu_name VARCHAR2(50),
+    total NUMBER,
+    year NUMBER(4)
 );
 
 
