@@ -219,3 +219,55 @@ WHERE
     AND s.bubeon = ns.bubeon
     AND ROWNUM = 1
 ;
+
+
+-- 중복된 지번, 아파트이름 표기
+
+SELECT
+    s.지번, s.아파트이름
+FROM
+    (
+        
+        SELECT
+           do.지번
+        FROM
+            (
+                SELECT
+                    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS 지번,count(*) as 거래량
+                FROM
+                    SALES
+                GROUP BY
+                    bjdong_nm, bonbeon, bubeon
+                ORDER BY 
+                    거래량 DESC
+            ) gu,
+            (
+                SELECT
+                    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS 지번,SGG_NM||' '||BLDG_NM AS 아파트이름, count(*) as 거래량
+                FROM
+                    SALES
+                GROUP BY
+                    bjdong_nm, bonbeon, bubeon,SGG_NM, BLDG_NM
+                ORDER BY
+                    bjdong_nm, bonbeon, bubeon
+            ) do
+        WHERE
+            do.지번 = gu.지번
+        GROUP BY
+            do.지번, gu.지번
+        HAVING
+            COUNT(*) >1
+    ) ns,
+    (
+        SELECT
+            bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS 지번,SGG_NM||' '||BLDG_NM AS 아파트이름, count(*) as 거래량
+        FROM
+            SALES    
+        GROUP BY
+            bjdong_nm, bonbeon, bubeon,SGG_NM, BLDG_NM
+        ORDER BY
+            bjdong_nm, bonbeon, bubeon
+    ) s
+WHERE
+    ns.지번 = s.지번
+;
