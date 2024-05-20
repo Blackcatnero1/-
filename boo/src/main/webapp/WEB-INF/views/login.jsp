@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kakao Login Example</title>
+    <title></title>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
