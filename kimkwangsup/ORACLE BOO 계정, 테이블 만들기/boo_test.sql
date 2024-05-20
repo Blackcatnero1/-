@@ -1,25 +1,25 @@
 
-/* ±¸ + ¾ÆÆÄÆ® ·Î ±×·ìÇÎ ÇÑ °Í°ú µ¿ + º»¹ø + Áö¹ø À¸·Î ±×·ìÇÎ ÇÑ °ÍÀÇ °³¼ö°¡ ´Ù¸§
-    µ¿ + º»¹ø + ºÎ¹ø À¸·Î ±×·ìÇÎ ÇÑ µ¥ÀÌÅÍÀÇ °¹¼ö°¡ ´õ ÀûÀ½À¸·Î ºÐ·ù´Â ÀÌ°ÍÀ» °¡Áö°í
-    ÇÏ´Â°ÍÀÌ ¸Â¾Æ º¸ÀÓ
+/* êµ¬ + ì•„íŒŒíŠ¸ ë¡œ ê·¸ë£¹í•‘ í•œ ê²ƒê³¼ ë™ + ë³¸ë²ˆ + ì§€ë²ˆ ìœ¼ë¡œ ê·¸ë£¹í•‘ í•œ ê²ƒì˜ ê°œìˆ˜ê°€ ë‹¤ë¦„
+    ë™ + ë³¸ë²ˆ + ë¶€ë²ˆ ìœ¼ë¡œ ê·¸ë£¹í•‘ í•œ ë°ì´í„°ì˜ ê°¯ìˆ˜ê°€ ë” ì ìŒìœ¼ë¡œ ë¶„ë¥˜ëŠ” ì´ê²ƒì„ ê°€ì§€ê³ 
+    í•˜ëŠ”ê²ƒì´ ë§žì•„ ë³´ìž„
     
-    ±Ùµ¥ »ç¿ëÀÚ¿¡°Ô ÀÔ·ÂÀ» ??µ¿ ???-?? ÀÌ·¸°Ô ÀÔ·Â ÇÏ¶ó°í ÇÒ ¼ø ¾øÀ½.. 
+    ê·¼ë° ì‚¬ìš©ìžì—ê²Œ ìž…ë ¥ì„ ??ë™ ???-?? ì´ë ‡ê²Œ ìž…ë ¥ í•˜ë¼ê³  í•  ìˆœ ì—†ìŒ.. 
     
-    Å¸¿ö Æç¸®½º, Å¸¿ö Æç¸®½º1, Å¸¿ö Æç¸®½º 1Â÷ ÀÌ·±½ÄÀ¸·Î Á¤ÇüÈ­ µÇÁö ¾Ê°í ½Å°í µÇ¾îÀÖ´Â °ÍµéÀÌ ¸¹¾Æ¼­ »ý°¢ Á» ÇØ¾ßÇÒµí
+    íƒ€ì›Œ íŽ ë¦¬ìŠ¤, íƒ€ì›Œ íŽ ë¦¬ìŠ¤1, íƒ€ì›Œ íŽ ë¦¬ìŠ¤ 1ì°¨ ì´ëŸ°ì‹ìœ¼ë¡œ ì •í˜•í™” ë˜ì§€ ì•Šê³  ì‹ ê³  ë˜ì–´ìžˆëŠ” ê²ƒë“¤ì´ ë§Žì•„ì„œ ìƒê° ì¢€ í•´ì•¼í• ë“¯
     
 ------------------------------------------------------
 
-Áö¹øÀ¸·Î °Ë»ö µÈ ¾ÆÆÄÆ® Áß °Å·¡·®ÀÌ °¡Àå ¸¹Àº µ¥ÀÌÅÍÀÇ ¾ÆÆÄÆ®¸¦
-»ç¿ëÀÚ¿¡°Ô º¸¿©ÁÙ ¾ÆÆÄÆ®·Î »ç¿ë ÇÏµÇ °Å·¡·®Àº Áö¹øÀ¸·Î °Ë»öµÈ °Å·¡·® ¸ðµÎ¸¦ º¸¿©Áà¾ßÇÔ
+ì§€ë²ˆìœ¼ë¡œ ê²€ìƒ‰ ëœ ì•„íŒŒíŠ¸ ì¤‘ ê±°ëž˜ëŸ‰ì´ ê°€ìž¥ ë§Žì€ ë°ì´í„°ì˜ ì•„íŒŒíŠ¸ë¥¼
+ì‚¬ìš©ìžì—ê²Œ ë³´ì—¬ì¤„ ì•„íŒŒíŠ¸ë¡œ ì‚¬ìš© í•˜ë˜ ê±°ëž˜ëŸ‰ì€ ì§€ë²ˆìœ¼ë¡œ ê²€ìƒ‰ëœ ê±°ëž˜ëŸ‰ ëª¨ë‘ë¥¼ ë³´ì—¬ì¤˜ì•¼í•¨
 
 ex)
-    °¡¶ôµ¿ 101-3 / ¼ÛÆÄ±¸ ¾ÆÅ°ÁÔ¾ÆÆÄÆ® 1µ¿/ 2°Ç
-    °¡¶ôµ¿ 101-3 / ¼ÛÆÄ±¸ ¾ÆÅ°ÁÔ¾ÆÆÄÆ®1µ¿(¶ç¾î¾²±â°¡ ¾ø¾î¼­ ´Ù¸¥ Çà..)/ 1°Ç
+    ê°€ë½ë™ 101-3 / ì†¡íŒŒêµ¬ ì•„í‚¤ì£¤ì•„íŒŒíŠ¸ 1ë™/ 2ê±´
+    ê°€ë½ë™ 101-3 / ì†¡íŒŒêµ¬ ì•„í‚¤ì£¤ì•„íŒŒíŠ¸1ë™(ë„ì–´ì“°ê¸°ê°€ ì—†ì–´ì„œ ë‹¤ë¥¸ í–‰..)/ 1ê±´
     
-    ´ëÇ¥ ¾ÆÆÄÆ® ÀÌ¸§Àº > ¼ÛÆÄ±¸ ¾ÆÅ°ÁÔ¾ÆÆÄÆ® 1µ¿
-    °Å·¡¼ö´Â > 3°Ç
+    ëŒ€í‘œ ì•„íŒŒíŠ¸ ì´ë¦„ì€ > ì†¡íŒŒêµ¬ ì•„í‚¤ì£¤ì•„íŒŒíŠ¸ 1ë™
+    ê±°ëž˜ìˆ˜ëŠ” > 3ê±´
     
-    ÀÌ·¸°Ô Ç¥½Ã µÇ¾î¾ßÇÔ
+    ì´ë ‡ê²Œ í‘œì‹œ ë˜ì–´ì•¼í•¨
     
 
 -------------------------------------------------------
@@ -28,24 +28,24 @@ ex)
 */
 
 
-/* ±¸ + ¾ÆÆÄÆ® ·Î ±×·ìÇÎ ÈÄ °Å·¡·® ³»¸²Â÷¼ø*/
+/* êµ¬ + ì•„íŒŒíŠ¸ ë¡œ ê·¸ë£¹í•‘ í›„ ê±°ëž˜ëŸ‰ ë‚´ë¦¼ì°¨ìˆœ*/
 SELECT
-    SGG_NM||' '||BLDG_NM AS ¾ÆÆÄÆ®ÀÌ¸§, count(*) as °Å·¡·®
+    SGG_NM||' '||BLDG_NM AS ì•„íŒŒíŠ¸ì´ë¦„, count(*) as ê±°ëž˜ëŸ‰
 FROM
     SALES
 GROUP BY
     SGG_NM, BLDG_NM
 ORDER BY 
-    °Å·¡·® DESC
+    ê±°ëž˜ëŸ‰ DESC
 ;
 
-/* ±¸ + ¾ÆÆÄÆ® ·Î ±×·ìÇÎÇÑ µ¥ÀÌÅÍ °³¼ö 9425°³*/
+/* êµ¬ + ì•„íŒŒíŠ¸ ë¡œ ê·¸ë£¹í•‘í•œ ë°ì´í„° ê°œìˆ˜ 9425ê°œ*/
 SELECT
     COUNT(*)
 FROM
     (
     SELECT
-        SGG_NM||' '||BLDG_NM AS ¾ÆÆÄÆ®ÀÌ¸§
+        SGG_NM||' '||BLDG_NM AS ì•„íŒŒíŠ¸ì´ë¦„
     FROM
         SALES
     GROUP BY
@@ -55,24 +55,24 @@ FROM
 
 
 
-/* µ¿ + º»¹ø + ºÎ¹ø À¸·Î ±×·ìÇÎ ÈÄ °Å·¡·® ³»¸²Â÷¼ø*/
+/* ë™ + ë³¸ë²ˆ + ë¶€ë²ˆ ìœ¼ë¡œ ê·¸ë£¹í•‘ í›„ ê±°ëž˜ëŸ‰ ë‚´ë¦¼ì°¨ìˆœ*/
 SELECT
-    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS Áö¹ø,count(*) as °Å·¡·®
+    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS ì§€ë²ˆ,count(*) as ê±°ëž˜ëŸ‰
 FROM
     SALES
 GROUP BY
     bjdong_nm, bonbeon, bubeon
 ORDER BY 
-    °Å·¡·® DESC
+    ê±°ëž˜ëŸ‰ DESC
 ;
 
-/* µ¿ + º»¹ø + ºÎ¹ø À¸·Î ±×·ìÇÎÇÑ µ¥ÀÌÅÍ °³¼ö 8919°³*/
+/* ë™ + ë³¸ë²ˆ + ë¶€ë²ˆ ìœ¼ë¡œ ê·¸ë£¹í•‘í•œ ë°ì´í„° ê°œìˆ˜ 8919ê°œ*/
 SELECT
     COUNT(*)
 FROM
     (
     SELECT
-        bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS Áö¹ø
+        bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS ì§€ë²ˆ
     FROM
         SALES
     GROUP BY
@@ -82,19 +82,19 @@ FROM
 
 ----------------------------------------------------------------------------------------------------------------
 
-/* µ¿ + º»¹ø + ºÎ¹ø À¸·Î ±×·ìÇÎ ÈÄ °Å·¡·® »óÀ§ 10°³ */
+/* ë™ + ë³¸ë²ˆ + ë¶€ë²ˆ ìœ¼ë¡œ ê·¸ë£¹í•‘ í›„ ê±°ëž˜ëŸ‰ ìƒìœ„ 10ê°œ */
 SELECT
     *
 FROM
     (
     SELECT
-        bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS Áö¹ø,count(*) as °Å·¡·®
+        bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS ì§€ë²ˆ,count(*) as ê±°ëž˜ëŸ‰
     FROM
         SALES
     GROUP BY
         bjdong_nm, bonbeon, bubeon
     ORDER BY 
-        °Å·¡·® DESC
+        ê±°ëž˜ëŸ‰ DESC
     )
 WHERE
     ROWNUM <= 10
@@ -102,11 +102,11 @@ WHERE
 
 
 
-/* µ¿ +º»¹ø + ºÎ¹ø + ±¸ + ¾ÆÆÄÆ® ·Î ±×·ìÇÎ*/
+/* ë™ +ë³¸ë²ˆ + ë¶€ë²ˆ + êµ¬ + ì•„íŒŒíŠ¸ ë¡œ ê·¸ë£¹í•‘*/
 
-/* °ãÄ¡´Â Áö¹øÀÌ ÀÖ´Â°ÍÀ» º¼ ¼ö ÀÖÀ½ */
+/* ê²¹ì¹˜ëŠ” ì§€ë²ˆì´ ìžˆëŠ”ê²ƒì„ ë³¼ ìˆ˜ ìžˆìŒ */
 SELECT
-    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS Áö¹ø,SGG_NM||' '||BLDG_NM AS ¾ÆÆÄÆ®ÀÌ¸§, count(*) as °Å·¡·®
+    bjdong_nm|| ' ' ||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) AS ì§€ë²ˆ,SGG_NM||' '||BLDG_NM AS ì•„íŒŒíŠ¸ì´ë¦„, count(*) as ê±°ëž˜ëŸ‰
 FROM
     SALES
 GROUP BY
@@ -116,13 +116,13 @@ ORDER BY
 ;
 
 
-/* ¸ðµç µ¥ÀÌÅÍ Æò¼ö·Î º¯È¯ ÈÄ Æò´ç °Å·¡·® Á¶È¸
+/* ëª¨ë“  ë°ì´í„° í‰ìˆ˜ë¡œ ë³€í™˜ í›„ í‰ë‹¹ ê±°ëž˜ëŸ‰ ì¡°íšŒ
     
-    Æò¼ö·Î ±×·ìÇÎ °á°ú 86Çà ¹Û¿¡ ¾È³ª¿À±ä ÇÔ
+    í‰ìˆ˜ë¡œ ê·¸ë£¹í•‘ ê²°ê³¼ 86í–‰ ë°–ì— ì•ˆë‚˜ì˜¤ê¸´ í•¨
     
 */
 SELECT
-    round(bldg_area/3.3)||'Æò' Æò, COUNT(*)
+    round(bldg_area/3.3)||'í‰' í‰, COUNT(*)
 FROM
     sales
 GROUP BY
@@ -134,32 +134,32 @@ ORDER BY
 INSERT INTO
     areagrade
 VALUES(
-    '¼ÒÇü', 0, 59.99999999999
+    'ì†Œí˜•', 0, 59.99999999999
 );
 INSERT INTO
     areagrade
 VALUES(
-    'ÁßÇü', 60, 84.99999999999
+    'ì¤‘í˜•', 60, 84.99999999999
 );
 INSERT INTO
     areagrade
 VALUES(
-    '´ëÇü', 85, 500
+    'ëŒ€í˜•', 85, 500
 );
 
 
--- ¸éÀûµî±Þ Æ÷ÇÔ
+-- ë©´ì ë“±ê¸‰ í¬í•¨
 SELECT
-    ACC_YEAR,SGG_CD,SGG_NM,BJDONG_CD,BJDONG_NM,LAND_GBN,LAND_GBN_NM,BONBEON,BUBEON,BLDG_NM,DEAL_YMD,OBJ_AMT,BLDG_AREA,TOT_AREA,FLOOR,RIGHT_GBN,CNTL_YMD,BUILD_YEAR,HOUSE_TYPE,REQ_GBN,RDEALER_LAWDNM,grade,round(obj_amt / (bldg_area / 3.3)) as Æò´Ü°¡
+    ACC_YEAR,SGG_CD,SGG_NM,BJDONG_CD,BJDONG_NM,LAND_GBN,LAND_GBN_NM,BONBEON,BUBEON,BLDG_NM,DEAL_YMD,OBJ_AMT,BLDG_AREA,TOT_AREA,FLOOR,RIGHT_GBN,CNTL_YMD,BUILD_YEAR,HOUSE_TYPE,REQ_GBN,RDEALER_LAWDNM,grade,round(obj_amt / (bldg_area / 3.3)) as í‰ë‹¨ê°€
 FROM
     sales, areagrade
 WHERE
     bldg_area BETWEEN lowarea AND higharea
 ;
 
--- ±¸º° ¸éÀûµî±Þº° Æò´Ü°¡ Á¶È¸ ÁúÀÇ¸í·É
+-- êµ¬ë³„ ë©´ì ë“±ê¸‰ë³„ í‰ë‹¨ê°€ ì¡°íšŒ ì§ˆì˜ëª…ë ¹
 SELECT
-    sgg_nm, round(avg(obj_amt / (bldg_area/3.3))) as ±¸º°Æò´Ü°¡, grade
+    sgg_nm, round(avg(obj_amt / (bldg_area/3.3))) as êµ¬ë³„í‰ë‹¨ê°€, grade
 FROM
     sales, areagrade
 WHERE
@@ -170,26 +170,26 @@ ORDER BY
     sgg_nm
 ;
 
--- ±¸º° Æò´ç¸Å¸Å°¡
+-- êµ¬ë³„ í‰ë‹¹ë§¤ë§¤ê°€
 SELECT
-    sgg_nm, round(avg(obj_amt / (bldg_area / 3.3))) Æò´Ü°¡
+    sgg_nm, round(avg(obj_amt / (bldg_area / 3.3))) í‰ë‹¨ê°€
 FROM
     sales
 GROUP BY
     sgg_nm
 ;
 
--- ¿¬º° ÀÎ±¸¼ö Á¶È¸
+-- ì—°ë³„ ì¸êµ¬ìˆ˜ ì¡°íšŒ
 SELECT
     *
 FROM
     population
 WHERE
-    gu_name = 'Á¾·Î±¸'
+    gu_name = 'ì¢…ë¡œêµ¬'
     AND year = 2017
 ;
 
--- ¿¬º°±¸º°°Å·¡·®
+-- ì—°ë³„êµ¬ë³„ê±°ëž˜ëŸ‰
 SELECT
     sgg_nm, count(*), acc_year
 FROM
@@ -198,4 +198,24 @@ GROUP BY
     sgg_nm, acc_year
 order by
     sgg_nm
+;
+-- êµ¬ì•„íŒŒíŠ¸ ë™ì§€ë²ˆ êµ¬ì•„íŒŒíŠ¸
+SELECT
+    s.sgg_nm, s.bldg_nm
+FROM
+    sales s, (
+                select
+                    BJDONG_NM, BONBEON, BUBEON
+                from
+                    sales
+                where
+                    SGG_NM = 'ì„±ë¶êµ¬'
+                    AND BLDG_NM = 'í•œì‹ '
+                    AND ROWNUM = 1
+                ) ns
+WHERE
+    s.bjdong_nm = ns.bjdong_nm
+    AND s.bonbeon = ns.bonbeon
+    AND s.bubeon = ns.bubeon
+    AND ROWNUM = 1
 ;
