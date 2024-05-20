@@ -10,4 +10,9 @@ public class MainController {
 	public String getMain() {
 		return "main";
 	}
+	
+	@RequestMapping("/login.boo")
+	public String getLogin() {
+		return "login";
+	}
 }
