@@ -201,23 +201,23 @@ order by
 ;
 -- 구아파트 동지번 구아파트
 SELECT
-    s.sgg_nm, s.bldg_nm
+     s.sgg_nm, s.bldg_nm, round(obj_amt / (bldg_area / 3.3)) as 평단가
 FROM
     sales s, (
                 select
                     BJDONG_NM, BONBEON, BUBEON
                 from
                     sales
+                    
                 where
-                    SGG_NM = '성북구'
-                    AND BLDG_NM = '한신'
+                    (SGG_NM LIKE '%성북구' OR SGG_NM LIKE '성북구%')
+                    AND (BLDG_NM LIKE '%한신' OR BLDG_NM LIKE '한신%')
                     AND ROWNUM = 1
                 ) ns
 WHERE
     s.bjdong_nm = ns.bjdong_nm
     AND s.bonbeon = ns.bonbeon
     AND s.bubeon = ns.bubeon
-    AND ROWNUM = 1
 ;
 
 
