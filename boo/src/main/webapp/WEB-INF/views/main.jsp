@@ -49,7 +49,7 @@
 			</a>
 </c:if>
 <c:if test="${not empty kakaoID}">
-			<div class="w3-yellow front" style="height: 360px; width: 60px;">챗봇 상담</div>
+			<div class="w3-yellow front" style="height: 60px; width: 360px;">챗봇 상담</div>
 </c:if>
 		</div>
 	</div>
