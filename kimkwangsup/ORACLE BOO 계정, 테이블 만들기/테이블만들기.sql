@@ -51,3 +51,5 @@ CREATE TABLE population (
 
 
 -- 계정, 테이블 생성 됐고 좌 상단의 접속에서 boo 접속 만든 후 테스트
+ALTER TABLE population RENAME COLUMN gu_code TO sgg_cd;
+ALTER TABLE population RENAME COLUMN gu_name TO sgg_nm;
