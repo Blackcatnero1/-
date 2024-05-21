@@ -1,4 +1,4 @@
--- system °èÁ¤¿¡¼­ ½ÃÀÛ
+-- system ê³„ì •ì—ì„œ ì‹œìž‘
 CREATE USER boo IDENTIFIED BY 12345 ACCOUNT UNLOCK;
 GRANT UNLIMITED TABLESPACE TO boo;
 ALTER USER boo DEFAULT TABLESPACE USERS;
@@ -14,7 +14,7 @@ commit;
 conn boo/12345;
 
 
--- ¸Å¹° Å×ÀÌºí ¸¸µé±â (sales)
+-- ë§¤ë¬¼ í…Œì´ë¸” ë§Œë“¤ê¸° (sales)
 CREATE TABLE sales(
     acc_year NUMBER(4),
     sgg_cd NUMBER(5),
@@ -39,7 +39,7 @@ CREATE TABLE sales(
     rdealer_lawdnm VARCHAR2(30 CHAR)
 );
 
--- ±¸º°ÀÎ±¸ Å×ÀÌºí ¸¸µé±â(population)
+-- êµ¬ë³„ì¸êµ¬ í…Œì´ë¸” ë§Œë“¤ê¸°(population)
 CREATE TABLE population (
     gu_code VARCHAR2(10),
     gu_name VARCHAR2(50),
@@ -48,29 +48,6 @@ CREATE TABLE population (
 );
 
 
--- ¸éÀû´ÜÀ§µî±Þ Å×ÀÌºí ¸¸µé±â
-CREATE TABLE areagrade(
-    grade VARCHAR2(10 CHAR)
-        CONSTRAINT AG_GRADE_NN NOT NULL,
-    lowarea NUMBER
-        CONSTRAINT AG_LOW_NN NOT NULL,
-    higharea NUMBER
-        CONSTRAINT AG_HIGH_NN NOT NULL
-);
-INSERT INTO
-    areagrade
-VALUES(
-    '¼ÒÇü', 0, 59.99999999999
-);
-INSERT INTO
-    areagrade
-VALUES(
-    'ÁßÇü', 60, 84.99999999999
-);
-INSERT INTO
-    areagrade
-VALUES(
-    '´ëÇü', 85, 500
-);
 
--- °èÁ¤, Å×ÀÌºí »ý¼º µÆ°í ÁÂ »ó´ÜÀÇ Á¢¼Ó¿¡¼­ boo Á¢¼Ó ¸¸µç ÈÄ Å×½ºÆ®
+
+-- ê³„ì •, í…Œì´ë¸” ìƒì„± ëê³  ì¢Œ ìƒë‹¨ì˜ ì ‘ì†ì—ì„œ boo ì ‘ì† ë§Œë“  í›„ í…ŒìŠ¤íŠ¸
