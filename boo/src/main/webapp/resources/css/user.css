@@ -1,0 +1,191 @@
+.mxw550 {
+    max-width: 550px;
+}
+.mxw600 {
+    max-width: 600px;
+}
+.mxw650 {
+    max-width: 650px;
+}
+.mxw700 {
+    max-width: 700px;
+}
+.mxw750 {
+    max-width: 750px;
+}
+.mxw800 {
+    max-width: 800px;
+}
+
+.inblock {
+    display: inline-block;
+}
+
+.frHidden {
+    overflow: hidden;
+}
+
+.lbl {
+    font-size: 13pt;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-top: 6px;
+}
+
+.genlbl {
+    position: relative;
+    top: 8px;
+    font-size: 11pt;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-top: 14px;
+}
+
+.pdr5 {
+    padding-right: 5px;
+}
+
+.pdr10 {
+    padding-right: 10px;
+}
+
+.pdl10 {
+    padding-left: 10px!important;
+}
+
+.pdl20 {
+    padding-left: 20px!important;
+}
+
+.pdl30 {
+    padding-left: 30px!important;
+}
+
+.pdl50 {
+    padding-left: 50px!important;
+}
+
+.pdh10 {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+
+.pdh20 {
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
+}
+
+.pdh30 {
+    padding-top: 30px!important;
+    padding-bottom: 30px!important;
+}
+
+.mgr3 {
+    margin-right: 3px;
+}
+.mgr5 {
+    margin-right: 5px;
+}
+
+.mgl3 {
+    margin-left: 3px;
+}
+.mgl5 {
+    margin-left: 5px;
+}
+
+.mgt10 {
+    margin-top: 10px;
+}
+.mgt20 {
+    margin-top: 20px;
+}
+
+.mgb0 {
+    margin-bottom: 0px!important;
+}
+
+.mgb10 {
+    margin-bottom: 10px!important;
+}
+
+.mgb20 {
+    margin-bottom: 20px!important;
+}
+
+.mgh0 {
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+}
+
+.mgh10 {
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+
+.mgh20 {
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.mgw10 {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.btnW1 {
+    width: 100px;
+}
+.btnPd {
+    padding: 5px 16px;
+}
+
+.rdo {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 12px;
+}
+
+.avtrdo {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: -2px;
+}
+
+.avtimg {
+    width: 98px;
+    height: auto;
+}
+
+.avtBox {
+    width: 100px;
+    height: 120px;
+}
+
+.avtBox2 {
+    width: 200px;
+    height: 200px;
+}
+
+.imgBox {
+    width: 98px;
+    height: 98px;
+    overflow: hidden;
+    border: 1px solid lightgrey;
+}
+
+.imgBox100 {
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.w50 {
+	width: 50px;
+}
+
+.w100 {
+	width: 100px;
+}
