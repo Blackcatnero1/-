@@ -22,20 +22,24 @@ public class MainController {
 	
 	
 	
+    @PostMapping("/setSession.boo")
+    public String setSession(@RequestBody VO vo, HttpSession session) {
+        session.setAttribute("nickname", vo.getNickname());
+        return "/main2";
+    }
+	
 	@RequestMapping("/loginProc.boo")
     public String main(HttpSession session, ModelAndView mv) {
         String nickname = (String) session.getAttribute("nickname");
         if (nickname != null) {
             mv.addObject("nickname", nickname);
-            return "/main";
+            return "/main2";
         } else {
             return "redirect:/login.boo";
         }
     }
-	@RequestMapping("/login.boo")
-	public String getLogin() {
-		return "login";
-	}
+	
+
 	
 	
 	

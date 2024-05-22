@@ -36,7 +36,7 @@
                             }).then(response => {
                                 if (response.ok) {
                                     // 세션 설정이 완료되면 main.jsp로 이동
-                                    window.location.href = 'main.jsp';
+                                    window.location.href = 'main2.jsp';
                                 } else {
                                     console.error('Failed to set session');
                                 }
