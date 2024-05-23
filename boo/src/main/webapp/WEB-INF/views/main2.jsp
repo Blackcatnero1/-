@@ -11,7 +11,6 @@
 <script type="text/javascript" src="/boo/js/jquery-3.7.1.min.js"></script>
 <style type="text/css">
 	body, html {height: 100%}
-	body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 	.menu {display: none}
 	.bgimg {
 	  background-repeat: no-repeat;
@@ -39,13 +38,6 @@
 	
 </style>
 <script type="text/javascript">
-$(document).getElementById("schat").addEventListener("click", function(event) {
-    // 기본 동작(링크 이동)을 막음
-    event.preventDefault();
-    
-    // 원하는 URL로 이동
-    window.location.href = "http://pf.kakao.com/_KxivUG/chat";
-});
 $(document).ready(function(){
 	
 	$('#logout').click(function(){
@@ -98,7 +90,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
- <a href="#" id="myLink">http://pf.kakao.com/_KxivUG/chat</a>
 <header class="bgimg w3-display-container w3-grayscale-min id="home">
   <div class="w3-display-middle w3-center">
     <span id="move-up" class="w3-text-white w3-hide-small" style="font-size:25px"><b>아파트 매매정보 챗봇<br></b></span>
@@ -107,7 +98,7 @@ $(document).ready(function(){
     <p style="margin-top: 50px; display; inline-block;"/>
 <c:if test="${not empty nickname}">
     <h2 class="w3-text-aqua" style="blod:2px; text-shadow:1px 1px 0 #444;font-weight: bold;">환영합니다. ${nickname} 님!</h4>
-    <div href="#" id="schat" class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
+    <div class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
     <div id="logout" class="w3-button w3-large w3-teal w3-round-large mgw10 mgt20" style="width: 220px">로그아웃</div>
  
 </c:if>
