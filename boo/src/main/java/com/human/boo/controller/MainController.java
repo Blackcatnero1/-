@@ -27,17 +27,13 @@ public class MainController {
         session.setAttribute("nickname", vo.getNickname());
         return "/main2";
     }
-	
-	@RequestMapping("/loginProc.boo")
-    public String main(HttpSession session, ModelAndView mv) {
-        String nickname = (String) session.getAttribute("nickname");
-        if (nickname != null) {
-            mv.addObject("nickname", nickname);
-            return "/main2";
-        } else {
-            return "redirect:/login.boo";
-        }
+    
+    @RequestMapping("/rmSession.boo")
+    public String rmSession(HttpSession session) {
+        session.removeAttribute("nickname");
+        return "redirect:/main2.boo";
     }
+
 	
 
 	
