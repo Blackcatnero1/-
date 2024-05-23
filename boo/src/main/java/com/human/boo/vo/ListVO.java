@@ -1,7 +1,7 @@
 package com.human.boo.vo;
 
 public class ListVO {
-	private int dealno, objno;
+	private int dealno, objno, floor;
 	private String aptname, dongname, deal_ymd;
 	public int getDealno() {
 		return dealno;
@@ -14,6 +14,12 @@ public class ListVO {
 	}
 	public void setObjno(int objno) {
 		this.objno = objno;
+	}
+	public int getFloor() {
+		return floor;
+	}
+	public void setFloor(int floor) {
+		this.floor = floor;
 	}
 	public String getAptname() {
 		return aptname;

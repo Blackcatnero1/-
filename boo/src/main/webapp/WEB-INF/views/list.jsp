@@ -11,16 +11,21 @@
     <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
     <style>
         .center-container {
-		    margin: 0 auto;
-		    max-width: 800px;
-		    text-align: center;
-		    padding-top: 32px;
-		    /* 배경 이미지 추가 */
-		    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbEwdU_cxLbKqikIV9lxERYoIEc4_IgYzScw&usqp=CAU');
-		    /* 배경 이미지 크기 및 반복 설정 */
-		    background-size: cover; /* 배경 이미지를 컨테이너에 맞게 자동 조정 */
-		    background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
-        }
+		  margin: 0 auto;
+		  max-width: 800px;
+		  text-align: center;
+		  padding-top: 32px;
+		  background-image: url('https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/10/urbanbrush-20221017191843915069.jpg');
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		  color: black; /* 텍스트의 색상을 흰색(하얀색)으로 설정 */
+		}
+		
+		.w3-border-bottom {
+		  border-bottom-color: black!important; /* 밑줄 색상을 설정 */
+		}
+		
+
     </style>
 <script type="text/javascript">
     $(document).ready(function(){

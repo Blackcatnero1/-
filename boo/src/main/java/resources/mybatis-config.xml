@@ -10,4 +10,9 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 	
+	<typeAliases>
+		<typeAlias alias="lVO" type="com.human.boo.vo.ListVO"/>
+		<typeAlias alias="page" type="com.human.boo.util.PageUtil"/>
+	</typeAliases>
+	
 </configuration>

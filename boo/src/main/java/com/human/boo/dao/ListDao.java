@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.human.boo.util.PageUtil;
 import com.human.boo.vo.ListVO;
 
+@Repository
 public class ListDao {
 	@Autowired
 	private SqlSessionTemplate session;
