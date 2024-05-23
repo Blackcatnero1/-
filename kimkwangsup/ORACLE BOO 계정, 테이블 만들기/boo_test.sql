@@ -271,3 +271,28 @@ FROM
 WHERE
     ns.지번 = s.지번
 ;
+
+
+CREATE TABLE areagrade(
+    grade VARCHAR2(10 CHAR)
+        CONSTRAINT AG_GRADE_NN NOT NULL,
+    lowarea NUMBER
+        CONSTRAINT AG_LOW_NN NOT NULL,
+    higharea NUMBER
+        CONSTRAINT AG_HIGH_NN NOT NULL
+);
+INSERT INTO
+    areagrade
+VALUES(
+    '소형', 0, 59.99999999999
+);
+INSERT INTO
+    areagrade
+VALUES(
+    '중형', 60, 84.99999999999
+);
+INSERT INTO
+    areagrade
+VALUES(
+    '대형', 85, 500
+);
