@@ -49,9 +49,13 @@
             <label class="w3-text-teal"><b>예산 범위 선택</b></label>
             <select class="w3-select w3-border" name="option2">
                 <option value="" disabled selected>예산 범위를 선택하세요</option>
-                <option value="A">옵션 A</option>
-                <option value="B">옵션 B</option>
-                <option value="C">옵션 C</option>
+                <option value="A">1억 미만</option>
+                <option value="B">1억 이상 3억 이하</option>
+                <option value="C">3억 이상 5억 미만</option>
+                <option value="D">5억 이상 7억 미만</option>
+                <option value="E">7억 이상 10억 미만</option>
+                <option value="F">10억 이상 20억 미만</option>
+                <option value="G">20억 이상</option>
             </select>
         </div>
 
