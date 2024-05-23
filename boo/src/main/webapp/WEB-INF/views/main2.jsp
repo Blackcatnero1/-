@@ -44,6 +44,11 @@ $(document).ready(function(){
 		$(location).attr('href', '/boo/rmSession.boo');
 	});
 	
+	$('#schat').click(function(){
+		// 원하는 URL로 이동
+		window.location.href = "http://pf.kakao.com/_KxivUG/chat";
+	});
+	
 });
 	
     Kakao.init("21c363680f2db21df7de0268a3a1f6f0");
@@ -98,7 +103,7 @@ $(document).ready(function(){
     <p style="margin-top: 50px; display; inline-block;"/>
 <c:if test="${not empty nickname}">
     <h2 class="w3-text-aqua" style="blod:2px; text-shadow:1px 1px 0 #444;font-weight: bold;">환영합니다. ${nickname} 님!</h4>
-    <div class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
+    <div id="schat" class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
     <div id="logout" class="w3-button w3-large w3-teal w3-round-large mgw10 mgt20" style="width: 220px">로그아웃</div>
  
 </c:if>
