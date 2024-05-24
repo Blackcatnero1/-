@@ -15,10 +15,10 @@ public class ListDao {
 	private SqlSessionTemplate session;
 	
 	public List<ListVO> getList(PageUtil page){
-		return session.selectList("lSQL.selList", page);
+		return session.selectList("lSQL.List", page);
 	}
 	
 	public int getTotal() {
-		return session.selectOne("fSQL.selTotal");
+		return session.selectOne("lSQL.listTotal");
 	}
 }

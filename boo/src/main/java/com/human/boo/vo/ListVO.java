@@ -1,47 +1,34 @@
 package com.human.boo.vo;
 
 public class ListVO {
-	private int dealno, objno, floor;
-	private String aptname, dongname, deal_ymd;
-	public int getDealno() {
-		return dealno;
+	private int muney;
+	private String goo, dong, aname;
+	public int getMuney() {
+		return muney;
 	}
-	public void setDealno(int dealno) {
-		this.dealno = dealno;
+	public void setMuney(int muney) {
+		this.muney = muney;
 	}
-	public int getObjno() {
-		return objno;
+	public String getGoo() {
+		return goo;
 	}
-	public void setObjno(int objno) {
-		this.objno = objno;
+	public void setGoo(String goo) {
+		this.goo = goo;
 	}
-	public int getFloor() {
-		return floor;
+	public String getDong() {
+		return dong;
 	}
-	public void setFloor(int floor) {
-		this.floor = floor;
+	public void setDong(String dong) {
+		this.dong = dong;
 	}
-	public String getAptname() {
-		return aptname;
+	public String getAname() {
+		return aname;
 	}
-	public void setAptname(String aptname) {
-		this.aptname = aptname;
-	}
-	public String getDongname() {
-		return dongname;
-	}
-	public void setDongname(String dongname) {
-		this.dongname = dongname;
-	}
-	public String getDeal_ymd() {
-		return deal_ymd;
-	}
-	public void setDeal_ymd(String deal_ymd) {
-		this.deal_ymd = deal_ymd;
+	public void setAname(String aname) {
+		this.aname = aname;
 	}
 	@Override
 	public String toString() {
-		return "ListVO [dealno=" + dealno + ", objno=" + objno + ", aptname=" + aptname + ", dongname=" + dongname
-				+ ", deal_ymd=" + deal_ymd + "]";
+		return "ListVO [muney=" + muney + ", goo=" + goo + ", dong=" + dong + ", aname=" + aname + "]";
 	}
 }

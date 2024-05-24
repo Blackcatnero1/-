@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lSQL">
+	<select id="list" resultType="lVO" parameterType="page">
+		SELECT
+		    sgg_nm goo, bldg_nm aname, bjdong_nm dong, obj_amt muney
+		FROM
+		    sales
+		WHERE
+		    sgg_nm = '노원구'
+		    AND bjdong_nm = '하계동'
+		    AND obj_amt >= 90000
+	</select>
+	
+	<select id="listTotal" resultType="int">
+		SELECT
+		    COUNT(*)
+		FROM
+		    sales
+		WHERE
+		    sgg_nm = '노원구'
+		    AND bjdong_nm = '하계동'
+		    AND obj_amt >= 90000
+	</select>
+</mapper>
