@@ -26,12 +26,25 @@ public class ListController {
 	public ModelAndView getList(HttpSession session, ModelAndView mv, RedirectView rv, PageUtil page,ChatbotVO cbVO) {
 
 		cbVO.setSgg_nm("강남구");
+		
+		
+		int nowPage = page.getNowPage();
+		if(nowPage == 0) {
+			nowPage = 1;
+		}
+		int totalCnt = cbDao.getTotal();
+		page.setPage(nowPage, totalCnt);
+		
 		List list = cbDao.getDongList(cbVO);
 		List list2 = cbDao.getGradeList();
+		List list3 = cbDao.getAptList(page);
 		mv.addObject("DongLIST",list);
 		mv.addObject("GradeLIST", list2);
+		mv.addObject("AptLIST",list3);
+		mv.addObject("PAGE", page);
 		mv.setViewName("list");
 		return mv;
+		
 		
 	}
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="/css/w3.css">
     <link rel="stylesheet" type="text/css" href="/css/user.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
     <style>
         .center-container {
@@ -54,6 +55,8 @@
     </style>
 <script type="text/javascript">
     $(document).ready(function(){
+    	
+       
     	/* 페이지 클릭이벤트 */
 		$('.pageBtn').click(function(){
 			// 이동할 페이지번호 알아내고
@@ -130,26 +133,26 @@
    <div class="w3-col">
 			<div class="w3-center w3-margin-top">
 				<div class="w3-col m1 w3-border-right w3-blue-gray" >글번호</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray" >자치구</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray" >법정동</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray" >아파트</div>
+				<div class="w3-col m1 w3-border-right w3-blue-gray" >자치구</div>
+				<div class="w3-col m1 w3-border-right w3-blue-gray" >법정동</div>
+				<div class="w3-col m4 w3-border-right w3-blue-gray" >아파트</div>
 				<div class="w3-col m2 w3-border-right w3-blue-gray">평균 매매가</div>
+				<div class="w3-col m1 w3-border-right w3-blue-gray" >거래량</div>
 				<div class="w3-col m2 w3-blue-gray">평균 면적(평)</div>
 			</div>
 			
-<c:if test="${not empty LIST}">
+<c:if test="${not empty AptLIST}">
 	
-	<c:forEach var="DATA" items="${LIST}">
-			<div class="w3-col w3-border-bottom" id="${DATA.rno}">
-<!-- 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!########## -->
-				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.rno}</div></div>
-				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.goo}</div></div>
-				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.money} 만원</small></div>
-				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-center writer">${DATA.dong}</div></div>
-				<div class="w3-rest pdr5">
-					<div class="title">${DATA.aname}</div>
-				</div>
-<!-- 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!########## -->
+	<c:forEach var="DATA" items="${AptLIST}">
+
+			<div class="w3-col w3-center w3-border-bottom" id="${DATA.rno}">
+				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px" >${DATA.rno}</div>
+				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${DATA.sgg_nm}</div>
+				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${DATA.bjdong_nm}</div>
+				<div class="w3-col m4 w3-border-right" style="height:45px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size:14px;line-height:45px">${DATA.bldg_nm}</div>
+				<div id="avgapt" class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${DATA.avg_amt}</div>
+				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${DATA.deal_cnt}</div>
+				<div class="w3-col m2 " style="height:45px; line-height:45px">${DATA.avg_area}</div>
 			</div>
 	</c:forEach>
 	
@@ -182,7 +185,7 @@
 			</div>
 		</div>
 </c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
-<c:if test="${empty LIST}">
+<c:if test="${empty AptLIST}">
 			<div class="w3-col w3-border-bottom w3-margin-top">
 				<h3 class="w3-center w3-text-gray">* 동 or 예산을 선택해 주세요. *</h3>
 			</div>

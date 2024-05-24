@@ -2,12 +2,37 @@ package com.human.boo.vo;
 
 public class ChatbotVO {
 	
-	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt;
+	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_area,avg_amt,rno;
 	private float bldg_area;
 	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname;
 	
 	
 	
+	
+
+	public int getAvg_area() {
+		return avg_area;
+	}
+
+	public void setAvg_area(int avg_area) {
+		this.avg_area = avg_area;
+	}
+
+	public int getAvg_amt() {
+		return avg_amt;
+	}
+
+	public void setAvg_amt(int avg_amt) {
+		this.avg_amt = avg_amt;
+	}
+
+	public int getRno() {
+		return rno;
+	}
+
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
 
 	public String getSgg_nm() {
 		return sgg_nm;
