@@ -23,7 +23,7 @@
 		            )
 		    )
 		WHERE
-		    rno BETWEEN 1 AND 100
+		    rno BETWEEN #{startRno} AND #{endRno}
 	</select>
 	
 	<select id="listTotal" resultType="int">

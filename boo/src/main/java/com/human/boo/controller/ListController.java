@@ -20,7 +20,7 @@ public class ListController {
 	@Autowired
 	ListDao lDao;
 	
-	@RequestMapping("/list.son") 
+	@RequestMapping("/list.boo") 
 	public ModelAndView slist(HttpSession session, ModelAndView mv, RedirectView rv, PageUtil page) {
 		// 할일
 		int nowPage = page.getNowPage();
@@ -28,19 +28,22 @@ public class ListController {
 			nowPage = 1;
 		}
 		
+		System.out.println("################################" + nowPage);
 		int totalCnt = lDao.getTotal();
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + totalCnt);
 		
 		page.setPage(nowPage, totalCnt);
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + nowPage);
 		
 		// 데이터 베이스에서 조회
 		List<ListVO> list = lDao.getList(page);
 
-		
+		System.out.println("*&*********************************************");
 		// 데이터 전달하고
 		mv.addObject("LIST", list);
 		mv.addObject("PAGE", page);
 		// 뷰 셋팅하고
-		mv.setViewName("list/list");
+		mv.setViewName("list");
 		return mv;
 	}
 }

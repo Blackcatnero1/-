@@ -15,8 +15,8 @@
 		  max-width: 800px;
 		  text-align: center;
 		  padding-top: 32px;
-		  background-image: url('https://www.urbanbrush.net/web/wp-content/uploads/edd/2022/10/urbanbrush-20221017191843915069.jpg');
-		  background-size: cover;
+		  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230424/pngtree-close-up-view-of-a-cloudy-sky-over-apartment-buildings-and-image_2509406.jpg');
+		  background-size: 800px;
 		  background-repeat: no-repeat;
 		  color: black; /* 텍스트의 색상을 흰색(하얀색)으로 설정 */
 		}
@@ -38,10 +38,10 @@
 			// 글번호 태그 사용불가처리
 			$('#bno').prop('disabled', true);
 			// 전송 주소 셋팅하고
-			$('#frm').attr('action', '/list/list.son');
+			$('#pageFrm').attr('action', '/boo/list/list.boo');
 			
 			// 폼태그 전송하고
-			$('#frm').submit();
+			$('#pageFrm').submit();
 		});
     });
     
@@ -58,6 +58,9 @@
 </script>
 </head>
 <body>
+<form method="POST" action="/boo/list/list.boo" id="pageFrm" name="pageFrm">
+	<input type="hidden" name="nowPage" id="nowPage">
+</form>
 
 <!-- 폼 컨테이너 -->
 <div class="w3-container center-container" style="padding-top: 8px; padding-bottom: 8px;">
@@ -99,8 +102,8 @@
    <div class="w3-col">
 			<div class="w3-center w3-margin-top">
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-blue-gray">글번호</div></div>
-				<div class="inblock w3-right" style="width: 50px;"><div class="w3-blue-gray">가격</div></div>
-				<div class="inblock w3-right pdr5" style="width: 170px;"><div class="w3-blue-gray">최근 거래 날짜</div></div>
+				<div class="inblock w3-right" style="width: 50px;"><div class="w3-blue-gray">구이름</div></div>
+				<div class="inblock w3-right pdr5" style="width: 170px;"><div class="w3-blue-gray">가 격</div></div>
 				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-blue-gray">동 이름</div></div>
 				<div class="w3-rest pdr5"><div class="w3-blue-gray">아파트 이름</div></div>
 			</div>
@@ -109,8 +112,8 @@
 	<c:forEach var="DATA" items="${LIST}">
 			<div class="w3-col w3-border-bottom" id="${DATA.rno}">
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.rno}</div></div>
-				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.money}</div></div>
-				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.goo}</small></div>
+				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.goo}</div></div>
+				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.money} 만원</small></div>
 				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-center writer">${DATA.dong}</div></div>
 				<div class="w3-rest pdr5">
 					<div class="title">${DATA.aname}</div>
@@ -153,5 +156,6 @@
 			</div>
 </c:if>
 		</div>
+</div>
 </body>
 </html>

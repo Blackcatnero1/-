@@ -3,11 +3,11 @@ package com.human.boo.vo;
 public class ListVO {
 	private int money, rno;
 	private String goo, dong, aname;
-	public int getMuney() {
+	public int getMoney() {
 		return money;
 	}
-	public void setMuney(int muney) {
-		this.money = muney;
+	public void setMoney(int money) {
+		this.money = money;
 	}
 	public int getRno() {
 		return rno;

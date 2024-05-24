@@ -1,7 +1,7 @@
 package com.human.boo.util;
 
 public class PageUtil {
-	private int nowPage;	// 현재 페이지
+	private int nowPage = 1;	// 현재 페이지
 	private int totalCount; // 총 게시물 갯수
 	
 	private int pageRow; 	// 한페이지에 보여줄 게시글 갯수
@@ -13,11 +13,11 @@ public class PageUtil {
 	private int startRno, endRno; // 페이지 시작  rownum, 마지막 rownum
 	
 	public void setPage() {
-		setPage(nowPage, totalCount, 3, 3);
+		setPage(nowPage, totalCount, 20, 5);
 	}
 	
 	public void setPage(int nowPage, int totalCount) {
-		setPage(nowPage, totalCount, 3, 3);
+		setPage(nowPage, totalCount, 20, 5);
 	}
 	
 	public void setPage(int nowPage, int totalCount, int pageRow, int pageGroup) {

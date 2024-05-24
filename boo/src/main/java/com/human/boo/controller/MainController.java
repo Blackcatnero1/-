@@ -20,12 +20,6 @@ public class MainController {
 		return "main2";
 	}
 	
-	@RequestMapping("/list.boo")
-	public String list() {
-		return "list";
-	}
-	
-	
 	
     @PostMapping("/setSession.boo")
     public String setSession(@RequestBody VO vo, HttpSession session) {
