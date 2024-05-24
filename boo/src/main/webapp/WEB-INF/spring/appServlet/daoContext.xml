@@ -6,5 +6,5 @@
 						https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="page" class="com.human.boo.util.PageUtil" />
-	<bean id="lDao" class="com.human.boo.dao.ListDao" />
+	<bean id="cbDao" class="com.human.boo.dao.ChatbotDao" />
 </beans>

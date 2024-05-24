@@ -10,36 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.human.boo.dao.ListDao;
+import com.human.boo.dao.ChatbotDao;
 import com.human.boo.util.PageUtil;
-import com.human.boo.vo.ListVO;
+import com.human.boo.vo.ChatbotVO;
+
 
 @Controller
 @RequestMapping("/list")
 public class ListController {
+
 	@Autowired
-	ListDao lDao;
+	ChatbotDao cbDao;
 	
 	@RequestMapping("/list.boo") 
-	public ModelAndView slist(HttpSession session, ModelAndView mv, RedirectView rv, PageUtil page) {
-		// 할일
-		int nowPage = page.getNowPage();
-		if(nowPage == 0) {
-			nowPage = 1;
-		}
-		
-		int totalCnt = lDao.getTotal();
-		
-		page.setPage(nowPage, totalCnt);
-		
-		// 데이터 베이스에서 조회
-		List<ListVO> list = lDao.getList(page);
+	public ModelAndView getList(HttpSession session, ModelAndView mv, RedirectView rv, PageUtil page,ChatbotVO cbVO) {
 
-		// 데이터 전달하고
-		mv.addObject("LIST", list);
-		mv.addObject("PAGE", page);
-		// 뷰 셋팅하고
+		cbVO.setSgg_nm("강남구");
+		List list = cbDao.getDongList(cbVO);
+		List list2 = cbDao.getGradeList();
+		mv.addObject("DongLIST",list);
+		mv.addObject("GradeLIST", list2);
 		mv.setViewName("list");
 		return mv;
+		
 	}
 }

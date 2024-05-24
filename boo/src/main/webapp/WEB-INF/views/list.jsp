@@ -103,9 +103,9 @@
 		        <label class="w3-text-teal" style="text-align: left; display: block;"><b>동 선택</b></label>
 		        <select class="w3-select w3-border" name="option1">
 		            <option value="" disabled selected>동을 선택하세요</option>
-		            <option value="1">옵션 1</option>
-		            <option value="2">옵션 2</option>
-		            <option value="3">옵션 3</option>
+<c:forEach var="DATA" items="${DongLIST}" varStatus="st">
+			<option value="D ${st.index + 1}">${DATA.bjdong_nm}</option>
+</c:forEach>
 		        </select>
 		    </div>
 		
@@ -114,13 +114,9 @@
 		        <label class="w3-text-teal" style="text-align: left; display: block;"><b>예산 범위 선택</b></label>
 		        <select class="w3-select w3-border" name="option2">
 		            <option value="" disabled selected>예산 범위를 선택하세요</option>
-		            <option value="A">1억 미만</option>
-		            <option value="B">1억 이상 3억 이하</option>
-		            <option value="C">3억 이상 5억 미만</option>
-		            <option value="D">5억 이상 7억 미만</option>
-		            <option value="E">7억 이상 10억 미만</option>
-		            <option value="F">10억 이상 20억 미만</option>
-		            <option value="G">20억 이상</option>
+<c:forEach var="DATA" items="${GradeLIST}" varStatus="st">
+				<option value="G${st.index + 1}">${DATA.grade}</option>
+</c:forEach>
 		        </select>
 		    </div>
 		
@@ -133,16 +129,19 @@
     
    <div class="w3-col">
 			<div class="w3-center w3-margin-top">
-				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-blue-gray">글번호</div></div>
-				<div class="inblock w3-right" style="width: 50px;"><div class="w3-blue-gray">구이름</div></div>
-				<div class="inblock w3-right pdr5" style="width: 170px;"><div class="w3-blue-gray">가 격</div></div>
-				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-blue-gray">동 이름</div></div>
-				<div class="w3-rest pdr5"><div class="w3-blue-gray">아파트 이름</div></div>
+				<div class="w3-col m1 w3-border-right w3-blue-gray" >글번호</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" >자치구</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" >법정동</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" >아파트</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray">평균 매매가</div>
+				<div class="w3-col m2 w3-blue-gray">평균 면적(평)</div>
 			</div>
 			
 <c:if test="${not empty LIST}">
+	
 	<c:forEach var="DATA" items="${LIST}">
 			<div class="w3-col w3-border-bottom" id="${DATA.rno}">
+<!-- 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!########## -->
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.rno}</div></div>
 				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.goo}</div></div>
 				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.money} 만원</small></div>
@@ -150,6 +149,7 @@
 				<div class="w3-rest pdr5">
 					<div class="title">${DATA.aname}</div>
 				</div>
+<!-- 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!########## -->
 			</div>
 	</c:forEach>
 	

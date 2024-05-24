@@ -5,7 +5,7 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.human.boo.vo.VO;
+import com.human.boo.vo.ChatbotVO;
 
 @Controller
 public class MainController {
@@ -22,8 +22,8 @@ public class MainController {
 	
 	
     @PostMapping("/setSession.boo")
-    public String setSession(@RequestBody VO vo, HttpSession session) {
-        session.setAttribute("nickname", vo.getNickname());
+    public String setSession(@RequestBody ChatbotVO cbVO, HttpSession session) {
+        session.setAttribute("nickname", cbVO.getNickname());
         return "/main2";
     }
     

@@ -11,8 +11,10 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias alias="lVO" type="com.human.boo.vo.ListVO"/>
+		<typeAlias alias="cbVO" type="com.human.boo.vo.ChatbotVO"/>
+		<typeAlias alias="gVO" type="com.human.boo.vo.GradeVO"/>
 		<typeAlias alias="page" type="com.human.boo.util.PageUtil"/>
+		<typeAlias alias="cbUtil" type="com.human.boo.util.ChatbotUtil"/>
 	</typeAliases>
 	
 </configuration>
