@@ -21,3 +21,21 @@ CREATE TABLE sales(
     REQ_GBN VARCHAR2(30 CHAR),
     RDEALER_LAWDNM VARCHAR2(30 CHAR)
 );
+
+select 
+    bjdong_nm ||' '||bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) jibeon, round(avg(area) / 3.3) avg_area,round(avg(obj_amt)) avg, count(*) 
+from 
+          (
+        SELECT
+            ACC_YEAR, SGG_CD, SGG_NM, BJDONG_CD, BJDONG_NM, LAND_GBN, LAND_GBN_NM, BONBEON, BUBEON, BLDG_NM, DEAL_YMD, OBJ_AMT, round(BLDG_AREA) area, TOT_AREA, FLOOR, RIGHT_GBN, CNTL_YMD, BUILD_YEAR, HOUSE_TYPE, REQ_GBN, RDEALER_LAWDNM
+        FROM
+            sales
+        WHERE
+            obj_amt between 100000 and 999999
+            AND bjdong_nm = '가락동'
+        )
+group by 
+    bjdong_nm, bonbeon, bubeon
+order by 
+    bjdong_nm, bonbeon, bubeon 
+;
