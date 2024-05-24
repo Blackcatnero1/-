@@ -11,21 +11,46 @@
     <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
     <style>
         .center-container {
-		  margin: 0 auto;
-		  max-width: 800px;
-		  text-align: center;
-		  padding-top: 32px;
-		  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230424/pngtree-close-up-view-of-a-cloudy-sky-over-apartment-buildings-and-image_2509406.jpg');
-		  background-size: 800px;
-		  background-repeat: no-repeat;
-		  color: black; /* 텍스트의 색상을 흰색(하얀색)으로 설정 */
-		}
+			  margin: 0 auto;
+			  max-width: 800px;
+			  text-align: center;
+			  padding-top: 32px;
+			  background-size: 800px;
+			  background-repeat: no-repeat;
+			  background-position: bottom; /* 배경 이미지를 아래쪽으로 이동 */
+			  color: black; /* 텍스트의 색상을 검은색으로 설정 */
+			}
+
+		
 		
 		.w3-border-bottom {
 		  border-bottom-color: black!important; /* 밑줄 색상을 설정 */
 		}
 		
-
+		.form-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* 하단 정렬로 변경 */
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .form-container .w3-section {
+            margin: 0;
+        }
+		
+		.form-header {
+            display: flex;
+            align-items: center;
+        }
+        
+		.form-header img {
+            margin-right: 10px; /* 이미지와 텍스트 사이 간격 설정 */
+        }
+        .vertical-center {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
     </style>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -61,42 +86,49 @@
 <form method="POST" action="/boo/list/list.boo" id="pageFrm" name="pageFrm">
 	<input type="hidden" name="nowPage" id="nowPage">
 </form>
-
+<!-- https://thumb.ac-illust.com/9e/9e56ebb6b768858aa6d122ac902563ce_t.jpeg -->
 <!-- 폼 컨테이너 -->
 <div class="w3-container center-container" style="padding-top: 8px; padding-bottom: 8px;">
     <form name="myForm" class="w3-container w3-light-grey w3-padding-16" action="" method="post">
-        <h1 class="w3-text-teal" style="margin-top: 0; margin-bottom: 5px;">강남구 부동산 매매 정보</h1>
+	    <div class="vertical-center w3-border-bottom">
+		    <div class="form-header" style="text-align: center;">
+		        <img src="https://thumb.ac-illust.com/9e/9e56ebb6b768858aa6d122ac902563ce_t.jpeg" alt="s" style="width: 100px; height: 80px;">
+		        <h1 class="w3-text-teal" style="margin-top: 0; margin-bottom: 5px;">강남구 부동산 매매 정보</h1>
+		    </div>
+		</div>
         
-        <!-- 첫 번째 옵션 선택 섹션 -->
-        <div class="w3-section" style="display: inline-block; width: 45%; margin-right: 5%; margin-bottom: 8px;">
-            <label class="w3-text-teal"><b>동 선택</b></label>
-            <select class="w3-select w3-border" name="option1">
-                <option value="" disabled selected>동을 선택하세요</option>
-                <option value="1">옵션 1</option>
-                <option value="2">옵션 2</option>
-                <option value="3">옵션 3</option>
-            </select>
-        </div>
-
-        <!-- 두 번째 옵션 선택 섹션 -->
-        <div class="w3-section" style="display: inline-block; width: 45%; margin-bottom: 8px;">
-            <label class="w3-text-teal"><b>예산 범위 선택</b></label>
-            <select class="w3-select w3-border" name="option2">
-                <option value="" disabled selected>예산 범위를 선택하세요</option>
-                <option value="A">1억 미만</option>
-                <option value="B">1억 이상 3억 이하</option>
-                <option value="C">3억 이상 5억 미만</option>
-                <option value="D">5억 이상 7억 미만</option>
-                <option value="E">7억 이상 10억 미만</option>
-                <option value="F">10억 이상 20억 미만</option>
-                <option value="G">20억 이상</option>
-            </select>
-        </div>
-
-        <!-- 제출 버튼 -->
-        <div class="w3-section" style="text-align: center; margin-top: 8px;">
-            <button class="w3-button w3-teal w3-padding" type="submit" style="padding: 8px 16px;">검색</button>
-        </div>
+        <div class="form-container">
+		    <!-- 첫 번째 옵션 선택 섹션 -->
+		    <div class="w3-section" style="width: 40%;">
+		        <label class="w3-text-teal" style="text-align: left; display: block;"><b>동 선택</b></label>
+		        <select class="w3-select w3-border" name="option1">
+		            <option value="" disabled selected>동을 선택하세요</option>
+		            <option value="1">옵션 1</option>
+		            <option value="2">옵션 2</option>
+		            <option value="3">옵션 3</option>
+		        </select>
+		    </div>
+		
+		    <!-- 두 번째 옵션 선택 섹션 -->
+		    <div class="w3-section" style="width: 40%;">
+		        <label class="w3-text-teal" style="text-align: left; display: block;"><b>예산 범위 선택</b></label>
+		        <select class="w3-select w3-border" name="option2">
+		            <option value="" disabled selected>예산 범위를 선택하세요</option>
+		            <option value="A">1억 미만</option>
+		            <option value="B">1억 이상 3억 이하</option>
+		            <option value="C">3억 이상 5억 미만</option>
+		            <option value="D">5억 이상 7억 미만</option>
+		            <option value="E">7억 이상 10억 미만</option>
+		            <option value="F">10억 이상 20억 미만</option>
+		            <option value="G">20억 이상</option>
+		        </select>
+		    </div>
+		
+		    <!-- 제출 버튼 -->
+		    <div class="w3-section" style="text-align: center;">
+		        <button class="w3-button w3-teal w3-padding" type="submit" style="padding: 8px 8px;">검색</button>
+		    </div>
+		</div>
     </form>
     
    <div class="w3-col">

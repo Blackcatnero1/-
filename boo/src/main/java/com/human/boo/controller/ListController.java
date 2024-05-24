@@ -28,17 +28,13 @@ public class ListController {
 			nowPage = 1;
 		}
 		
-		System.out.println("################################" + nowPage);
 		int totalCnt = lDao.getTotal();
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + totalCnt);
 		
 		page.setPage(nowPage, totalCnt);
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + nowPage);
 		
 		// 데이터 베이스에서 조회
 		List<ListVO> list = lDao.getList(page);
 
-		System.out.println("*&*********************************************");
 		// 데이터 전달하고
 		mv.addObject("LIST", list);
 		mv.addObject("PAGE", page);

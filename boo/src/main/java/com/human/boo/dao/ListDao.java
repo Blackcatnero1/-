@@ -15,12 +15,10 @@ public class ListDao {
 	private SqlSessionTemplate session;
 	
 	public List<ListVO> getList(PageUtil page){
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		return session.selectList("lSQL.list", page);
 	}
 	
 	public int getTotal() {
-		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		return session.selectOne("lSQL.listTotal");
 	}
 }
