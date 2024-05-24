@@ -13,11 +13,11 @@ public class PageUtil {
 	private int startRno, endRno; // 페이지 시작  rownum, 마지막 rownum
 	
 	public void setPage() {
-		setPage(nowPage, totalCount, 25, 5);
+		setPage(nowPage, totalCount, 3, 3);
 	}
 	
 	public void setPage(int nowPage, int totalCount) {
-		setPage(nowPage, totalCount, 25, 5);
+		setPage(nowPage, totalCount, 3, 3);
 	}
 	
 	public void setPage(int nowPage, int totalCount, int pageRow, int pageGroup) {

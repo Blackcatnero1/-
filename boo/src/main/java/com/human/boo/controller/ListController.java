@@ -34,6 +34,7 @@ public class ListController {
 		
 		// 데이터 베이스에서 조회
 		List<ListVO> list = lDao.getList(page);
+
 		
 		// 데이터 전달하고
 		mv.addObject("LIST", list);

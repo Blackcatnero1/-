@@ -9,9 +9,7 @@
 		FROM
 		    sales
 		WHERE
-		    sgg_nm = '노원구'
-		    AND bjdong_nm = '하계동'
-		    AND obj_amt >= 90000
+		    obj_amt >= 900000
 	</select>
 	
 	<select id="listTotal" resultType="int">
@@ -20,8 +18,6 @@
 		FROM
 		    sales
 		WHERE
-		    sgg_nm = '노원구'
-		    AND bjdong_nm = '하계동'
-		    AND obj_amt >= 90000
+		    obj_amt >= 900000
 	</select>
 </mapper>

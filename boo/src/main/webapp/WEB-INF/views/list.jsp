@@ -29,15 +29,6 @@
     </style>
 <script type="text/javascript">
     $(document).ready(function(){
-    	$('.fblist').click(function(){
-			var sbno = $(this).attr('id');
-			// 현재페이지 셋팅
-			$('#nowPage').val('${PAGE.nowPage}');
-			
-			$('#bno').val(sbno);
-			$('#frm').submit();
-		});
-        
     	/* 페이지 클릭이벤트 */
 		$('.pageBtn').click(function(){
 			// 이동할 페이지번호 알아내고
@@ -104,11 +95,7 @@
             <button class="w3-button w3-teal w3-padding" type="submit" style="padding: 8px 16px;">검색</button>
         </div>
     </form>
-    
-    <form method="POST" action="/list/listDetail.son" id="frm" name="frm">
-		<input type="hidden" name="bno" id="bno">
-		<input type="hidden" name="nowPage" id="nowPage">
-	</form>
+>
    <div class="w3-col">
 			<div class="w3-center w3-margin-top">
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-blue-gray">글번호</div></div>
@@ -120,12 +107,7 @@
 			
 <c:if test="${not empty LIST}">
 	<c:forEach var="DATA" items="${LIST}">
-		<c:if test="${not empty SID}">
-			<div class="w3-col w3-border-bottom fblist" id="${DATA.bno}">
-		</c:if>
-		<c:if test="${empty SID}">
 			<div class="w3-col w3-border-bottom" id="${DATA.bno}">
-		</c:if>
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.bno}</div></div>
 				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.cnt}</div></div>
 				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.sdate}</small></div>
