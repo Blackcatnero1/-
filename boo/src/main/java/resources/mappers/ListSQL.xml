@@ -5,11 +5,25 @@
 <mapper namespace="lSQL">
 	<select id="list" resultType="lVO" parameterType="page">
 		SELECT
-		    sgg_nm goo, bldg_nm aname, bjdong_nm dong, obj_amt muney
+		    rno, goo, aname, dong, money
 		FROM
-		    sales
+		    (
+		        SELECT
+		            ROWNUM rno, goo, aname, dong, money
+		        FROM
+		            (
+		                SELECT
+		                    sgg_nm goo, bldg_nm aname, bjdong_nm dong, obj_amt money
+		                FROM
+		                    sales
+		                WHERE
+		                    obj_amt >= 700000
+		                ORDER BY
+		                    obj_amt DESC
+		            )
+		    )
 		WHERE
-		    obj_amt >= 900000
+		    rno BETWEEN 1 AND 100
 	</select>
 	
 	<select id="listTotal" resultType="int">
@@ -18,6 +32,6 @@
 		FROM
 		    sales
 		WHERE
-		    obj_amt >= 900000
+		    obj_amt >= 700000
 	</select>
 </mapper>

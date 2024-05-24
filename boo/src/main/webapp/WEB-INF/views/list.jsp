@@ -95,7 +95,7 @@
             <button class="w3-button w3-teal w3-padding" type="submit" style="padding: 8px 16px;">검색</button>
         </div>
     </form>
->
+    
    <div class="w3-col">
 			<div class="w3-center w3-margin-top">
 				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-blue-gray">글번호</div></div>
@@ -107,13 +107,13 @@
 			
 <c:if test="${not empty LIST}">
 	<c:forEach var="DATA" items="${LIST}">
-			<div class="w3-col w3-border-bottom" id="${DATA.bno}">
-				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.bno}</div></div>
-				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.cnt}</div></div>
-				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.sdate}</small></div>
-				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-center writer">${DATA.id}</div></div>
+			<div class="w3-col w3-border-bottom" id="${DATA.rno}">
+				<div class="inblock w3-left pdr5" style="width: 100px;"><div class="w3-center fbno" style="padding: 2px 2px">${DATA.rno}</div></div>
+				<div class="inblock w3-right" style="width: 50px;"><div class="w3-center file">${DATA.money}</div></div>
+				<div class="inblock w3-right pdr5" style="width: 170px;"><small class="w3-center wdate">${DATA.goo}</small></div>
+				<div class="inblock w3-right pdr5" style="width: 150px;"><div class="w3-center writer">${DATA.dong}</div></div>
 				<div class="w3-rest pdr5">
-					<div class="title">${DATA.title}</div>
+					<div class="title">${DATA.aname}</div>
 				</div>
 			</div>
 	</c:forEach>

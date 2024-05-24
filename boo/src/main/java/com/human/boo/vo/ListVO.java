@@ -1,13 +1,19 @@
 package com.human.boo.vo;
 
 public class ListVO {
-	private int muney;
+	private int money, rno;
 	private String goo, dong, aname;
 	public int getMuney() {
-		return muney;
+		return money;
 	}
 	public void setMuney(int muney) {
-		this.muney = muney;
+		this.money = muney;
+	}
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 	public String getGoo() {
 		return goo;
@@ -29,6 +35,6 @@ public class ListVO {
 	}
 	@Override
 	public String toString() {
-		return "ListVO [muney=" + muney + ", goo=" + goo + ", dong=" + dong + ", aname=" + aname + "]";
+		return "ListVO [money=" + money + ", rno=" + rno + ", goo=" + goo + ", dong=" + dong + ", aname=" + aname + "]";
 	}
 }
