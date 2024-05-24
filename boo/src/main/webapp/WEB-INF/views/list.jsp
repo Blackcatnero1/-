@@ -92,7 +92,7 @@
     <form name="myForm" class="w3-container w3-light-grey w3-padding-16" action="" method="post">
 	    <div class="vertical-center w3-border-bottom">
 		    <div class="form-header" style="text-align: center;">
-		        <img src="https://thumb.ac-illust.com/9e/9e56ebb6b768858aa6d122ac902563ce_t.jpeg" alt="s" style="width: 100px; height: 80px;">
+		        <img src="/boo/image/aptimgimgimg.png" alt="s" style="width: 100px; height: 80px;">
 		        <h1 class="w3-text-teal" style="margin-top: 0; margin-bottom: 5px;">강남구 부동산 매매 정보</h1>
 		    </div>
 		</div>
