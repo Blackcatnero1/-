@@ -2,13 +2,145 @@ package com.human.boo.vo;
 
 public class ChatbotVO {
 	
-	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_area,avg_amt,rno;
+	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_area,avg_amt,rno,low_amt, high_amt;
 	private float bldg_area;
-	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname;
+	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade;
 	
+	private int nowPage = 1;
+	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno;
+
+	public int getLow_amt() {
+		return low_amt;
+	}
+	public void setLow_amt(int low_amt) {
+		this.low_amt = low_amt;
+	}
+	public int getHigh_amt() {
+		return high_amt;
+	}
+	public void setHigh_amt(int high_amt) {
+		this.high_amt = high_amt;
+	}
 	
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	
+
 	
+	public void setPage() {
+		setPage(nowPage, totalCount, 20, 5);
+	}
+	
+	public void setPage(int nowPage, int totalCount) {
+		setPage(nowPage, totalCount, 20, 5);
+	}
+	
+	public void setPage(int nowPage, int totalCount, int pageRow, int pageGroup) {
+		this.nowPage = nowPage;
+		this.totalCount = totalCount;
+		this.pageRow = pageRow;
+		this.pageGroup = pageGroup;
+		calcTotalPage();
+		calcPage();
+		calcRno();
+	}
+	
+	public void calcTotalPage() {
+		if(totalCount == 0) {
+			totalPage = 1;
+		} else {
+			totalPage = (totalCount % pageRow == 0) ? (totalCount / pageRow) : (totalCount / pageRow + 1);
+		}
+	}
+	
+	public void calcPage() {
+		startPage = (nowPage - 1) / pageGroup * pageGroup + 1;
+		endPage = (startPage - 1) + pageGroup;
+		if(totalPage < endPage) {
+			endPage = totalPage;
+		}
+	}
+	
+	public void calcRno() {
+		startRno = (nowPage - 1) * pageRow + 1;
+		endRno = startRno + (pageRow - 1);
+	}
+
+	public int getNowPage() {
+		return nowPage;
+	}
+
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage == 0 ? 1 : nowPage;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public int getPageRow() {
+		return pageRow;
+	}
+
+	public void setPageRow(int pageRow) {
+		this.pageRow = pageRow;
+	}
+
+	public int getPageGroup() {
+		return pageGroup;
+	}
+
+	public void setPageGroup(int pageGroup) {
+		this.pageGroup = pageGroup;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public int getStartRno() {
+		return startRno;
+	}
+
+	public void setStartRno(int startRno) {
+		this.startRno = startRno;
+	}
+
+	public int getEndRno() {
+		return endRno;
+	}
+
+	public void setEndRno(int endRno) {
+		this.endRno = endRno;
+	}
 
 	public int getAvg_area() {
 		return avg_area;
@@ -121,14 +253,19 @@ public class ChatbotVO {
 	public void setBldg_nm(String bldg_nm) {
 		this.bldg_nm = bldg_nm;
 	}
-
 	@Override
 	public String toString() {
 		return "ChatbotVO [acc_year=" + acc_year + ", p_year=" + p_year + ", p_total=" + p_total + ", obj_amt="
 				+ obj_amt + ", deal_ydm=" + deal_ydm + ", build_year=" + build_year + ", deal_cnt=" + deal_cnt
-				+ ", bldg_area=" + bldg_area + ", sgg_nm=" + sgg_nm + ", bjdong_nm=" + bjdong_nm + ", jibeon=" + jibeon
-				+ ", bldg_nm=" + bldg_nm + ", nickname=" + nickname + "]";
+				+ ", avg_area=" + avg_area + ", avg_amt=" + avg_amt + ", rno=" + rno + ", low_amt=" + low_amt
+				+ ", high_amt=" + high_amt + ", bldg_area=" + bldg_area + ", sgg_nm=" + sgg_nm + ", bjdong_nm="
+				+ bjdong_nm + ", jibeon=" + jibeon + ", bldg_nm=" + bldg_nm + ", nickname=" + nickname + ", grade="
+				+ grade + ", nowPage=" + nowPage + ", totalCount=" + totalCount + ", pageRow=" + pageRow
+				+ ", pageGroup=" + pageGroup + ", startPage=" + startPage + ", endPage=" + endPage + ", totalPage="
+				+ totalPage + ", startRno=" + startRno + ", endRno=" + endRno + "]";
 	}
+	
+
 
 	
 	

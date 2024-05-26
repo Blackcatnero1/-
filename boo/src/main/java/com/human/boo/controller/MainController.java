@@ -3,7 +3,7 @@ package com.human.boo.controller;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.*;
 
 import com.human.boo.vo.ChatbotVO;
 

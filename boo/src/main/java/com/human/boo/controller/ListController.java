@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.human.boo.dao.ChatbotDao;
-import com.human.boo.util.PageUtil;
 import com.human.boo.vo.ChatbotVO;
 
 
@@ -23,28 +22,39 @@ public class ListController {
 	ChatbotDao cbDao;
 	
 	@RequestMapping("/list.boo") 
-	public ModelAndView getList(HttpSession session, ModelAndView mv, RedirectView rv, PageUtil page,ChatbotVO cbVO) {
-
-		cbVO.setSgg_nm("강남구");
+	public ModelAndView selList(HttpSession session, ModelAndView mv, RedirectView rv, ChatbotVO cbVO) {
 		
-		
-		int nowPage = page.getNowPage();
-		if(nowPage == 0) {
-			nowPage = 1;
+		if(cbVO.getSgg_nm() == null) {
+			// 발화 꺼내서 처리
+			cbVO.setSgg_nm("강남구");
 		}
-		int totalCnt = cbDao.getTotal();
-		page.setPage(nowPage, totalCnt);
 		
 		List list = cbDao.getDongList(cbVO);
 		List list2 = cbDao.getGradeList();
-		List list3 = cbDao.getAptList(page);
 		mv.addObject("DongLIST",list);
 		mv.addObject("GradeLIST", list2);
-		mv.addObject("AptLIST",list3);
-		mv.addObject("PAGE", page);
+			
+		int nowPage = cbVO.getNowPage();
+		if(nowPage == 0) {
+			nowPage = 1;
+		}
+		int totalCnt = cbDao.getTotal(cbVO);
+		cbVO.setPage(nowPage, totalCnt);
+		
+		
+		if(cbVO.getBjdong_nm() != null) {
+			List list3 = cbDao.getAptList(cbVO);
+			mv.addObject("AptLIST",list3);
+			
+		}
+
+
+		mv.addObject("DATA", cbVO);
+		
 		mv.setViewName("list");
 		return mv;
 		
-		
 	}
+
+	
 }
