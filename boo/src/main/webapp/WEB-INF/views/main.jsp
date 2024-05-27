@@ -1,58 +1,121 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-지도
+<meta charset="UTF-8">
+<title>Boo Main</title>
+<link rel="stylesheet" type="text/css" href="/boo/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/boo/css/user.css">
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="/boo/js/jquery-3.7.1.min.js"></script>
+<style type="text/css">
+	body, html {height: 100%}
+	.menu {display: none}
+	.bgimg {
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-image: url("/boo/image/apart.jpg");
+	  min-height: 90%;
+	}
+	#move-up {
+		position : realtive;
+		top: -100px;
+		text-shadow:4px 4px 6px rgba(0, 0, 0, 0.5);
+	}
+	
+	button {
+	    padding: 0;
+	    border: none;
+	    background: none;
+	    cursor: pointer;
+	    opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 1;
+	}
+	
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#logout').click(function(){
+		$(location).attr('href', '/boo/rmSession.boo');
+	});
+	
+	$('#schat').click(function(){
+		// 원하는 URL로 이동
+		window.location.href = "http://pf.kakao.com/_KxivUG/chat";
+	});
+	
+});
+	
+    Kakao.init("21c363680f2db21df7de0268a3a1f6f0");
+
+    function kakaoLogin(){
+        Kakao.Auth.login({
+            scope: 'profile_nickname',
+            success: function(authObj){
+                console.log(authObj);
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function(res) {
+                        const kakao_account = res.kakao_account;
+                        console.log(kakao_account);
+
+                        // 사용자 정보를 서버로 전송하여 세션 설정
+                        fetch('${pageContext.request.contextPath}/setSession.boo', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                nickname: kakao_account.profile.nickname,
+                                email: kakao_account.email
+                            })
+                        }).then(response => {
+                            if (response.ok) {
+                                // 세션 설정이 완료되면 main.boo로 이동
+                                window.location.href = '${pageContext.request.contextPath}/main.boo';
+                            } else {
+                                console.error('Failed to set session');
+                            }
+                        }).catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            },
+            fail: function(err) {
+                console.error(err);
+            }
+        });
+    }
+</script>
 </head>
 <body>
-<!-- 카카오 지도 api(좌표 중심 지도 페이지) -->
-	<div id="map" style="width:750px;height:350px;"></div>
-	
-	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=##########카카오 JavaScript 키##########"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new kakao.maps.LatLng(37.4897107879722, 127.054490523453), // 지도의 중심좌표
-		        level: 5, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span id="move-up" class="w3-text-white w3-hide-small" style="font-size:25px"><b>아파트 매매정보 챗봇<br></b></span>
+    <span id="move-up" class="w3-text-orange w3-hide-small" style="font-size:90px"><b>APT.집PT</b></span>
 
-		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
+    <p style="margin-top: 50px; display; inline-block;"/>
+<c:if test="${not empty nickname}">
+    <h2 class="w3-text-aqua" style="blod:2px; text-shadow:1px 1px 0 #444;font-weight: bold;">환영합니다. ${nickname} 님!</h2>
+    <div id="schat" class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
+    <div id="logout" class="w3-button w3-large w3-teal w3-round-large mgw10 mgt20" style="width: 220px">로그아웃</div>
+ 
+</c:if>
 
-		// 지도에 확대 축소 컨트롤을 생성한다
-		var zoomControl = new kakao.maps.ZoomControl();
+<c:if test="${empty nickname}">
+	<h2 class="w3-text-black" style="blod:2px; text-shadow:1px 1px 0 #444;font-weight: bold;">로그인을 진행 해주세요</h2>
+    <button onclick="kakaoLogin()" class="mgw10 mgt20"><img src="/boo/image/kakao_login.png" width="220px"/></button>
+    
+</c:if>
+  </div>
+</header>
+  
 
-		// 지도의 우측에 확대 축소 컨트롤을 추가한다
-		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-		// 지도 드래깅 이벤트를 등록한다 (드래그 시작 : dragstart, 드래그 종료 : dragend)
-		kakao.maps.event.addListener(map, 'drag', function () {
-			var message = '지도를 드래그 하고 있습니다. ' + 
-							'지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
-			console.log(message);
-		});
-
-		// 지도에 마커를 생성하고 표시한다
-		var marker = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(37.4897107879722, 127.054490523453), // 마커의 좌표
-		    draggable : true, // 마커를 드래그 가능하도록 설정한다
-		    map: map // 마커를 표시할 지도 객체
-		});
-
-		// 마커 위에 표시할 인포윈도우를 생성한다
-		var infowindow = new kakao.maps.InfoWindow({
-		    content : '<div style="padding:5px;">아파트</div>' // 인포윈도우에 표시할 내용
-		});
-
-		// 인포윈도우를 지도에 표시한다
-		infowindow.open(map, marker);
-
-		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
-		kakao.maps.event.addListener(marker, 'click', function() {
-		    alert('마커를 클릭했습니다!');
-		});
-
-	</script>
 </body>
 </html>

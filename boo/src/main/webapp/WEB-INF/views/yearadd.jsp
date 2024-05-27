@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/css/user.css">
+<link rel="stylesheet" type="text/css" href="/boo/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/boo/css/user.css">
 <title>서울시 구별 연평균 증가율</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -28,38 +28,40 @@
             "노원구": "/image/graph/nowon.png",
             "도봉구": "/image/graph/dobong.png",
             "동대문구": "/image/graph/dongdeamoon.png",
-            "동작구": "/image/graph/dongjak.png",
-            "마포구": "/image/graph/mapo.png",
-            "서대문구": "/image/graph/seodeamoon.png",
-            "서초구": "/image/graph/seocho.png",
-            "성동구": "/image/graph/seongdong.png",
-            "성북구": "/image/graph/seongbook.png",
-            "송파구": "/image/graph/songpa.png",
-            "양천구": "/image/graph/yangcheon.png",
-            "영등포구": "/image/graph/yeongdeungpo.png",
-            "용산구": "/image/graph/yongsan.png",
-            "은평구": "/image/graph/eunpyeong.png",
-            "종로구": "/image/graph/jongno.png",
-            "중구": "/image/graph/junggu.png",
-            "중랑구": "/image/graph/junglang.png",
+            "동작구": "/boo/image/graph/dongjak.png",
+            "마포구": "/boo/image/graph/mapo.png",
+            "서대문구": "/boo/image/graph/seodeamoon.png",
+            "서초구": "/boo/image/graph/seocho.png",
+            "성동구": "/boo/image/graph/seongdong.png",
+            "성북구": "/boo/image/graph/seongbook.png",
+            "송파구": "/boo/image/graph/songpa.png",
+            "양천구": "/boo/image/graph/yangcheon.png",
+            "영등포구": "/boo/image/graph/yeongdeungpo.png",
+            "용산구": "/boo/image/graph/yongsan.png",
+            "은평구": "/boo/image/graph/eunpyeong.png",
+            "종로구": "/boo/image/graph/jongno.png",
+            "중구": "/boo/image/graph/junggu.png",
+            "중랑구": "/boo/image/graph/junglang.png",
         };
 
         $.ajax({
-            url: 'http://58.72.151.124:6012/getNums/', //서준님 IP주소(장고)/함수 위치경로 변경 필요
+            url: 'https://raw.githubusercontent.com/Blackcatnero1/boodongsan/branch/minkyung/python%20code%E2%98%85/cagr_results.json', //서준님 IP주소(장고)/함수 위치경로 변경 필요
             type: 'get',
             dataType: 'json',
             success: function(obj){
                 console.log('obj : ' + obj);
-                jdata = obj['CAGR'];
+                jdata = obj;
 
                 var kList = Object.keys(jdata);
 
                 for(var i = 0 ; i < kList.length ; i++ ){
                     var key = kList[i];
-                    var value = jdata[key];
+                    var value = jdata[key].CAGR;
 
                     arr[i+1] = [key, value];
                 }
+                console.log(arr[2])
+                
 
                 setChart(arr);
             }

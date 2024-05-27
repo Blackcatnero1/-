@@ -15,24 +15,24 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
-	@RequestMapping("/main2.boo")
-	public String main2() {
-		return "main2";
-	}
-	
+
 	
     @PostMapping("/setSession.boo")
     public String setSession(@RequestBody ChatbotVO cbVO, HttpSession session) {
         session.setAttribute("nickname", cbVO.getNickname());
-        return "/main2";
+        return "/main";
     }
     
     @RequestMapping("/rmSession.boo")
     public String rmSession(HttpSession session) {
         session.removeAttribute("nickname");
-        return "redirect:/main2.boo";
+        return "redirect:/main.boo";
     }
 
+	@RequestMapping("/chart.boo")
+	public String goChart() {
+		return "yearadd";
+	}
 	
 
 	
