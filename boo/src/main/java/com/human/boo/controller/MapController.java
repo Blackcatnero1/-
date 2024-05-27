@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.human.boo.dao.MapDao;
+import com.human.boo.vo.ChatbotVO;
 
 
 
@@ -23,10 +24,13 @@ public class MapController {
 
 	
 	@RequestMapping("/map.boo")
-	public String goMap() {
+	public ModelAndView goMap(HttpSession session, ModelAndView mv,ChatbotVO cbVO) {
 		
 		
-		return "map/map";
+		mv.addObject("DATA",cbVO);
+		mv.setViewName("map/map");
+		
+		return mv;
 	}
 
 	

@@ -35,6 +35,7 @@
 	WHERE
 	    s.sgg_nm = p.sgg_nm
 	</select>
+	
 
 	
 	

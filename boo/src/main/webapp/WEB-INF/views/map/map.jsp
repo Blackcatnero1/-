@@ -48,8 +48,9 @@
     
  	// 장소 검색 객체를 생성합니다
 	var ps = new kakao.maps.services.Places(map);
+ 	var juso = "${DATA.juso}";
     // 주소로 좌표를 검색합니다
-    geocoder.addressSearch('도곡동 467-17', function(result, status) {
+    geocoder.addressSearch(juso, function(result, status) {
     
         // 정상적으로 검색이 완료됐으면 
         if (status === kakao.maps.services.Status.OK) {
@@ -80,7 +81,7 @@
             map.setCenter(coords);
             
          // 카테고리로 지하철을 검색합니다
-        	ps.categorySearch('SW8', placesSearchCB, {location: coords, radius: 1000}); 
+        	ps.categorySearch('SW8', placesSearchCB, {location: coords, radius: 1100}); 
         	
         	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
         	function placesSearchCB (data, status, pagination) {

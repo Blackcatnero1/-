@@ -4,7 +4,7 @@ public class ChatbotVO {
 	
 	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_area,avg_amt,rno,low_amt, high_amt,avg_per_area;
 	private float bldg_area;
-	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade;
+	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade, juso;
 	
 	private int nowPage = 1;
 	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno;
@@ -13,6 +13,14 @@ public class ChatbotVO {
 	
 	
 	
+	
+	
+	public String getJuso() {
+		return juso;
+	}
+	public void setJuso(String juso) {
+		this.juso = juso;
+	}
 	public int getAvg_per_area() {
 		return avg_per_area;
 	}
