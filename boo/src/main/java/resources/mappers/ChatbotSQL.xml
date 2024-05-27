@@ -11,6 +11,8 @@
 		    sales
 		WHERE
 		    sgg_nm=#{sgg_nm}
+		ORDER BY
+            bjdong_nm
 	</select>
 	
 	<select id="getGradeList" resultType="cbVO">

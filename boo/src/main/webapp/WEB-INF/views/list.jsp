@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
     <style>
         .center-container {
 			  margin: 0 auto;
-			  max-width: 800px;
+			  max-width: 1000px;
 			  text-align: center;
 			  padding-top: 32px;
 			  background-size: 800px;
@@ -220,11 +221,11 @@ $(document).ready(function() {
 			<div class="w3-center w3-margin-top">
 				<div class="w3-col m1 w3-border-right w3-blue-gray" >글번호</div>
 				<div class="w3-col m1 w3-border-right w3-blue-gray" >자치구</div>
-				<div class="w3-col m1 w3-border-right w3-blue-gray" >법정동</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" >법정동</div>
 				<div class="w3-col m4 w3-border-right w3-blue-gray" >아파트</div>
 				<div class="w3-col m2 w3-border-right w3-blue-gray">평균 매매가</div>
 				<div class="w3-col m1 w3-border-right w3-blue-gray" >거래량</div>
-				<div class="w3-col m2 w3-blue-gray">평균 면적(평)</div>
+				<div class="w3-col m1 w3-blue-gray">평균면적</div>
 			</div>
 			
 <c:if test="${not empty AptLIST}">
@@ -234,11 +235,11 @@ $(document).ready(function() {
 			<div class="w3-col w3-center w3-border-bottom" id="${AptDATA.rno}">
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px" >${AptDATA.rno}</div>
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.sgg_nm}</div>
-				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.bjdong_nm}</div>
+				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.bjdong_nm}</div>
 				<div class="w3-col m4 w3-border-right" style="height:45px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size:14px;line-height:45px">${AptDATA.bldg_nm}</div>
-				<div id="avgapt" class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.avg_amt}</div>
-				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.deal_cnt}</div>
-				<div class="w3-col m2 " style="height:45px; line-height:45px">${AptDATA.avg_area}</div>
+				<div id="avgapt" class="w3-col m2 w3-border-right" style="height:45px; line-height:45px"><fmt:formatNumber type="number" maxFractionDigits="3" value="${AptDATA.avg_amt}" /> (만)원</div>
+				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.deal_cnt} 건</div>
+				<div class="w3-col m1 " style="height:45px; line-height:45px">${AptDATA.avg_area} (평)</div>
 			</div>
 	</c:forEach>
 	

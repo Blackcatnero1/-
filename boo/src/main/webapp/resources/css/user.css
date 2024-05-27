@@ -16,6 +16,9 @@
 .mxw800 {
     max-width: 800px;
 }
+.mxw1000 {
+    max-width: 1000px;
+}
 
 .inblock {
     display: inline-block;
