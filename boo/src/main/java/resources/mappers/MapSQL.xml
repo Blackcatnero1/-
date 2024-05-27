@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mSQL">
+	
+	<select id="getInfo" resultType="cbVO">
+	SELECT
+	    s.sgg_nm, avg_per_area, p_total
+	FROM
+	    (
+	    SELECT
+	        sgg_nm,round(sum(obj_amt)/(sum(bldg_area)/3.3)) avg_per_area
+	    FROM
+	        (
+	        SELECT
+	            *
+	        FROM
+	            sales
+	        WHERE
+	            acc_year = 2023
+	        )
+	    GROUP BY
+	        sgg_nm
+	    
+	    )s,
+	    (
+	    SELECT
+	        sgg_nm, p_total
+	    FROM
+	        population
+	    WHERE
+	        p_year = 2023
+	    )p
+	WHERE
+	    s.sgg_nm = p.sgg_nm
+	</select>
+
+	
+	
+</mapper>

@@ -9,63 +9,58 @@
 <link rel="stylesheet" type="text/css" href="/boo/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/boo/css/user.css">
 
-    <style>
-        #map {
-            width: 100%;
-            height: 863px;
-        }
-        .area {
-            position: absolute;
-            background: #fff;
-            border: 1px solid #888;
-            border-radius: 3px;
-            font-size: 12px;
-            top: -5px;
-            left: 15px;
-            padding: 2px;
-        }
-        .info {
-        	padding-left: 5px;
-        	width: 200px;
-        	height: 300px;
-            padding: 5px;
-        }
-        .title {
-
-        	font-size: 17px;
-            font-weight: bold;
-        }
-        .maemae{
-
-        	font-size: 14px;
-        	padding-top:10px
-        }
-        .chamgo{
-        	padding-left: 5px;
-        	padding-bottom: 5px;
-        	font-size: 11px;
-        	color: #007bff;
-        }
-        .ingu{
-        	font-size: 14px;
+<style>
+    #map {
+        width: 100%;
+        height: 863px;
+    }
+    .area {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #888;
+        border-radius: 3px;
+        font-size: 12px;
+        top: -5px;
+        left: 15px;
+        padding: 2px;
+    }
+    .info {
+        padding-left: 0px;
+        width: 220px;
+        height: 145px;
+        padding: 0px;
+    }
+    .title {
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .price {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 9px;
         
-        }
-        #guContent{
-        	color: darkslategrey;
-        	pointer-events: none;
+    }
+    .note {
+    
+    	padding-top:10px;
+    	padding-bottom: 12px;
+        font-size: 11px;
+        color: #007bff;
+    }
+    .population {
+        font-size: 14px;
+        padding-bottom:5px;
         
-        }
-        
-        
-        #guName{
-        	font-weight: bold;
-        	font-size: 16px;
-        
-        }
-        
-
-        
-    </style>
+    }
+    #guContent {
+        color: darkslategrey;
+        pointer-events: none;
+    }
+    #guName {
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
 </head>
 <body>
 
@@ -76,9 +71,17 @@
     var areas = []; // 지역 데이터를 담을 배열
     var customOverlays = []; // CustomOverlay 객체를 담을 배열
 
-    function getMaemaeData() {
-        return $.getJSON('https://raw.githubusercontent.com/Blackcatnero1/boodongsan/branch/Seojun98/maemaega.json');
-    }
+    // Combined data from server
+    var combinedData = [];
+
+    // JSTL을 사용하여 서버 데이터를 JavaScript 객체로 변환
+    <c:forEach var="item" items="${AreaDATA}">
+        combinedData.push({
+            sgg_nm: "${item.sgg_nm}",
+            avg_per_area: ${item.avg_per_area},
+            p_total: ${item.p_total}
+        });
+    </c:forEach>;
 
     // 서울시 행정구역 데이터를 불러오는 함수
     $.getJSON('https://raw.githubusercontent.com/Blackcatnero1/boodongsan/main/Seojun98/seoul_municipalities_geo_simple.json', function(data) {
@@ -88,7 +91,7 @@
             var coordinates = features[i].geometry.coordinates[0].map(function (coord) {
                 return new kakao.maps.LatLng(coord[1], coord[0]); // 경위도 좌표로 변환
             });
-            
+
             areas.push({ name: name, path: coordinates }); // areas 배열에 지역 데이터 추가
         }
 
@@ -109,11 +112,12 @@
         
         var infowindow = new kakao.maps.InfoWindow({removable: true}); // 인포윈도우 생성
 
-        getMaemaeData().then(function(maemaeData) {
-            for (var i = 0, len = areas.length; i < len; i++) {
-                var area = areas[i];
-                var maemaePrice = maemaeData.find(item => item.자치구명 === area.name).평당매매가; // 해당 지역의 평당매매가
-                var guIngu = maemaeData.find(item => item.자치구명 === area.name).인구;
+        for (var i = 0, len = areas.length; i < len; i++) {
+            var area = areas[i];
+            var dataItem = combinedData.find(item => item.sgg_nm === area.name);
+            if (dataItem) {
+                var price = dataItem.avg_per_area; // 해당 지역의 평당매매가
+                var population = dataItem.p_total;
 
                 var overlayContent = document.createElement('div');
                 overlayContent.className = 'overlay-content';
@@ -126,7 +130,8 @@
                     position: polygonCenter,
                     content: overlayContent,
                     xAnchor: 0.3,
-                    yAnchor: 0.91
+                    yAnchor: 0.91,
+                    zIndex: -1
                 });
                 customOverlay2.setMap(map); // 다각형 생성 후 customOverlay2를 지도에 추가
                 customOverlays.push(customOverlay2); // 배열에 추가
@@ -139,7 +144,7 @@
                     strokeColor: 'springgreen',
                     strokeOpacity: 0.8,
                     fillColor: 'purple',
-                    fillOpacity: 0.17 * (guIngu / 100000)
+                    fillOpacity: 0.17 * (population / 100000)
                 });
 
                 // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
@@ -170,22 +175,22 @@
                 })(polygon, area, customOverlay2));
 
                 // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 평당매매가를 인포윈도우에 표시합니다 
-                kakao.maps.event.addListener(polygon, 'click', (function(polygon, area, maemaePrice) {
+                kakao.maps.event.addListener(polygon, 'click', (function(polygon, area, price, population) {
                     return function(mouseEvent) {
-                        var content = '<div class="info">' + 
-                                    '   <div class="w3-border-bottom title">' + area.name + '</div>' +
-                                    '   <div class="w3-padding-top maemae">평당 매매가 : ' + Number(maemaePrice).toLocaleString() + ' 만원</div>' +
-                                    ' 	<div class="chamgo">* 2023년 평균 매매가 기준 *</div>' + 
-                                    '	<div class="ingu"> 인구 : ' + Number(guIngu).toLocaleString() + '명</div>' +
+                        var content = '<div class="info w3-card-4 w3-border-pink w3-border w3-thick">' + 
+                                    '   <div class="w3-border w3-border-pink w3-pink w3-padding title">' + area.name + '</div>' +
+                                    '   <div class="w3-padding-top price" style="padding-left:8px;">평당 매매가 : ' + Number(price).toLocaleString() + ' 만원</div>' +
+                                    '   <div class="population" style="padding-left:8px;"> 인구 : ' + Number(population).toLocaleString() + '명</div>' +
+                                    '   <div class="note w3-center">* 2023년 서울시 데이터 포털 기준 *</div>' + 
                                     '</div>';
 
                         infowindow.setContent(content); 
                         infowindow.setPosition(mouseEvent.latLng); 
                         infowindow.setMap(map);
                     };
-                })(polygon, area, maemaePrice));
+                })(polygon, area, price, population));
             }
-        });
+        }
     }
 
     function getPolygonCenter(path) {

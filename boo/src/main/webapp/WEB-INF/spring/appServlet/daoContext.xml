@@ -6,4 +6,5 @@
 						https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="cbDao" class="com.human.boo.dao.ChatbotDao" />
+	<bean id="mDao" class="com.human.boo.dao.MapDao" />
 </beans>
