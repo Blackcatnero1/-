@@ -34,20 +34,19 @@ public class ListController {
 		mv.addObject("DongLIST",list);
 		mv.addObject("GradeLIST", list2);
 			
+		
 		int nowPage = cbVO.getNowPage();
 		if(nowPage == 0) {
 			nowPage = 1;
 		}
-		int totalCnt = cbDao.getTotal(cbVO);
-		cbVO.setPage(nowPage, totalCnt);
-		
 		
 		if(cbVO.getBjdong_nm() != null) {
+			int totalCnt = cbDao.getTotal(cbVO);
+			cbVO.setPage(nowPage, totalCnt);
 			List list3 = cbDao.getAptList(cbVO);
 			mv.addObject("AptLIST",list3);
 			
 		}
-
 
 		mv.addObject("DATA", cbVO);
 		
