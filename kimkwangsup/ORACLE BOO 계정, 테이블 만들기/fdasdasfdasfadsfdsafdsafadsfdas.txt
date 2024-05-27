@@ -1,0 +1,429 @@
+from django.shortcuts import render
+import oracledb
+import pandas as pd
+from sqlalchemy import create_engine
+import requests
+import json
+import cx_Oracle
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+# Create your views here.
+
+
+
+def index(request):
+    return render(request, 'index.html')
+
+def Salesdata(request):
+    # OpenAPI URL
+    url = "http://openapi.seoul.go.kr:8088/4c6a5465426b617238316d48747050/json/tbLnOpendataRtmsV/1/100/2024/%20/%20/%20/%20/%20/%20/%20/%20/%20/아파트"
+    # API 요청 및 응답 확인
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        # 데이터프레임으로 변환
+        df = pd.DataFrame(data['tbLnOpendataRtmsV']['row'])
+        # 모든 데이터를 문자열로 변환
+        # df = df.astype(str)
+        # 데이터프레임을 CSV로 저장 (디버깅용)
+        # Oracle DB 연결 정보
+        dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='xe')
+        engine = create_engine(f'oracle+cx_oracle://boo:12345@{dsn_tns}')
+        # 데이터프레임을 Oracle 데이터베이스에 저장
+        sql_df = pd.read_sql("SELECT acc_year, sgg_cd, sgg_nm, bjdong_cd, bjdong_nm, land_gbn, land_gbn_nm, LPAD(bonbeon, 4, '0') AS bonbeon, LPAD(bubeon, 4, '0') AS bubeon, bldg_nm, obj_amt, bldg_area, tot_area, floor, right_gbn, cntl_ymd, build_year, house_type, req_gbn, rdealer_lawdnm FROM sales order by deal_ymd desc", engine).head(150)
+        df.columns = df.columns.str.lower()
+        columns = [
+            "acc_year", "sgg_cd", "sgg_nm", "bjdong_cd", "bjdong_nm", 
+            "land_gbn", "land_gbn_nm", "bonbeon", "bubeon", "bldg_nm",
+            "obj_amt", "bldg_area", "tot_area", "floor", "right_gbn", 
+            "cntl_ymd", "build_year", "house_type", "req_gbn", "rdealer_lawdnm"
+        ]
+        sql_df_filled = sql_df.fillna("")
+        mergedf = pd.concat([df[1:150], sql_df_filled[1:150]],axis=0)
+        finaldf = mergedf.drop_duplicates(columns, keep='first')
+        realshape =finaldf.shape[0] - sql_df.shape[0]
+        read_df = finaldf[:realshape]
+        read_df['bonbeon'] = read_df['bonbeon'].astype(int)
+        read_df['bubeon'] = read_df['bubeon'].astype(int)
+        read_df.to_sql(name='sales', con=engine, if_exists='append', index=None)
+
+        return HttpResponse("Data has been successfully inserted into the database.")
+    else:
+        return HttpResponse(f"Failed to retrieve data: {response.status_code}")
+@csrf_exempt
+def callback(request):
+    if request.method == 'POST':
+        try:
+            payload = json.loads(request.body.decode('utf-8'))
+            
+            print(payload)
+            contexts = payload.get('contexts', [])
+            
+            user_message = payload.get('userRequest', {}).get('utterance', '')
+            if contexts:
+                select_gu = contexts[0].get('params', {}).get('Select_gu', {}).get('resolvedValue', '')
+            else:
+                select_gu = ''  # 기본 값 설정
+            dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='xe')
+            engine = create_engine(f'oracle+cx_oracle://boo:12345@{dsn_tns}')
+            areagrade = ['소형','중형','대형']
+            df_total = pd.DataFrame()
+            select_gu = '송파구'
+            for i in range(len(areagrade)):
+                query = """
+                        select areagrade, nns.deal_ymd, nns.obj_amt, nns.bldg_area, nns.floor, nns.build_year 
+                        FROM areagrade, 
+                        (
+                            select s.* 
+                            from sales s, 
+                            (
+                                select bjdong_nm, bonbeon, bubeon 
+                                from sales 
+                                where sgg_nm = '"""+select_gu+"""'
+                                AND BLDG_NM = '"""+user_message+"""'
+                                AND ROWNUM = 1
+                            ) ns 
+                            WHERE s.bjdong_nm = ns.bjdong_nm 
+                            AND s.bonbeon = ns.bonbeon 
+                            AND s.bubeon = ns.bubeon
+                        ) nns 
+                        WHERE bldg_area BETWEEN low_area and high_area 
+                        AND AREAGRADE = '"""+areagrade[i]+"""'
+                        AND rownum = 1 
+                        ORDER BY acc_year, areagrade desc
+                    """
+                #중형, 계약일, 매매가, 면적, 층, 건축년도
+                df = pd.read_sql(query, engine)
+                df_total = pd.concat([df_total, df], ignore_index=True)
+            df_json = df_total.to_json(orient='records')
+
+           
+            # 들여쓰기와 함께 JSON 형식으로 출력
+            
+            json_data = json.loads(df_json)
+
+            # 들여쓰기와 함께 JSON 형식으로 출력
+            pretty_json = json.dumps(json_data, indent=4, ensure_ascii=False)
+            pData = json.loads(df_json)
+            result = []
+            for pData in pData:
+                areagrade = pData["areagrade"]
+                deal_ymd = str(pData["deal_ymd"])
+                obj_amt = f"{pData['obj_amt'] // 10000}억 {pData['obj_amt'] % 10000}만원"
+                bldg_area = pData["bldg_area"]
+                floor = pData["floor"]
+                build_year = pData["build_year"]
+                pyeong = bldg_area / 3.3
+                bldg_area_str = f"{bldg_area:.3f}m²({int(pyeong)}평)"
+
+                result.append("건물등급 : {}\n"
+                        "실계약일 : {}\n"
+                        "실매매가 : {}\n"
+                        "전용면적 : {}\n"
+                        "건물층수 : {}층\n"
+                        "건축년도 : {}년".format(areagrade, deal_ymd, obj_amt, bldg_area_str, floor, build_year))
+            result
+            
+            
+            template = {
+                "outputs": [
+                    {
+                        "carousel": {
+                            "type": "basicCard",
+                            "items": [
+                                {
+                                    "title": f"[{select_gu} {user_message}]",
+                                    "description": "매물 정보입니다.",
+                                    "buttons": [
+                                        {
+                                            "label": "지도보기",
+                                            "action": "webLink",
+                                            "webLinkUrl": "https://www.naver.com"
+                                        },
+                                        {
+                                            "label": "지역정보",
+                                            "action": "block",
+                                            "blockId": "664303b8af0b8a5f3b2458a7"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            # 결과 아이템 추가
+            result_items = []
+            for result_item in result:
+                result_items.append({
+                    "description": result_item,
+                })
+
+            template["outputs"][0]["carousel"]["items"] += result_items
+
+
+            response = {
+                "version": "2.0",
+                "template": template
+            }
+            return JsonResponse(response)
+        except json.JSONDecodeError as e:
+            print(f"JSON decode error: {e}")
+            return HttpResponse(status=400)  # 잘못된 요청 응답 반환
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return HttpResponse(status=500)  # 내부 서버 오류 응답 반환
+    return HttpResponse(status=405)  # 허용되지 않는 메서드 응답 반환
+
+
+
+
+from django.shortcuts import render
+import oracledb
+import pandas as pd
+from sqlalchemy import create_engine
+import requests
+import json
+import cx_Oracle
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+# Create your views here.
+
+
+
+def index(request):
+    return render(request, 'index.html')
+
+def Salesdata(request):
+    # OpenAPI URL
+    url = "http://openapi.seoul.go.kr:8088/4c6a5465426b617238316d48747050/json/tbLnOpendataRtmsV/1/100/2024/%20/%20/%20/%20/%20/%20/%20/%20/%20/아파트"
+    # API 요청 및 응답 확인
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        # 데이터프레임으로 변환
+        df = pd.DataFrame(data['tbLnOpendataRtmsV']['row'])
+        # 모든 데이터를 문자열로 변환
+        # df = df.astype(str)
+        # 데이터프레임을 CSV로 저장 (디버깅용)
+        # Oracle DB 연결 정보
+        dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='xe')
+        engine = create_engine(f'oracle+cx_oracle://boo:12345@{dsn_tns}')
+        # 데이터프레임을 Oracle 데이터베이스에 저장
+        sql_df = pd.read_sql("SELECT acc_year, sgg_cd, sgg_nm, bjdong_cd, bjdong_nm, land_gbn, land_gbn_nm, LPAD(bonbeon, 4, '0') AS bonbeon, LPAD(bubeon, 4, '0') AS bubeon, bldg_nm, obj_amt, bldg_area, tot_area, floor, right_gbn, cntl_ymd, build_year, house_type, req_gbn, rdealer_lawdnm FROM sales order by deal_ymd desc", engine).head(150)
+        df.columns = df.columns.str.lower()
+        columns = [
+            "acc_year", "sgg_cd", "sgg_nm", "bjdong_cd", "bjdong_nm", 
+            "land_gbn", "land_gbn_nm", "bonbeon", "bubeon", "bldg_nm",
+            "obj_amt", "bldg_area", "tot_area", "floor", "right_gbn", 
+            "cntl_ymd", "build_year", "house_type", "req_gbn", "rdealer_lawdnm"
+        ]
+        sql_df_filled = sql_df.fillna("")
+        mergedf = pd.concat([df[1:150], sql_df_filled[1:150]],axis=0)
+        finaldf = mergedf.drop_duplicates(columns, keep='first')
+        realshape =finaldf.shape[0] - sql_df.shape[0]
+        read_df = finaldf[:realshape]
+        read_df['bonbeon'] = read_df['bonbeon'].astype(int)
+        read_df['bubeon'] = read_df['bubeon'].astype(int)
+        read_df.to_sql(name='sales', con=engine, if_exists='append', index=None)
+
+        return HttpResponse("Data has been successfully inserted into the database.")
+    else:
+        return HttpResponse(f"Failed to retrieve data: {response.status_code}")
+@csrf_exempt
+def callback(request):
+    if request.method == 'POST':
+        payload = json.loads(request.body.decode('utf-8'))
+        
+        print(payload)
+        user_message = payload.get('userRequest', {}).get('utterance', '')
+        
+        # contexts가 비어있을 수 있으므로 기본값을 빈 리스트로 설정
+        contexts = payload.get('contexts', [])
+        if contexts:
+            select_gu = contexts[0].get('params', {}).get('Select_gu', {}).get('resolvedValue', '')
+        else:
+            select_gu = ''
+
+        # 기본 템플릿
+        template = {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": user_message
+                    }
+                }
+            ],
+            "clientExtra": {}
+        }
+
+        # select_gu가 있는 경우 결과 카드 추가 및 clientExtra 업데이트
+        if select_gu:
+            card = {
+                "basicCard": {
+                    "title": "선택된 구",
+                    "description": select_gu,
+                    "thumbnail": {
+                        "imageUrl": "https://example.com/image.png"
+                    },
+                    "buttons": [
+                        {
+                            "action": "webLink",
+                            "label": "자세히 보기",
+                            "webLinkUrl": "https://example.com"
+                        }
+                    ]
+                }
+            }
+            template["outputs"].append(card)
+            template["clientExtra"]["select_gu"] = select_gu
+            template["clientExtra"]["blockId"] = "66530a4c0ed18d50aeb832b0"  # 이동할 블록의 ID를 지정
+
+        response = {
+            "version": "2.0",
+            "template": template
+        }
+
+        return JsonResponse(response)
+        
+        
+        
+        
+        
+        
+        
+@csrf_exempt
+def realSales(request):
+    if request.method == 'POST':
+        try:
+            payload = json.loads(request.body.decode('utf-8'))
+            print(payload)
+            contexts = payload.get('contexts', [])
+            
+            user_message = payload.get('userRequest', {}).get('utterance', '')
+            
+            # 구 이름이 올바른 경우에만 실행되는 로직
+            dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='xe')
+            engine = create_engine(f'oracle+cx_oracle://boo:12345@{dsn_tns}')
+            areagrade = ['소형','중형','대형']
+            df_total = pd.DataFrame()
+            select_gu = '송파구'
+            for i in range(len(areagrade)):
+                query = f"""
+                        SELECT areagrade, nns.deal_ymd, nns.obj_amt, nns.bldg_area, nns.floor, nns.build_year 
+                        FROM areagrade, 
+                        (
+                            SELECT s.* 
+                            FROM sales s, 
+                            (
+                                SELECT bjdong_nm, bonbeon, bubeon 
+                                FROM sales 
+                                WHERE sgg_nm = '{select_gu}'
+                                AND BLDG_NM = '{user_message}'
+                                AND ROWNUM = 1
+                            ) ns 
+                            WHERE s.bjdong_nm = ns.bjdong_nm 
+                            AND s.bonbeon = ns.bonbeon 
+                            AND s.bubeon = ns.bubeon
+                        ) nns 
+                        WHERE bldg_area BETWEEN low_area and high_area 
+                        AND AREAGRADE = '{areagrade[i]}'
+                        AND ROWNUM = 1 
+                        ORDER BY acc_year, areagrade DESC
+                    """
+                df = pd.read_sql(query, engine)
+                df_total = pd.concat([df_total, df], ignore_index=True)
+                
+            df_json = df_total.to_json(orient='records')
+            json_data = json.loads(df_json)
+            pretty_json = json.dumps(json_data, indent=4, ensure_ascii=False)
+            
+            result = []
+            for pData in json_data:
+                areagrade = pData["areagrade"]
+                deal_ymd = str(pData["deal_ymd"])
+                obj_amt = f"{pData['obj_amt'] // 10000}억 {pData['obj_amt'] % 10000}만원"
+                bldg_area = pData["bldg_area"]
+                floor = pData["floor"]
+                build_year = pData["build_year"]
+                pyeong = bldg_area / 3.3
+                bldg_area_str = f"{bldg_area:.3f}m²({int(pyeong)}평)"
+
+                result.append("건물등급 : {}\n"
+                              "실계약일 : {}\n"
+                              "실매매가 : {}\n"
+                              "전용면적 : {}\n"
+                              "건물층수 : {}층\n"
+                              "건축년도 : {}년".format(areagrade, deal_ymd, obj_amt, bldg_area_str, floor, build_year))
+            
+            template = {
+                "outputs": [
+                    {
+                        "carousel": {
+                            "type": "basicCard",
+                            "items": [
+                                {
+                                    "title": f"[{select_gu} {user_message}]",
+                                    "description": "매물 정보입니다.",
+                                    "buttons": [
+                                        {
+                                            "label": "지도보기",
+                                            "action": "webLink",
+                                            "webLinkUrl": "https://www.naver.com"
+                                        },
+                                        {
+                                            "label": "지역정보",
+                                            "action": "block",
+                                            "blockId": "664303b8af0b8a5f3b2458a7",
+                                            "extra": {
+                                                "select_gu": select_gu
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            result_items = []
+            for result_item in result:
+                result_items.append({
+                    "description": result_item,
+                })
+
+            template["outputs"][0]["carousel"]["items"] += result_items
+
+            # 입력된 구 이름이 올바른 경우 user_message 값을 초기화
+            user_message = ""
+
+            response = {
+                "version": "2.0",
+                "template": template
+            }
+            return JsonResponse(response)
+        
+        except json.JSONDecodeError as e:
+            print(f"JSON decode error: {e}")
+            return HttpResponse(status=400)  # 잘못된 요청 응답 반환
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return HttpResponse(status=500)  # 내부 서버 오류 응답 반환
+    return HttpResponse(status=405)  # 허용되지 않는 메서드 응답 반환
+
+
+
+
+
+
+
+
+
+
+
+
+
