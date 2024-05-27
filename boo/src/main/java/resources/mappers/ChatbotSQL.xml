@@ -59,6 +59,7 @@
 		                                    sales, amtgrade
 		                                WHERE
 		                                    grade = #{grade}
+		                                    AND sgg_nm= #{sgg_nm}
 		                                    AND obj_amt between low_amt and high_amt
 		                                    AND bjdong_nm = #{bjdong_nm}
 		                                )
@@ -86,7 +87,7 @@
 		from
 		    (
 		    SELECT 
-		       rownum rno, SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, avg_area
+		       rownum rno, sgg_nm, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, avg_area
 		    FROM
 		        (
 		            SELECT 
@@ -118,6 +119,7 @@
 		                                    sales, amtgrade
 		                                WHERE
 		                                    grade = #{grade}
+		                                    AND sgg_nm= #{sgg_nm}
 		                                    AND obj_amt between low_amt and high_amt
 		                                    AND bjdong_nm = #{bjdong_nm}
 		                                )

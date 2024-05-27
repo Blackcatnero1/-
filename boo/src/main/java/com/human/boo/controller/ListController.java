@@ -24,10 +24,7 @@ public class ListController {
 	@RequestMapping("/list.boo") 
 	public ModelAndView selList(HttpSession session, ModelAndView mv, RedirectView rv, ChatbotVO cbVO) {
 		
-		if(cbVO.getSgg_nm() == null) {
-			// 발화 꺼내서 처리
-			cbVO.setSgg_nm("강남구");
-		}
+
 		
 		List list = cbDao.getDongList(cbVO);
 		List list2 = cbDao.getGradeList();

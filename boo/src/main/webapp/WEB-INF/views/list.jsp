@@ -61,6 +61,8 @@ $(document).ready(function() {
     function loadSelectedValues() {
         var selectedDong = localStorage.getItem('selectedDong');
         var selectedGrade = localStorage.getItem('selectedGrade');
+        
+        
 
         if (selectedDong) {
             $("select[name='bjdong_nm']").val(selectedDong);
@@ -85,6 +87,8 @@ $(document).ready(function() {
 
         var selectedDong = $("select[name='bjdong_nm']").val();
         var selectedGrade = $("select[name='grade']").val();
+        var selectedGu = "${DATA.sgg_nm}";
+        alert(selectedGu);
         
         if (!selectedDong || !selectedGrade) {
             alert("옵션을 선택해야 합니다.");
@@ -94,11 +98,13 @@ $(document).ready(function() {
         // 선택된 값을 로컬 스토리지에 저장
         localStorage.setItem('selectedDong', selectedDong);
         localStorage.setItem('selectedGrade', selectedGrade);
+        
 
         // 보낼 데이터 객체 생성
         var data = {
             bjdong_nm: selectedDong,
-            grade: selectedGrade
+            grade: selectedGrade,
+            sgg_nm: selectedGu
         };
         
         // Ajax 요청
@@ -125,6 +131,7 @@ $(document).ready(function() {
         // 선택된 동과 등급 값 가져오기
         var selectedDong = $("select[name='bjdong_nm']").val();
         var selectedGrade = $("select[name='grade']").val();
+        var selectedGu = "${DATA.sgg_nm}";
 
         if (!selectedDong || !selectedGrade) {
             alert("옵션을 선택해야 합니다.");
@@ -138,6 +145,7 @@ $(document).ready(function() {
         var data = {
             bjdong_nm: selectedDong,
             grade: selectedGrade,
+            sgg_nm: selectedGu,
             nowPage: nowPage
         };
 
