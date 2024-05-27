@@ -45,7 +45,7 @@
         };
 
         $.ajax({
-            url: 'http://192.168.0.68:8000/bar/getNums/', //서준님 IP주소(장고)/함수 위치경로 변경 필요
+            url: 'http://58.72.151.124:6012/getNums/', //서준님 IP주소(장고)/함수 위치경로 변경 필요
             type: 'get',
             dataType: 'json',
             success: function(obj){
