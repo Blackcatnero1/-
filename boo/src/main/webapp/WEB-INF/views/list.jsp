@@ -64,12 +64,20 @@ $(document).ready(function() {
 
         if (selectedDong) {
             $("select[name='bjdong_nm']").val(selectedDong);
+        } else {
+        	$("select[name='bjdong_nm']").prop('selectedIndex', 0);
         }
 
         if (selectedGrade) {
             $("select[name='grade']").val(selectedGrade);
+        } else {
+        	$("select[name='grade']").prop('selectedIndex', 0);
         }
     }
+    $("select[name='bjdong_nm']").prop('selectedIndex', 0);
+
+    $("select[name='grade']").prop('selectedIndex', 0);
+    
     loadSelectedValues();
     
     $('#selbtn').click(function(event) {
@@ -146,6 +154,10 @@ $(document).ready(function() {
             }
         });
     });
+    $(window).on('beforeunload', function() {
+        localStorage.removeItem('selectedDong');
+        localStorage.removeItem('selectedGrade');
+    });
 });
 
 </script>
@@ -191,7 +203,7 @@ $(document).ready(function() {
 		
 		    <!-- 제출 버튼 -->
 		    <div class="w3-section" style="text-align: center;">
-		        <button id="selbtn" class="w3-button w3-teal w3-padding" type="submit" style="padding: 8px 8px;">검색</button>
+		        <button id="selbtn" class="w3-button w3-teal w3-padding" type="button" style="padding: 8px 8px;">검색</button>
 		    </div>
 		</div>
     </form>
