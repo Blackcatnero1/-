@@ -10,11 +10,13 @@
 <link rel="stylesheet" type="text/css" href="boo/css/user.css">
 <script type="text/javascript" src="boo/js/jquery-3.7.1.min.js"></script>
 <style type="text/css">
-       #map {
-            width: 100%;
-            height: 1000px;
-        }
-    }
+    #map {
+         width: 100%;
+         height: 863px;
+         padding:0px;
+         margin:0px;
+     }
+     
 </style>
 </head>
 <body>
