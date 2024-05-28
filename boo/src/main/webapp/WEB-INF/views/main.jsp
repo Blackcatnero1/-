@@ -38,19 +38,19 @@
 	
 </style>
 <script type="text/javascript">
-$(document).ready(function(){
-	
-	$('#logout').click(function(){
-		$(location).attr('href', '/boo/rmSession.boo');
+	$(document).ready(function(){
+		
+		$('#logout').click(function(){
+			$(location).attr('href', '/boo/rmSession.boo');
+		});
+		
+		$('#schat').click(function(){
+			// 원하는 URL로 이동
+			window.location.href = "http://pf.kakao.com/_ZdLUG/chat";
+		});
+		
 	});
-	
-	$('#schat').click(function(){
-		// 원하는 URL로 이동
-		window.location.href = "http://pf.kakao.com/_ZdLUG/chat";
-	});
-	
-});
-	
+
     Kakao.init("21c363680f2db21df7de0268a3a1f6f0");
 
     function kakaoLogin(){
@@ -96,11 +96,11 @@ $(document).ready(function(){
 </head>
 <body>
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-middle w3-center">
-    <span id="move-up" class="w3-text-white w3-hide-small" style="font-size:25px"><b>아파트 매매정보 챗봇<br></b></span>
-    <span id="move-up" class="w3-text-orange w3-hide-small" style="font-size:90px"><b>APT.집PT</b></span>
+	<div class="w3-display-middle w3-center">
+		<span id="move-up" class="w3-text-white w3-hide-small" style="font-size:25px"><b>아파트 매매정보 챗봇<br></b></span>
+		<span id="move-up" class="w3-text-orange w3-hide-small" style="font-size:90px"><b>APT.집PT</b></span>
 
-    <p style="margin-top: 50px; display; inline-block;"/>
+	<p style="margin-top: 50px; display; inline-block;"/>
 <c:if test="${not empty nickname}">
     <h2 class="w3-text-aqua" style="blod:2px; text-shadow:1px 1px 0 #444;font-weight: bold;">환영합니다. ${nickname} 님!</h2>
     <div id="schat" class="w3-button w3-large w3-black w3-round-large mgw10 mgt20" style="width: 220px">부매랑 챗봇 시작하기</div>
@@ -112,9 +112,7 @@ $(document).ready(function(){
     <button onclick="kakaoLogin()" class="mgw10 mgt20"><img src="/boo/image/kakao_login.png" width="220px"/></button>
     
 </c:if>
-  </div>
+	</div>
 </header>
-  
-
 </body>
 </html>
