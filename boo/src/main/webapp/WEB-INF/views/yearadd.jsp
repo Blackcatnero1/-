@@ -17,17 +17,17 @@
         var jdata = {};
         var arr = [['자치구', '연평균 증가율']];
         var images = { // 각 자치구와 관련된 이미지를 여기에 추가
-            "강남구": "/image/graph/gangnam.png",
-            "강동구": "/image/graph/gangdong.png",
-            "강북구": "/image/graph/gangbook.png",
-            "강서구": "/image/graph/gangseo.png",
-            "관악구": "/image/graph/gwanak.png",
-            "광진구": "/image/graph/gwangjin.png",
-            "구로구": "/image/graph/guro.png",
-            "금천구": "/image/graph/geumcheon.png",
-            "노원구": "/image/graph/nowon.png",
-            "도봉구": "/image/graph/dobong.png",
-            "동대문구": "/image/graph/dongdeamoon.png",
+            "강남구": "/boo/image/graph/gangnam.png",
+            "강동구": "/boo/image/graph/gangdong.png",
+            "강북구": "/boo/image/graph/gangbook.png",
+            "강서구": "/boo/image/graph/gangseo.png",
+            "관악구": "/boo/image/graph/gwanak.png",
+            "광진구": "/boo/image/graph/gwangjin.png",
+            "구로구": "/boo/image/graph/guro.png",
+            "금천구": "/boo/image/graph/geumcheon.png",
+            "노원구": "/boo/image/graph/nowon.png",
+            "도봉구": "/boo/image/graph/dobong.png",
+            "동대문구": "/boo/image/graph/dongdeamoon.png",
             "동작구": "/boo/image/graph/dongjak.png",
             "마포구": "/boo/image/graph/mapo.png",
             "서대문구": "/boo/image/graph/seodeamoon.png",
@@ -49,7 +49,7 @@
             type: 'get',
             dataType: 'json',
             success: function(obj){
-                console.log('obj : ' + obj);
+                
                 jdata = obj;
 
                 var kList = Object.keys(jdata);

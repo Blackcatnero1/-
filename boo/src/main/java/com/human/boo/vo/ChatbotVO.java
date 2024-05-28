@@ -2,12 +2,12 @@ package com.human.boo.vo;
 
 public class ChatbotVO {
 	
-	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_area,avg_amt,rno,low_amt, high_amt,avg_per_area;
+	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_amt,rno,low_amt, high_amt,avg_per_area;
 	private float bldg_area;
-	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade, juso;
+	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade, juso,range_area;
 	
 	private int nowPage = 1;
-	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno;
+	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno ;
 
 	
 	
@@ -160,14 +160,13 @@ public class ChatbotVO {
 		this.endRno = endRno;
 	}
 
-	public int getAvg_area() {
-		return avg_area;
-	}
 
-	public void setAvg_area(int avg_area) {
-		this.avg_area = avg_area;
+	public String getRange_area() {
+		return range_area;
 	}
-
+	public void setRange_area(String range_area) {
+		this.range_area = range_area;
+	}
 	public int getAvg_amt() {
 		return avg_amt;
 	}
@@ -275,13 +274,17 @@ public class ChatbotVO {
 	public String toString() {
 		return "ChatbotVO [acc_year=" + acc_year + ", p_year=" + p_year + ", p_total=" + p_total + ", obj_amt="
 				+ obj_amt + ", deal_ydm=" + deal_ydm + ", build_year=" + build_year + ", deal_cnt=" + deal_cnt
-				+ ", avg_area=" + avg_area + ", avg_amt=" + avg_amt + ", rno=" + rno + ", low_amt=" + low_amt
-				+ ", high_amt=" + high_amt + ", bldg_area=" + bldg_area + ", sgg_nm=" + sgg_nm + ", bjdong_nm="
+				+ ", avg_amt=" + avg_amt + ", rno=" + rno + ", low_amt=" + low_amt + ", high_amt=" + high_amt
+				+ ", avg_per_area=" + avg_per_area + ", bldg_area=" + bldg_area + ", sgg_nm=" + sgg_nm + ", bjdong_nm="
 				+ bjdong_nm + ", jibeon=" + jibeon + ", bldg_nm=" + bldg_nm + ", nickname=" + nickname + ", grade="
-				+ grade + ", nowPage=" + nowPage + ", totalCount=" + totalCount + ", pageRow=" + pageRow
-				+ ", pageGroup=" + pageGroup + ", startPage=" + startPage + ", endPage=" + endPage + ", totalPage="
-				+ totalPage + ", startRno=" + startRno + ", endRno=" + endRno + "]";
+				+ grade + ", juso=" + juso + ", range_area=" + range_area + ", nowPage=" + nowPage + ", totalCount="
+				+ totalCount + ", pageRow=" + pageRow + ", pageGroup=" + pageGroup + ", startPage=" + startPage
+				+ ", endPage=" + endPage + ", totalPage=" + totalPage + ", startRno=" + startRno + ", endRno=" + endRno
+				+ "]";
 	}
+
+
+	
 	
 
 

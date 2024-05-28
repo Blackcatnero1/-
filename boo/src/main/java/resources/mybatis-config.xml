@@ -12,7 +12,6 @@
 	
 	<typeAliases>
 		<typeAlias alias="cbVO" type="com.human.boo.vo.ChatbotVO"/>
-		<typeAlias alias="cbUtil" type="com.human.boo.util.ChatbotUtil"/>
 	</typeAliases>
 	
 </configuration>

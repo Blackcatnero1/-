@@ -89,7 +89,7 @@ $(document).ready(function() {
         var selectedDong = $("select[name='bjdong_nm']").val();
         var selectedGrade = $("select[name='grade']").val();
         var selectedGu = "${DATA.sgg_nm}";
-        alert(selectedGu);
+        
         
         if (!selectedDong || !selectedGrade) {
             alert("옵션을 선택해야 합니다.");
@@ -178,7 +178,7 @@ $(document).ready(function() {
 <!-- https://thumb.ac-illust.com/9e/9e56ebb6b768858aa6d122ac902563ce_t.jpeg -->
 <!-- 폼 컨테이너 -->
 <div class="w3-container center-container" style="padding-top: 8px; padding-bottom: 8px;">
-    <form id= "myForm" name="myForm" class="w3-container w3-light-grey w3-padding-16" action="/boo/list/list.boo" method="post">
+    <form id= "myForm" name="myForm" class="w3-container w3-light-grey w3-card-4 w3-padding-16" action="/boo/list/list.boo" method="post">
     	<input type="hidden" name="sgg_nm" value="${DATA.sgg_nm}">
 	    <div class="vertical-center w3-border-bottom">
 		    <div class="form-header" style="text-align: center;">
@@ -217,15 +217,15 @@ $(document).ready(function() {
 		</div>
     </form>
     
-   <div class="w3-col">
-			<div class="w3-center w3-margin-top">
-				<div class="w3-col m1 w3-border-right w3-blue-gray" >글번호</div>
-				<div class="w3-col m1 w3-border-right w3-blue-gray" >자치구</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray" >법정동</div>
-				<div class="w3-col m4 w3-border-right w3-blue-gray" >아파트</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray">평균 매매가</div>
-				<div class="w3-col m1 w3-border-right w3-blue-gray" >거래량</div>
-				<div class="w3-col m1 w3-blue-gray">평균면적</div>
+    <small class="w3-text-blue w3-right w3-margin-top"> * 2017년 ~ 2024년 자료 기준 통계 *</small>
+   <div class="w3-col w3-light-grey mgt6 w3-card-4 w3-border w3-border-grey">
+			<div class="w3-center">
+				<div class="w3-col m1 w3-border-reft w3-border-right w3-blue-gray" style="height:35px; line-height:35px" >거래랭킹</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">법정동</div>
+				<div class="w3-col m4 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">아파트</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">평균 매매가</div>
+				<div class="w3-col m1 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">거래량</div>
+				<div class="w3-rest w3-blue-gray" style="height:35px; line-height:35px">면적분포(평)</div>
 			</div>
 			
 <c:if test="${not empty AptLIST}">
@@ -234,12 +234,11 @@ $(document).ready(function() {
 
 			<div class="w3-col w3-center w3-border-bottom" id="${AptDATA.rno}">
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px" >${AptDATA.rno}</div>
-				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.sgg_nm}</div>
 				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.bjdong_nm}</div>
 				<div class="w3-col m4 w3-border-right" style="height:45px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size:14px;line-height:45px">${AptDATA.bldg_nm}</div>
 				<div id="avgapt" class="w3-col m2 w3-border-right" style="height:45px; line-height:45px"><fmt:formatNumber type="number" maxFractionDigits="3" value="${AptDATA.avg_amt}" /> (만)원</div>
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.deal_cnt} 건</div>
-				<div class="w3-col m1 " style="height:45px; line-height:45px">${AptDATA.avg_area} (평)</div>
+				<div class="w3-rest " style="height:45px; line-height:45px">${AptDATA.range_area}</div>
 			</div>
 	</c:forEach>
 	
@@ -273,11 +272,12 @@ $(document).ready(function() {
 		</div>
 </c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
 <c:if test="${empty AptLIST}">
-			<div class="w3-col w3-border-bottom w3-margin-top">
-				<h3 class="w3-center w3-text-gray">* 동 or 예산을 선택해 주세요. *</h3>
+			<div class="w3-col">
+				<h3 class="w3-center w3-text-gray pdh20">* 동 or 예산을 선택해 주세요. *</h3>
 			</div>
 </c:if>
 		</div>
+		
 </div>
 </body>
 </html>
