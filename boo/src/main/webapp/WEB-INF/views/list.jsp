@@ -104,8 +104,59 @@
 	            url: "/boo/list/list.boo", // 요청할 URL
 	            data: data, // 보낼 데이터
 	            success: function(response) {
+	            	
 	                // 성공 시 처리할 코드 작성
-	                $('body').html(response);
+	                if ($(response).find('.apt').length > 0) {
+	                    // 조회된 데이터가 있을 때는 정상적으로 표시
+	                	$('#getApt').html($(response).find('#getApt').html());
+	                	
+	                } else {
+	                	$('#getApt').html($(response).find('#getApt').html());
+	                	
+	                    // 조회된 데이터가 없을 때 메시지를 표시
+	                    $('#dongye').html("조회된 데이터가 없습니다.");
+	                }
+          
+	            	 $('.pageBtn').click(function(event) {
+	         	        event.preventDefault(); // 기본 링크 동작 방지
+	         	
+	         	        // 이동할 페이지 번호 알아내기
+	         	        var nowPage = $(this).attr('id');
+	         	        
+	         	        // 선택된 동과 등급 값 가져오기
+	         	        var selectedDong = $("select[name='bjdong_nm']").val();
+	         	        var selectedGrade = $("select[name='grade']").val();
+	         	        var selectedGu = "${DATA.sgg_nm}";
+	         	
+	         	        if (!selectedDong || !selectedGrade) {
+	         	            alert("옵션을 선택해야 합니다.");
+	         	            return;
+	         	        }
+	         	
+	         	        // 로컬 스토리지에 현재 페이지 저장
+	         	        localStorage.setItem('nowPage', nowPage);
+	         	
+	         	        // Ajax 요청
+	         	        var data = {
+	         	            bjdong_nm: selectedDong,
+	         	            grade: selectedGrade,
+	         	            sgg_nm: selectedGu,
+	         	            nowPage: nowPage
+	         	        };
+	         	
+	         	        $.ajax({
+	         	            type: "POST",
+	         	            url: "/boo/list/list.boo",
+	         	            data: data,
+	         	            success: function(response) {
+	         	                // 성공 시 처리할 코드 작성
+	         	            	$('body').html(response);
+	         	            },
+	         	            error: function(xhr, status, error) {
+	         	                alert("요청이 실패하였습니다.");
+	         	            }
+	         	        });
+	         	    });
 	            },
 	            error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
 	                alert("요청이 실패하였습니다.");
@@ -113,7 +164,7 @@
 	        });
 	    });
 	    
-	    $('.pageBtn').click(function(event) {
+	     $('.pageBtn').click(function(event) {
 	        event.preventDefault(); // 기본 링크 동작 방지
 	
 	        // 이동할 페이지 번호 알아내기
@@ -146,7 +197,7 @@
 	            data: data,
 	            success: function(response) {
 	                // 성공 시 처리할 코드 작성
-	                $('body').html(response);
+	            	$('body').html(response);
 	            },
 	            error: function(xhr, status, error) {
 	                alert("요청이 실패하였습니다.");
@@ -208,6 +259,9 @@
     </form>
     
     <small class="w3-text-blue w3-right w3-margin-top"> * 2017년 ~ 2024년 자료 기준 통계 *</small>
+    
+    <div id="getApt">
+    
    <div class="w3-col w3-light-grey mgt6 w3-card-4">
 			<div class="w3-center">
 				<div class="w3-col m1 w3-border-reft w3-border-right w3-blue-gray" style="height:35px; line-height:35px" >거래랭킹</div>
@@ -222,11 +276,11 @@
 	
 	<c:forEach var="AptDATA" items="${AptLIST}">
 
-			<div class="w3-col w3-center w3-border-bottom" id="${AptDATA.rno}">
+			<div class="w3-col w3-center w3-border-bottom apt" id="${AptDATA.rno}">
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px" >${AptDATA.rno}</div>
 				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.bjdong_nm}</div>
 				<div class="w3-col m4 w3-border-right" style="height:45px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size:14px;line-height:45px">${AptDATA.bldg_nm}</div>
-				<div id="avgapt" class="w3-col m2 w3-border-right" style="height:45px; line-height:45px"><fmt:formatNumber type="number" maxFractionDigits="3" value="${AptDATA.avg_amt}" /> (만)원</div>
+				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px"><fmt:formatNumber type="number" maxFractionDigits="3" value="${AptDATA.avg_amt}" /> (만)원</div>
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.deal_cnt} 건</div>
 				<div class="w3-rest " style="height:45px; line-height:45px">${AptDATA.range_area}</div>
 			</div>
@@ -277,7 +331,7 @@
 </c:if>
 
 
-		
+	</div>
 		
 </div>
 </body>
