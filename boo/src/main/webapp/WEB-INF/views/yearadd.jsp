@@ -74,6 +74,8 @@
             function drawStuff() {
                 // 데이터
                 var data = new google.visualization.arrayToDataTable(ar);
+                
+                data.sort([{column: 1, desc: true}]);
 
                 var options = {
                     width: 1200,
@@ -104,7 +106,7 @@
                             $('#modalImage').attr('src', imageUrl); // id가 modalImage인 src 속성을 imageUrl로 설정
                             $('#imageModal').modal('show'); // id가 imageModal인 모달 창을 표시
                         } else {
-                            console.log("이미지가 존재하지 않습니다.");
+                            console.log("Error");
                         }
                     }
                 });
@@ -114,11 +116,11 @@
 </script>
 </head>
 <body>
-    <div id="top_x_div" style="width: 800px; height: 600px;"></div>
+	<div id="top_x_div" style="width: 800px; height: 600px; margin-left: 40px; margin-top: 50px;"></div> 
 
     <!-- 모달 추가 -->
     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" style="max-width: 500px">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imageModalLabel">연도별 평균 매매가 추이(2017~2024)</h5>
