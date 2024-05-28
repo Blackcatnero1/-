@@ -106,7 +106,7 @@
 	            success: function(response) {
 	                // 성공 시 처리할 코드 작성
 	                $('body').html(response);
-				    if(AptDATA.length == 0){
+				    if(response.length == 0){
 				    	$('#dongye').html('');
 				    	$('#dongye').html('조회 결과가 없습니다.');
 				    }
