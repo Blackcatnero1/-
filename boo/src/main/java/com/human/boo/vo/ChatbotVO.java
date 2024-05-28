@@ -5,15 +5,8 @@ public class ChatbotVO {
 	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_amt,rno,low_amt, high_amt,avg_per_area;
 	private float bldg_area;
 	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade, juso,range_area;
-	
 	private int nowPage = 1;
 	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno ;
-
-	
-	
-	
-	
-	
 	
 	public String getJuso() {
 		return juso;
@@ -46,9 +39,6 @@ public class ChatbotVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	
-
-	
 	public void setPage() {
 		setPage(nowPage, totalCount, 20, 5);
 	}
@@ -56,7 +46,6 @@ public class ChatbotVO {
 	public void setPage(int nowPage, int totalCount) {
 		setPage(nowPage, totalCount, 20, 5);
 	}
-	
 	public void setPage(int nowPage, int totalCount, int pageRow, int pageGroup) {
 		this.nowPage = nowPage;
 		this.totalCount = totalCount;
@@ -66,7 +55,6 @@ public class ChatbotVO {
 		calcPage();
 		calcRno();
 	}
-	
 	public void calcTotalPage() {
 		if(totalCount == 0) {
 			totalPage = 1;
@@ -74,7 +62,6 @@ public class ChatbotVO {
 			totalPage = (totalCount % pageRow == 0) ? (totalCount / pageRow) : (totalCount / pageRow + 1);
 		}
 	}
-	
 	public void calcPage() {
 		startPage = (nowPage - 1) / pageGroup * pageGroup + 1;
 		endPage = (startPage - 1) + pageGroup;
@@ -82,85 +69,64 @@ public class ChatbotVO {
 			endPage = totalPage;
 		}
 	}
-	
 	public void calcRno() {
 		startRno = (nowPage - 1) * pageRow + 1;
 		endRno = startRno + (pageRow - 1);
 	}
-
 	public int getNowPage() {
 		return nowPage;
 	}
-
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage == 0 ? 1 : nowPage;
 	}
-
 	public int getTotalCount() {
 		return totalCount;
 	}
-
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
-
 	public int getPageRow() {
 		return pageRow;
 	}
-
 	public void setPageRow(int pageRow) {
 		this.pageRow = pageRow;
 	}
-
 	public int getPageGroup() {
 		return pageGroup;
 	}
-
 	public void setPageGroup(int pageGroup) {
 		this.pageGroup = pageGroup;
 	}
-
 	public int getStartPage() {
 		return startPage;
 	}
-
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
-
 	public int getEndPage() {
 		return endPage;
 	}
-
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-
 	public int getTotalPage() {
 		return totalPage;
 	}
-
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
-
 	public int getStartRno() {
 		return startRno;
 	}
-
 	public void setStartRno(int startRno) {
 		this.startRno = startRno;
 	}
-
 	public int getEndRno() {
 		return endRno;
 	}
-
 	public void setEndRno(int endRno) {
 		this.endRno = endRno;
 	}
-
-
 	public String getRange_area() {
 		return range_area;
 	}
@@ -170,47 +136,36 @@ public class ChatbotVO {
 	public int getAvg_amt() {
 		return avg_amt;
 	}
-
 	public void setAvg_amt(int avg_amt) {
 		this.avg_amt = avg_amt;
 	}
-
 	public int getRno() {
 		return rno;
 	}
-
 	public void setRno(int rno) {
 		this.rno = rno;
 	}
-
 	public String getSgg_nm() {
 		return sgg_nm;
 	}
-
 	public void setSgg_nm(String sgg_nm) {
 		this.sgg_nm = sgg_nm;
 	}
-
 	public int getDeal_cnt() {
 		return deal_cnt;
 	}
-
 	public void setDeal_cnt(int deal_cnt) {
 		this.deal_cnt = deal_cnt;
 	}
-
 	public String getJibeon() {
 		return jibeon;
 	}
-
 	public void setJibeon(String jibeon) {
 		this.jibeon = jibeon;
 	}
-
 	public String getNickname() {
         return nickname;
     }
-
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -256,14 +211,12 @@ public class ChatbotVO {
 	public void setBldg_area(float bldg_area) {
 		this.bldg_area = bldg_area;
 	}
-
 	public String getBjdong_nm() {
 		return bjdong_nm;
 	}
 	public void setBjdong_nm(String bjdong_nm) {
 		this.bjdong_nm = bjdong_nm;
 	}
-
 	public String getBldg_nm() {
 		return bldg_nm;
 	}
@@ -282,14 +235,4 @@ public class ChatbotVO {
 				+ ", endPage=" + endPage + ", totalPage=" + totalPage + ", startRno=" + startRno + ", endRno=" + endRno
 				+ "]";
 	}
-
-
-	
-	
-
-
-	
-	
-	
-	
 }

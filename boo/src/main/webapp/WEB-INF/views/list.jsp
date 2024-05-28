@@ -21,14 +21,10 @@
 			  background-repeat: no-repeat;
 			  background-position: bottom; /* 배경 이미지를 아래쪽으로 이동 */
 			  color: black; /* 텍스트의 색상을 검은색으로 설정 */
-			}
-
-		
-		
+		}
 		.w3-border-bottom {
 		  border-bottom-color: black!important; /* 밑줄 색상을 설정 */
 		}
-		
 		.form-container {
             display: flex;
             justify-content: center;
@@ -55,119 +51,117 @@
 		}
     </style>
 <script type="text/javascript">
-
-$(document).ready(function() {
-
-    // 페이지 로드 시 로컬 스토리지에서 값 읽기
-    function loadSelectedValues() {
-        var selectedDong = localStorage.getItem('selectedDong');
-        var selectedGrade = localStorage.getItem('selectedGrade');
-        
-        
-
-        if (selectedDong) {
-            $("select[name='bjdong_nm']").val(selectedDong);
-        } else {
-        	$("select[name='bjdong_nm']").prop('selectedIndex', 0);
-        }
-
-        if (selectedGrade) {
-            $("select[name='grade']").val(selectedGrade);
-        } else {
-        	$("select[name='grade']").prop('selectedIndex', 0);
-        }
-    }
-    $("select[name='bjdong_nm']").prop('selectedIndex', 0);
-
-    $("select[name='grade']").prop('selectedIndex', 0);
-    
-    loadSelectedValues();
-    
-    $('#selbtn').click(function(event) {
-        event.preventDefault(); // 기본 폼 제출 방지
-
-        var selectedDong = $("select[name='bjdong_nm']").val();
-        var selectedGrade = $("select[name='grade']").val();
-        var selectedGu = "${DATA.sgg_nm}";
-        
-        
-        if (!selectedDong || !selectedGrade) {
-            alert("옵션을 선택해야 합니다.");
-            return;
-        }
-        
-        // 선택된 값을 로컬 스토리지에 저장
-        localStorage.setItem('selectedDong', selectedDong);
-        localStorage.setItem('selectedGrade', selectedGrade);
-        
-
-        // 보낼 데이터 객체 생성
-        var data = {
-            bjdong_nm: selectedDong,
-            grade: selectedGrade,
-            sgg_nm: selectedGu
-        };
-        
-        // Ajax 요청
-        $.ajax({
-            type: "POST", // 요청 방식
-            url: "/boo/list/list.boo", // 요청할 URL
-            data: data, // 보낼 데이터
-            success: function(response) {
-                // 성공 시 처리할 코드 작성
-                $('body').html(response);
-            },
-            error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
-                alert("요청이 실패하였습니다.");
-            }
-        });
-    });
-    
-    $('.pageBtn').click(function(event) {
-        event.preventDefault(); // 기본 링크 동작 방지
-
-        // 이동할 페이지 번호 알아내기
-        var nowPage = $(this).attr('id');
-        
-        // 선택된 동과 등급 값 가져오기
-        var selectedDong = $("select[name='bjdong_nm']").val();
-        var selectedGrade = $("select[name='grade']").val();
-        var selectedGu = "${DATA.sgg_nm}";
-
-        if (!selectedDong || !selectedGrade) {
-            alert("옵션을 선택해야 합니다.");
-            return;
-        }
-
-        // 로컬 스토리지에 현재 페이지 저장
-        localStorage.setItem('nowPage', nowPage);
-
-        // Ajax 요청
-        var data = {
-            bjdong_nm: selectedDong,
-            grade: selectedGrade,
-            sgg_nm: selectedGu,
-            nowPage: nowPage
-        };
-
-        $.ajax({
-            type: "POST",
-            url: "/boo/list/list.boo",
-            data: data,
-            success: function(response) {
-                // 성공 시 처리할 코드 작성
-                $('body').html(response);
-            },
-            error: function(xhr, status, error) {
-                alert("요청이 실패하였습니다.");
-            }
-        });
-    });
-    $(window).on('beforeunload', function() {
-        localStorage.removeItem('selectedDong');
-        localStorage.removeItem('selectedGrade');
-    });
-});
+	$(document).ready(function() {
+	    // 페이지 로드 시 로컬 스토리지에서 값 읽기
+	    function loadSelectedValues() {
+	        var selectedDong = localStorage.getItem('selectedDong');
+	        var selectedGrade = localStorage.getItem('selectedGrade');
+	        
+	        if (selectedDong) {
+	            $("select[name='bjdong_nm']").val(selectedDong);
+	        } else {
+	        	$("select[name='bjdong_nm']").prop('selectedIndex', 0);
+	        }
+	
+	        if (selectedGrade) {
+	            $("select[name='grade']").val(selectedGrade);
+	        } else {
+	        	$("select[name='grade']").prop('selectedIndex', 0);
+	        }
+	    }
+	    $("select[name='bjdong_nm']").prop('selectedIndex', 0);
+	
+	    $("select[name='grade']").prop('selectedIndex', 0);
+	    
+	    loadSelectedValues();
+	    
+	    $('#selbtn').click(function(event) {
+	        event.preventDefault(); // 기본 폼 제출 방지
+	
+	        var selectedDong = $("select[name='bjdong_nm']").val();
+	        var selectedGrade = $("select[name='grade']").val();
+	        var selectedGu = "${DATA.sgg_nm}";
+	        
+	        if (!selectedDong || !selectedGrade) {
+	            alert("옵션을 선택해야 합니다.");
+	            return;
+	        }
+	        
+	        // 선택된 값을 로컬 스토리지에 저장
+	        localStorage.setItem('selectedDong', selectedDong);
+	        localStorage.setItem('selectedGrade', selectedGrade);
+	        
+	        // 보낼 데이터 객체 생성
+	        var data = {
+	            bjdong_nm: selectedDong,
+	            grade: selectedGrade,
+	            sgg_nm: selectedGu
+	        };
+	        
+	        // Ajax 요청
+	        $.ajax({
+	            type: "POST", // 요청 방식
+	            url: "/boo/list/list.boo", // 요청할 URL
+	            data: data, // 보낼 데이터
+	            success: function(response) {
+	                // 성공 시 처리할 코드 작성
+	                $('body').html(response);
+	            },
+	            error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
+	                alert("요청이 실패하였습니다.");
+	            }
+	        });
+	    if(data.length == 0){
+	    	$('#dongye').html('조회 결과가 없습니다.');
+	    }
+	    
+	    });
+	    
+	    $('.pageBtn').click(function(event) {
+	        event.preventDefault(); // 기본 링크 동작 방지
+	
+	        // 이동할 페이지 번호 알아내기
+	        var nowPage = $(this).attr('id');
+	        
+	        // 선택된 동과 등급 값 가져오기
+	        var selectedDong = $("select[name='bjdong_nm']").val();
+	        var selectedGrade = $("select[name='grade']").val();
+	        var selectedGu = "${DATA.sgg_nm}";
+	
+	        if (!selectedDong || !selectedGrade) {
+	            alert("옵션을 선택해야 합니다.");
+	            return;
+	        }
+	
+	        // 로컬 스토리지에 현재 페이지 저장
+	        localStorage.setItem('nowPage', nowPage);
+	
+	        // Ajax 요청
+	        var data = {
+	            bjdong_nm: selectedDong,
+	            grade: selectedGrade,
+	            sgg_nm: selectedGu,
+	            nowPage: nowPage
+	        };
+	
+	        $.ajax({
+	            type: "POST",
+	            url: "/boo/list/list.boo",
+	            data: data,
+	            success: function(response) {
+	                // 성공 시 처리할 코드 작성
+	                $('body').html(response);
+	            },
+	            error: function(xhr, status, error) {
+	                alert("요청이 실패하였습니다.");
+	            }
+	        });
+	    });
+	    $(window).on('beforeunload', function() {
+	        localStorage.removeItem('selectedDong');
+	        localStorage.removeItem('selectedGrade');
+	    });
+	});
 
 </script>
 </head>
@@ -246,20 +240,21 @@ $(document).ready(function() {
 </c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
 <c:if test="${empty AptLIST}">
 			<div class="w3-col">
-				<h3 class="w3-center w3-text-gray pdh20">* 동 or 예산을 선택해 주세요. *</h3>
+				<h3 class="w3-center w3-text-gray pdh20" id="dongye">* 동 or 예산을 선택해 주세요. *</h3>
 			</div>
 </c:if>
+
 		<br>
 			<div class="w3-col w3-blue-gray " style="height:25px"></div>
-	
 		</div>
+		
 <c:if test="${not empty AptLIST}">
-
 		<div class="w3-col w3-center pdh30">
 			<div class="w3-bar w3-border w3-border w3-border-blue w3-round">
 <c:if test="${DATA.startPage eq 1}">
 				<span class="w3-bar-item w3-pale-blue">&laquo;</span>
 </c:if>
+
 <c:if test="${DATA.startPage ne 1}">
 				<span class="w3-bar-item w3-btn w3-hover-blue pageBtn" 
 													id="${DATA.startPage - 1}">&laquo;</span>

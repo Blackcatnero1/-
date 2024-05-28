@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.human.boo.vo.*;
 
 public class ChatbotDao {
-
-
+	
 	@Autowired
 	SqlSessionTemplate session;
 	

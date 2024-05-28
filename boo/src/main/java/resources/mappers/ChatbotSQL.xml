@@ -12,7 +12,7 @@
 		WHERE
 		    sgg_nm=#{sgg_nm}
 		ORDER BY
-            bjdong_nm
+	           bjdong_nm
 	</select>
 	
 	<select id="getGradeList" resultType="cbVO">
@@ -23,7 +23,6 @@
 	</select>
 	
 	<select id="getAptList" resultType="cbVO" parameterType="cbVO">
-	
 		SELECT
 		    rno, sgg_nm, bjdong_nm, jibeon, bldg_nm, deal_cnt,avg_amt,range_area
 		FROM
@@ -83,7 +82,7 @@
 		   		rno BETWEEN #{startRno} AND #{endRno}
 	</select>
 	
-		<select id="selTotal" resultType="int" parameterType="cbVO">
+	<select id="selTotal" resultType="int" parameterType="cbVO">
 		select
 		    count(*)
 		from
@@ -140,6 +139,4 @@
 		        ) li
 		    )
 	</select>
-	
-	
 </mapper>

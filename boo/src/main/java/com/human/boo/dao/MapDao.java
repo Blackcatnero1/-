@@ -9,16 +9,11 @@ import com.human.boo.vo.*;
 
 public class MapDao {
 
-
 	@Autowired
 	SqlSessionTemplate session;
-	
 	
 	public List<ChatbotVO> getInfo() {
 		return session.selectList("mSQL.getInfo");
 	}
 	
-
-	
-
 }

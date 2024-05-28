@@ -10,13 +10,11 @@ import com.human.boo.vo.ChatbotVO;
 @Controller
 public class MainController {
 	
-	
 	@RequestMapping("/main.boo")
 	public String main() {
 		return "main";
 	}
 
-	
     @PostMapping("/setSession.boo")
     public String setSession(@RequestBody ChatbotVO cbVO, HttpSession session) {
         session.setAttribute("nickname", cbVO.getNickname());
@@ -33,10 +31,5 @@ public class MainController {
 	public String goChart() {
 		return "yearadd";
 	}
-	
-
-	
-	
-	
 	
 }

@@ -14,7 +14,6 @@ import com.human.boo.dao.MapDao;
 import com.human.boo.vo.ChatbotVO;
 
 
-
 @RequestMapping("/map")
 @Controller
 public class MapController {
@@ -22,11 +21,8 @@ public class MapController {
 	@Autowired
 	MapDao mDao;
 
-	
 	@RequestMapping("/map.boo")
 	public ModelAndView goMap(HttpSession session, ModelAndView mv,ChatbotVO cbVO) {
-		
-		
 		mv.addObject("DATA",cbVO);
 		mv.setViewName("map/map");
 		
@@ -36,7 +32,6 @@ public class MapController {
 	
 	@RequestMapping("/datamap.boo")
 	public ModelAndView goDataMap(HttpSession session, ModelAndView mv) {
-		
 		List list1 = mDao.getInfo();
 		mv.addObject("AreaDATA",list1);
 		mv.setViewName("map/dataMap");

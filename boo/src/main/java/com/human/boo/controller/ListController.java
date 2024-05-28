@@ -24,14 +24,11 @@ public class ListController {
 	@RequestMapping("/list.boo") 
 	public ModelAndView selList(HttpSession session, ModelAndView mv, RedirectView rv, ChatbotVO cbVO) {
 		
-
-		
 		List list = cbDao.getDongList(cbVO);
 		List list2 = cbDao.getGradeList();
 		mv.addObject("DongLIST",list);
 		mv.addObject("GradeLIST", list2);
 			
-		
 		int nowPage = cbVO.getNowPage();
 		if(nowPage == 0) {
 			nowPage = 1;
@@ -46,11 +43,8 @@ public class ListController {
 		}
 
 		mv.addObject("DATA", cbVO);
-		
 		mv.setViewName("list");
 		return mv;
-		
 	}
 
-	
 }
