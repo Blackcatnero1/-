@@ -218,7 +218,7 @@ $(document).ready(function() {
     </form>
     
     <small class="w3-text-blue w3-right w3-margin-top"> * 2017년 ~ 2024년 자료 기준 통계 *</small>
-   <div class="w3-col w3-light-grey mgt6 w3-card-4 w3-border w3-border-grey">
+   <div class="w3-col w3-light-grey mgt6 w3-card-4">
 			<div class="w3-center">
 				<div class="w3-col m1 w3-border-reft w3-border-right w3-blue-gray" style="height:35px; line-height:35px" >거래랭킹</div>
 				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">법정동</div>
@@ -242,7 +242,20 @@ $(document).ready(function() {
 			</div>
 	</c:forEach>
 	
-		<div class="w3-col w3-center w3-margin-top">
+
+</c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
+<c:if test="${empty AptLIST}">
+			<div class="w3-col">
+				<h3 class="w3-center w3-text-gray pdh20">* 동 or 예산을 선택해 주세요. *</h3>
+			</div>
+</c:if>
+		<br>
+			<div class="w3-col w3-blue-gray " style="height:25px"></div>
+	
+		</div>
+<c:if test="${not empty AptLIST}">
+
+		<div class="w3-col w3-center pdh30">
 			<div class="w3-bar w3-border w3-border w3-border-blue w3-round">
 <c:if test="${DATA.startPage eq 1}">
 				<span class="w3-bar-item w3-pale-blue">&laquo;</span>
@@ -270,13 +283,10 @@ $(document).ready(function() {
 </c:if>
 			</div>
 		</div>
-</c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
-<c:if test="${empty AptLIST}">
-			<div class="w3-col">
-				<h3 class="w3-center w3-text-gray pdh20">* 동 or 예산을 선택해 주세요. *</h3>
-			</div>
 </c:if>
-		</div>
+
+
+		
 		
 </div>
 </body>
