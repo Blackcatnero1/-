@@ -106,10 +106,6 @@
 	            success: function(response) {
 	                // 성공 시 처리할 코드 작성
 	                $('body').html(response);
-				    if(response.length == 0){
-				    	$('#dongye').html('');
-				    	$('#dongye').html('조회 결과가 없습니다.');
-				    }
 	            },
 	            error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
 	                alert("요청이 실패하였습니다.");
