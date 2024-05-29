@@ -71,7 +71,7 @@
     var areas = []; // 지역 데이터를 담을 배열
     var customOverlays = []; // CustomOverlay 객체를 담을 배열
 
-    // Combined data from server
+    // 지도에 표시할 데이터들의 배열
     var combinedData = [];
 
     // JSTL을 사용하여 서버 데이터를 JavaScript 객체로 변환
@@ -104,8 +104,8 @@
         var mapOption = { 
             center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
             level: 8, // 지도의 확대 레벨
-            minLevel: 6,
-            maxLevel: 9
+            minLevel: 6, // 지도의 최소 확대 레벨 
+            maxLevel: 9 // 지도의 최대 확대 레벨 
         };
 
         var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 객체 생성
@@ -117,8 +117,10 @@
             var dataItem = combinedData.find(item => item.sgg_nm === area.name);
             if (dataItem) {
                 var price = dataItem.avg_per_area; // 해당 지역의 평당매매가
-                var population = dataItem.p_total;
+                var population = dataItem.p_total; // 해당 지역의 총 인구수
 
+                
+                // 자치구 이름 오버레이
                 var overlayContent = document.createElement('div');
                 overlayContent.className = 'overlay-content';
                 overlayContent.innerHTML = '<div class="w3-center" style="font-weight: bold; font-size: 16px; color:rgb(255, 255, 225);">' + area.name + '</div>' +
@@ -126,6 +128,7 @@
 
                 var polygonCenter = getPolygonCenter(area.path);
 
+                
                 var customOverlay2 = new kakao.maps.CustomOverlay({
                     position: polygonCenter,
                     content: overlayContent,
@@ -147,12 +150,14 @@
                     fillOpacity: 0.17 * (population / 100000)
                 });
 
-                // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
-                // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
+                // 다각형에 mouseover 이벤트를 등록
+                // 지역명을 표시하는 커스텀오버레이를 지도위에 표시
                 kakao.maps.event.addListener(polygon, 'mouseover', (function(polygon, area, customOverlay2) {
                     return function(mouseEvent) {
                         polygon.setOptions({fillColor: '#09f'});
 
+                        
+                        // 커서가 올라갔을때 구이름 표시 오버레이 내용
                         var customOverlay = new kakao.maps.CustomOverlay({
                             content: '<div class="area">' + area.name + '</div>',
                             position: mouseEvent.latLng,
@@ -174,25 +179,27 @@
                     };
                 })(polygon, area, customOverlay2));
 
-                // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 평당매매가를 인포윈도우에 표시합니다 
+                // 다각형에 click 이벤트 등록
                 kakao.maps.event.addListener(polygon, 'click', (function(polygon, area, price, population) {
                     return function(mouseEvent) {
+                    	// 클릭시 보여줄 데이터
                         var content = '<div class="info w3-card-4 w3-border-pink w3-border w3-thick">' + 
                                     '   <div class="w3-border w3-border-pink w3-pink w3-padding title">' + area.name + '</div>' +
                                     '   <div class="w3-padding-top price" style="padding-left:8px;">평당 매매가 : ' + Number(price).toLocaleString() + ' 만원</div>' +
                                     '   <div class="population" style="padding-left:8px;"> 인구 : ' + Number(population).toLocaleString() + '명</div>' +
                                     '   <div class="note w3-center">* 2023년 서울시 데이터 포털 기준 *</div>' + 
                                     '</div>';
-
-                        infowindow.setContent(content); 
-                        infowindow.setPosition(mouseEvent.latLng); 
-                        infowindow.setMap(map);
+                                
+		                        infowindow.setContent(content); 
+		                        infowindow.setPosition(mouseEvent.latLng); 
+		                        infowindow.setMap(map);
                     };
                 })(polygon, area, price, population));
             }
         }
     }
 
+    //다각형의 중심을 구하는 함수
     function getPolygonCenter(path) {
         var sumLat = 0;
         var sumLng = 0;

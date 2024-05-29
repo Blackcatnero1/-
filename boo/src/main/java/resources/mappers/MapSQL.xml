@@ -2,6 +2,15 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!--  
+/** 지도에 표시할 데이터를 조회하는 질의 명령
+ * @author	이서준
+ * @version v.2.9
+ * 	클래스 제작 [ 담당자 : 이서준 ]
+ */
+-->
+	
 <mapper namespace="mSQL">
 	<select id="getInfo" resultType="cbVO">
 		SELECT

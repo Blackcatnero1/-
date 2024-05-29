@@ -2,6 +2,16 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+
+<!--  
+/** 뷰에 필요한 조회를 위한 질의명령
+ * @author	이서준, 김광섭
+ * @version v.2.9
+ * 	클래스 제작 [ 담당자 : 이서준, 김광섭 ]
+ */
+-->
+
 <mapper namespace="cbSQL">
 	
 	<select id="getDongList" resultType="cbVO" parameterType="cbVO">

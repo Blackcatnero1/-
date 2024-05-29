@@ -32,22 +32,22 @@
             level: 5 // 지도의 확대 레벨
 
         };
-    // 지도를 생성합니다    
+    // 지도를 생성
     var map = new kakao.maps.Map(mapContainer, mapOption); 
     
-	// 지도에 확대 축소 컨트롤을 생성한다
+	// 지도에 확대 축소 컨트롤을 생성
 	var zoomControl = new kakao.maps.ZoomControl();
 
-	// 지도의 우측에 확대 축소 컨트롤을 추가한다
+	// 지도의 우측에 확대 축소 컨트롤을 추가
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    // 주소-좌표 변환 객체를 생성합니다
+    // 주소-좌표 변환 객체를 생성
     var geocoder = new kakao.maps.services.Geocoder();
     
- 	// 장소 검색 객체를 생성합니다
+ 	// 장소 검색 객체를 생성
 	var ps = new kakao.maps.services.Places(map);
  	var juso = "${DATA.juso}";
-    // 주소로 좌표를 검색합니다
+    // 주소로 좌표를 검색
     geocoder.addressSearch(juso, function(result, status) {
     
        // 정상적으로 검색이 완료됐으면 
@@ -55,31 +55,31 @@
    
            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
    
-           // 결과값으로 받은 위치를 마커로 표시합니다
+           // 결과값으로 받은 위치를 마커로 표시
            var marker = new kakao.maps.Marker({
                map: map,
                position: coords
            });
 
-           // 인포윈도우로 장소에 대한 설명을 표시합니다
+           // 인포윈도우로 장소에 대한 설명을 표시
            var infowindow = new kakao.maps.InfoWindow({
                content: '<div style="width:150px;text-align:center;padding:6px 0; font-weight: bold;">' + result[0].road_address.building_name + '</div>'
            });
            infowindow.open(map, marker);
            
    	    kakao.maps.event.addListener(marker, 'click', function() {
-   	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+   	        // 마커를 클릭 시 장소명이 인포윈도우에 표시
    	        infowindow.setContent('<div style="width:150px;text-align:center;padding:6px 0; font-weight: bold;">' + result[0].road_address.building_name + '</div>');
    	        infowindow.open(map, marker);
    	    });
            
-           // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+           // 지도의 중심을 결과값으로 받은 위치로 이동
            map.setCenter(coords);
            
-        	// 카테고리로 지하철을 검색합니다
+        	// 조회 매물의 주변 1100m 내의 지하철을 검색
        	ps.categorySearch('SW8', placesSearchCB, {location: coords, radius: 1100}); 
        	
-       	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+       	// 키워드 검색 완료 시 호출되는 콜백함수
        	function placesSearchCB (data, status, pagination) {
        	    if (status === kakao.maps.services.Status.OK) {
        	        for (var i=0; i<data.length; i++) {
@@ -88,7 +88,7 @@
        	    }
        	}
        	
-       	// 지도에 마커를 표시하는 함수입니다
+       	// 검색한 지하철 위치에 마커를 표시하는 함수
        	function displayMarker(place) {
        		
        		var markerImageUrl = 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png', 
@@ -99,16 +99,17 @@
        		
        		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
        		
-       	    // 마커를 생성하고 지도에 표시합니다
+       	    // 마커를 생성하고 지도에 표시
        	    var marker = new kakao.maps.Marker({
        	        map: map,
        	        image : markerImage,
        	        position: new kakao.maps.LatLng(place.y, place.x) 
        	    });
        	
-       	    // 마커에 클릭이벤트를 등록합니다
+       	    
+       	    // 마커에 클릭이벤트를 등록
        	    kakao.maps.event.addListener(marker, 'click', function() {
-       	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+       	        // 마커를 클릭하면 장소명이 인포윈도우에 표시
        	        infowindow.setContent('<div style="padding:5px;text-align:center;font-size:12px;">' + place.place_name + '</div>');
        	        infowindow.open(map, marker);
        	    });

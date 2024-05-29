@@ -16,10 +16,17 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 
+/**
+ * 이 클래스는 지정시간에 데이터 추가를 위해 Django서버에 요청을 하기 위한 Scheduler 클래스
+ * @author	김광섭
+ * @version v.2.9
+ * 	클래스 제작 [ 담당자 : 김광섭 ]
+ */
+
 @Configuration
 @EnableScheduling
 public class SchedulerConfig {
-
+	
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

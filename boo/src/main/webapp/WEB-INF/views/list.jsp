@@ -53,53 +53,69 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	// 검색버튼 클릭이벤트
     $('#selbtn').click(function(event) {
+    	
+    	//select태그 선택 옵션 저장하고
         var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
         var selectedGrade = $("select[name='grade'] option:selected").val();
+        
+        //django 요청으로 셋팅된 자치구 이름 기억 
         var selectedGu = "${DATA.sgg_nm}";
         
+        // select태그 옵션 선택 안했을 시
         if (!selectedDong || !selectedGrade) {
             alert("옵션을 선택해야 합니다.");
             return;
         }
+        
+        //ajax로 보낼 데이터
         var data = {
             bjdong_nm: selectedDong,
             grade: selectedGrade,
             sgg_nm: selectedGu
         };
+        //비동기 요청하기
         $.ajax({
             type: "POST",
             url: "/boo/list/list.boo",
             data: data,
+            //성공시 처리
             success: function(response) {
+            	
+            	
                 if ($(response).find('.apt').length > 0) {
                     $('#getApt').html($(response).find('#getApt').html());
-                } else {
+                } else { 	// 성공 했으나 데이터가 없을때
                 	$('#getApt').html($(response).find('#getApt').html());
                     $('#dongye').html("조회된 데이터가 없습니다.");
                 }
             },
+            // 요청에 실패
             error: function(xhr, status, error) {
                 alert("요청이 실패하였습니다.");
             }
         });
     });
 
+	//페이지버튼 클릭 이벤트
     $(document).on('click', '.pageBtn', function(event) {
+    	//넘겨줘야하는 데이터 저장
         var nowPage = $(this).attr('id');
         var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
         var selectedGrade = $("select[name='grade'] option:selected").val();
         var selectedGu = "${DATA.sgg_nm}";
-        if (!selectedDong || !selectedGrade) {
-            alert("옵션을 선택해야 합니다.");
-            return;
-        }
+        
+        
+        //ajax로 넘겨야 하는 데이터
         var data = {
             bjdong_nm: selectedDong,
             grade: selectedGrade,
             sgg_nm: selectedGu,
             nowPage: nowPage
         };
+        
+        //ajax 요청
         $.ajax({
             type: "POST",
             url: "/boo/list/list.boo",
@@ -120,8 +136,8 @@ $(document).ready(function() {
 <form method="POST" action="/boo/list/list.boo" id="pageFrm" name="pageFrm">
 	<input type="hidden" name="nowPage" id="nowPage">
 </form>
-<!-- https://thumb.ac-illust.com/9e/9e56ebb6b768858aa6d122ac902563ce_t.jpeg -->
-<!-- 폼 컨테이너 -->
+
+
 <div class="w3-container center-container" style="padding-top: 8px; padding-bottom: 8px;">
     <form id= "myForm" name="myForm" class="w3-container w3-light-grey w3-card-4 w3-padding-16" action="/boo/list/list.boo" method="post">
     	<input type="hidden" name="sgg_nm" value="${DATA.sgg_nm}">
@@ -191,7 +207,7 @@ $(document).ready(function() {
 	</c:forEach>
 	
 
-</c:if> <!-- 리스트가 비어있지 않은 경우 방명록 리스트 조건처리 닫는 태그 -->
+</c:if> 
 <c:if test="${empty AptLIST}">
 			<div class="w3-col">
 				<h3 class="w3-center w3-text-gray pdh20" id="dongye">* 동 or 예산을 선택해 주세요. *</h3>
@@ -214,7 +230,7 @@ $(document).ready(function() {
 													id="${DATA.startPage - 1}">&laquo;</span>
 </c:if>
 <c:forEach var="pno" begin="${DATA.startPage}" end="${DATA.endPage}">
-	<c:if test="${DATA.nowPage eq pno}"><!-- 현재 보고있는 페이지인 경우 -->
+	<c:if test="${DATA.nowPage eq pno}">
 				<span class="w3-bar-item w3-btn w3-pink w3-hover-blue pageBtn" 
 																id="${pno}">${pno}</span>
 	</c:if>
