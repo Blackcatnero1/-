@@ -1,0 +1,65 @@
+$(document).ready(function() {
+    $('#selbtn').click(function(event) {
+        var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
+        var selectedGrade = $("select[name='grade'] option:selected").val();
+        var selectedGu = "${DATA.sgg_nm}";
+        
+        if (!selectedDong || !selectedGrade) {
+            alert("옵션을 선택해야 합니다.");
+            return;
+        }
+        
+        var data = {
+            bjdong_nm: selectedDong,
+            grade: selectedGrade,
+            sgg_nm: selectedGu
+        };
+        
+        $.ajax({
+            type: "POST",
+            url: "/boo/list/list.boo",
+            data: data,
+            success: function(response) {
+                if ($(response).find('.apt').length > 0) {
+                    $('#getApt').html($(response).find('#getApt').html());
+                } else {
+                    $('#dongye').html("조회된 데이터가 없습니다.");
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("요청이 실패하였습니다.");
+            }
+        });
+    });
+
+    $(document).on('click', '.pageBtn', function(event) {
+        var nowPage = $(this).attr('id');
+        var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
+        var selectedGrade = $("select[name='grade'] option:selected").val();
+        var selectedGu = "${DATA.sgg_nm}";
+        
+        if (!selectedDong || !selectedGrade) {
+            alert("옵션을 선택해야 합니다.");
+            return;
+        }
+
+        var data = {
+            bjdong_nm: selectedDong,
+            grade: selectedGrade,
+            sgg_nm: selectedGu,
+            nowPage: nowPage
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/boo/list/list.boo",
+            data: data,
+            success: function(response) {
+                $('#getApt').html($(response).find('#getApt').html());
+            },
+            error: function(xhr, status, error) {
+                alert("요청이 실패하였습니다.");
+            }
+        });
+    });
+});
