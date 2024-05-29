@@ -46,7 +46,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+		// loginout 클릭 이벤트
 		$('#logout').click(function(){
 			$(location).attr('href', '/boo/rmSession.boo');
 		});
@@ -57,9 +57,10 @@
 		});
 		
 	});
-	
+	// 카카오 엡 키값
     Kakao.init("21c363680f2db21df7de0268a3a1f6f0");
 
+	// 카카오 로그인 api 함수
     function kakaoLogin(){
         Kakao.Auth.login({
             scope: 'profile_nickname',
