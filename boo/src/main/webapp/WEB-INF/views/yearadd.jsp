@@ -1,3 +1,10 @@
+<!-- 
+	이 페이지는 서울시 구별 연평균 증가율을 그래프로 보여주는 페이지이다.
+	@author  전민경
+	@since	 2024.05.29
+	@version V.1.0
+	 		 2024.05.29 - 페이지 제작 [ 담당자 : 전민경 ] 
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>

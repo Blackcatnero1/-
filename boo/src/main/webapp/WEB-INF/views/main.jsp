@@ -1,3 +1,10 @@
+<!-- 
+	이 페이지는 메인 페이지입니다.
+	@author  전민경, 김유진, 김한민
+	@since	 2024.05.29
+	@version V.1.0
+	 		 2024.05.29 - 페이지 제작 [ 담당자 : 전민경, 김유진, 김한민 ] 
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
