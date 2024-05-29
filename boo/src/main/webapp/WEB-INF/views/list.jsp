@@ -42,7 +42,7 @@
         }
         
 		.form-header img {
-            margin-right: 10px; /* 이미지와 텍스트 사이 간격 설정 */
+            margin-right: 10px;
         }
         .vertical-center {
 		    display: flex;
@@ -51,164 +51,68 @@
 		}
     </style>
 <script type="text/javascript">
-	$(document).ready(function() {
-	    // 페이지 로드 시 로컬 스토리지에서 값 읽기
-	    function loadSelectedValues() {
-	        var selectedDong = localStorage.getItem('selectedDong');
-	        var selectedGrade = localStorage.getItem('selectedGrade');
-	        
-	        if (selectedDong) {
-	            $("select[name='bjdong_nm']").val(selectedDong);
-	        } else {
-	        	$("select[name='bjdong_nm']").prop('selectedIndex', 0);
-	        }
+$(document).ready(function() {
 	
-	        if (selectedGrade) {
-	            $("select[name='grade']").val(selectedGrade);
-	        } else {
-	        	$("select[name='grade']").prop('selectedIndex', 0);
-	        }
-	    }
-	    $("select[name='bjdong_nm']").prop('selectedIndex', 0);
-	
-	    $("select[name='grade']").prop('selectedIndex', 0);
-	    
-	    loadSelectedValues();
-	    
-	    $('#selbtn').click(function(event) {
-	        event.preventDefault(); // 기본 폼 제출 방지
-	
-	        var selectedDong = $("select[name='bjdong_nm']").val();
-	        var selectedGrade = $("select[name='grade']").val();
-	        var selectedGu = "${DATA.sgg_nm}";
-	        
-	        if (!selectedDong || !selectedGrade) {
-	            alert("옵션을 선택해야 합니다.");
-	            return;
-	        }
-	        
-	        // 선택된 값을 로컬 스토리지에 저장
-	        localStorage.setItem('selectedDong', selectedDong);
-	        localStorage.setItem('selectedGrade', selectedGrade);
-	        
-	        // 보낼 데이터 객체 생성
-	        var data = {
-	            bjdong_nm: selectedDong,
-	            grade: selectedGrade,
-	            sgg_nm: selectedGu
-	        };
-	        
-	        // Ajax 요청
-	        $.ajax({
-	            type: "POST", // 요청 방식
-	            url: "/boo/list/list.boo", // 요청할 URL
-	            data: data, // 보낼 데이터
-	            success: function(response) {
-	            	
-	                // 성공 시 처리할 코드 작성
-	                if ($(response).find('.apt').length > 0) {
-	                    // 조회된 데이터가 있을 때는 정상적으로 표시
-	                	$('#getApt').html($(response).find('#getApt').html());
-	                	
-	                } else {
-	                	$('#getApt').html($(response).find('#getApt').html());
-	                	
-	                    // 조회된 데이터가 없을 때 메시지를 표시
-	                    $('#dongye').html("조회된 데이터가 없습니다.");
-	                }
-          
-	            	 $('.pageBtn').click(function(event) {
-	         	        event.preventDefault(); // 기본 링크 동작 방지
-	         	
-	         	        // 이동할 페이지 번호 알아내기
-	         	        var nowPage = $(this).attr('id');
-	         	        
-	         	        // 선택된 동과 등급 값 가져오기
-	         	        var selectedDong = $("select[name='bjdong_nm']").val();
-	         	        var selectedGrade = $("select[name='grade']").val();
-	         	        var selectedGu = "${DATA.sgg_nm}";
-	         	
-	         	        if (!selectedDong || !selectedGrade) {
-	         	            alert("옵션을 선택해야 합니다.");
-	         	            return;
-	         	        }
-	         	
-	         	        // 로컬 스토리지에 현재 페이지 저장
-	         	        localStorage.setItem('nowPage', nowPage);
-	         	
-	         	        // Ajax 요청
-	         	        var data = {
-	         	            bjdong_nm: selectedDong,
-	         	            grade: selectedGrade,
-	         	            sgg_nm: selectedGu,
-	         	            nowPage: nowPage
-	         	        };
-	         	
-	         	        $.ajax({
-	         	            type: "POST",
-	         	            url: "/boo/list/list.boo",
-	         	            data: data,
-	         	            success: function(response) {
-	         	                // 성공 시 처리할 코드 작성
-	         	            	$('body').html(response);
-	         	            },
-	         	            error: function(xhr, status, error) {
-	         	                alert("요청이 실패하였습니다.");
-	         	            }
-	         	        });
-	         	    });
-	            },
-	            error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
-	                alert("요청이 실패하였습니다.");
-	            }
-	        });
-	    });
-	    
-	     $('.pageBtn').click(function(event) {
-	        event.preventDefault(); // 기본 링크 동작 방지
-	
-	        // 이동할 페이지 번호 알아내기
-	        var nowPage = $(this).attr('id');
-	        
-	        // 선택된 동과 등급 값 가져오기
-	        var selectedDong = $("select[name='bjdong_nm']").val();
-	        var selectedGrade = $("select[name='grade']").val();
-	        var selectedGu = "${DATA.sgg_nm}";
-	
-	        if (!selectedDong || !selectedGrade) {
-	            alert("옵션을 선택해야 합니다.");
-	            return;
-	        }
-	
-	        // 로컬 스토리지에 현재 페이지 저장
-	        localStorage.setItem('nowPage', nowPage);
-	
-	        // Ajax 요청
-	        var data = {
-	            bjdong_nm: selectedDong,
-	            grade: selectedGrade,
-	            sgg_nm: selectedGu,
-	            nowPage: nowPage
-	        };
-	
-	        $.ajax({
-	            type: "POST",
-	            url: "/boo/list/list.boo",
-	            data: data,
-	            success: function(response) {
-	                // 성공 시 처리할 코드 작성
-	            	$('body').html(response);
-	            },
-	            error: function(xhr, status, error) {
-	                alert("요청이 실패하였습니다.");
-	            }
-	        });
-	    });
-	    $(window).on('beforeunload', function() {
-	        localStorage.removeItem('selectedDong');
-	        localStorage.removeItem('selectedGrade');
-	    });
-	});
+    $('#selbtn').click(function(event) {
+        var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
+        var selectedGrade = $("select[name='grade'] option:selected").val();
+        var selectedGu = "${DATA.sgg_nm}";
+        
+        if (!selectedDong || !selectedGrade) {
+            alert("옵션을 선택해야 합니다.");
+            return;
+        }
+        var data = {
+            bjdong_nm: selectedDong,
+            grade: selectedGrade,
+            sgg_nm: selectedGu
+        };
+        $.ajax({
+            type: "POST",
+            url: "/boo/list/list.boo",
+            data: data,
+            success: function(response) {
+                if ($(response).find('.apt').length > 0) {
+                    $('#getApt').html($(response).find('#getApt').html());
+                } else {
+                	$('#getApt').html($(response).find('#getApt').html());
+                    $('#dongye').html("조회된 데이터가 없습니다.");
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("요청이 실패하였습니다.");
+            }
+        });
+    });
+
+    $(document).on('click', '.pageBtn', function(event) {
+        var nowPage = $(this).attr('id');
+        var selectedDong = $("select[name='bjdong_nm'] option:selected").val();
+        var selectedGrade = $("select[name='grade'] option:selected").val();
+        var selectedGu = "${DATA.sgg_nm}";
+        if (!selectedDong || !selectedGrade) {
+            alert("옵션을 선택해야 합니다.");
+            return;
+        }
+        var data = {
+            bjdong_nm: selectedDong,
+            grade: selectedGrade,
+            sgg_nm: selectedGu,
+            nowPage: nowPage
+        };
+        $.ajax({
+            type: "POST",
+            url: "/boo/list/list.boo",
+            data: data,
+            success: function(response) {
+                $('#getApt').html($(response).find('#getApt').html());
+            },
+            error: function(xhr, status, error) {
+                alert("요청이 실패하였습니다.");
+            }
+        });
+    });
+});
 
 </script>
 </head>

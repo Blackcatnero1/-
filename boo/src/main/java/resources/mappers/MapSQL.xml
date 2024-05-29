@@ -21,16 +21,15 @@
 			        )
 			    GROUP BY
 			        sgg_nm
-			    
-		    )s,
-		    (
-			    SELECT
-			        sgg_nm, p_total
-			    FROM
-			        population
-			    WHERE
-			        p_year = 2023
-		    )p
+		    		)s,
+				    (
+					    SELECT
+					        sgg_nm, p_total
+					    FROM
+					        population
+					    WHERE
+					        p_year = 2023
+				    )p
 		WHERE
 		    s.sgg_nm = p.sgg_nm
 	</select>

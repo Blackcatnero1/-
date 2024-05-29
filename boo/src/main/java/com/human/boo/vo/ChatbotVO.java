@@ -2,9 +2,12 @@ package com.human.boo.vo;
 
 public class ChatbotVO {
 	
+	
 	private int acc_year, p_year, p_total, obj_amt, deal_ydm, build_year, deal_cnt,avg_amt,rno,low_amt, high_amt,avg_per_area;
 	private float bldg_area;
 	private String sgg_nm, bjdong_nm, jibeon,bldg_nm, nickname, grade, juso,range_area;
+	
+	//페이징 처리 관련 VO 
 	private int nowPage = 1;
 	private int totalCount,pageRow,pageGroup, startPage, endPage,totalPage,startRno, endRno ;
 	

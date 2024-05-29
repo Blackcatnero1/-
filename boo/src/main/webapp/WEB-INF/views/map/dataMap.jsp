@@ -95,7 +95,7 @@
             areas.push({ name: name, path: coordinates }); // areas 배열에 지역 데이터 추가
         }
 
-        // 서울시 행정구역 데이터를 기반으로 지도에 영역데이터를 폴리곤으로 표시합니다 
+        // 서울시 행정구역 데이터를 기반으로 지도에 영역데이터를 폴리곤으로 표시 
         displayAreas();
     });
 
@@ -143,7 +143,7 @@
                     strokeWeight: 3,
                     strokeColor: 'springgreen',
                     strokeOpacity: 0.8,
-                    fillColor: 'purple',
+                    fillColor: '#E91E63',
                     fillOpacity: 0.17 * (population / 100000)
                 });
 
@@ -167,7 +167,7 @@
                         });
 
                         kakao.maps.event.addListener(polygon, 'mouseout', function() {
-                            polygon.setOptions({fillColor: 'purple'});
+                            polygon.setOptions({fillColor: '#E91E63'});
                             customOverlay.setMap(null);
                             customOverlay2.setMap(map); // mouseout 시 customOverlay2 다시 추가
                         });
