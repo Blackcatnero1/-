@@ -29,63 +29,63 @@ SELECT
 FROM
 
 (
-SELECT
-    Rownum rno, grade , SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
-FROM
-    (
-    SELECT 
-        SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
-    FROM
-        (
-            SELECT 
-                sub.SGG_NM SGG_NM, sub.bjdong_nm BJDONG_NM, sub.jibeon JIBEON, sub.bldg_nm BLDG_NM, deal_cnt DEAL_CNT, avg_amt, range_area
-            FROM 
-                (
-                SELECT 
-                    SGG_NM, bjdong_nm, jibeon, BLDG_NM, ROW_NUMBER() OVER (PARTITION BY 동지번 ORDER BY 아파트이름) AS rn
-                FROM 
-                    (
-                        SELECT
-                            bjdong_nm, bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) jibeon, SGG_NM, bldg_nm, bjdong_nm || ' ' || bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) AS 동지번,
-                            SGG_NM || ' ' || BLDG_NM AS 아파트이름
-                        FROM
-                            SALES
-                        GROUP BY
-                            bjdong_nm, bonbeon, bubeon, SGG_NM, BLDG_NM
-                        ORDER BY
-                            bjdong_nm, bonbeon, bubeon
-                    )
-                ) sub,(
-                        SELECT 
-                            bjdong_nm, bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) jibeon,   DECODE(round(min(BLDG_AREA) / 3.3), round(max(BLDG_AREA) / 3.3), to_char(round(min(BLDG_AREA) / 3.3)), round(min(BLDG_AREA) / 3.3) || ' ~ ' || round(max(BLDG_AREA) / 3.3)) range_area,round(avg(obj_amt)) avg_amt, count(*) deal_cnt 
-                        FROM
-                                  (
-                                SELECT
-                                    ACC_YEAR, SGG_CD, SGG_NM, BJDONG_CD, BJDONG_NM, LAND_GBN, LAND_GBN_NM, BONBEON, BUBEON, BLDG_NM, DEAL_YMD, OBJ_AMT, BLDG_AREA, TOT_AREA, FLOOR, RIGHT_GBN, CNTL_YMD, BUILD_YEAR, HOUSE_TYPE, REQ_GBN, RDEALER_LAWDNM
-                                FROM
-                                    sales
-                                WHERE
-                                    sgg_nm = #{sgg_nm}
-                                    AND bjdong_nm = #{bjdong_nm}
-                                    
-                                )
-                        GROUP BY 
-                            bjdong_nm, bonbeon, bubeon
-                            ) deal
-            WHERE 
-                rn = 1
-                AND sub.bjdong_nm = deal.bjdong_nm
-                AND sub.jibeon = deal.jibeon
-            ORDER BY
-                deal_cnt desc
-        )
-    ),amtgrade
+	SELECT
+	    Rownum rno, grade , SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
+	FROM
+	    (
+	    SELECT 
+	        SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
+	    FROM
+	        (
+	            SELECT 
+	                sub.sgg_nm sgg_nm, sub.bjdong_nm bjdong_nm, sub.jibeon jibeon, sub.bldg_nm bldg_nm, deal_cnt, avg_amt, range_area
+	            FROM 
+	                (
+	                SELECT 
+	                    sgg_nm, bjdong_nm, jibeon, bldg_nm, ROW_NUMBER() OVER (PARTITION BY dongjibeon ORDER BY aptname) rn
+	                FROM 
+	                    (
+	                        SELECT
+	                            bjdong_nm, bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) jibeon, SGG_NM, bldg_nm, bjdong_nm || ' ' || bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) dongjibeon,
+	                            sgg_nm || ' ' || bldg_nm  aptname
+	                        FROM
+	                            sales
+	                        GROUP BY
+	                            bjdong_nm, bonbeon, bubeon, sgg_nm, bldg_nm
+	                        ORDER BY
+	                            bjdong_nm, bonbeon, bubeon
+	                    )
+	                ) sub,(
+	                        SELECT 
+	                            bjdong_nm, bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) jibeon,   DECODE(round(min(bldg_area) / 3.3), round(max(bldg_area) / 3.3), to_char(round(min(bldg_area) / 3.3)), round(min(bldg_area) / 3.3) || ' ~ ' || round(max(bldg_area) / 3.3)) range_area,round(avg(obj_amt)) avg_amt, count(*) deal_cnt 
+	                        FROM
+	                                  (
+	                                SELECT
+	                                    acc_year, sgg_nm, bjdong_nm, bonbeon, bubeon, bldg_nm, deal_ymd, obj_amt, bldg_area, build_year
+	                                FROM
+	                                    sales
+	                                WHERE
+	                                    sgg_nm = #{sgg_nm}
+	                                    AND bjdong_nm = #{bjdong_nm}
+	                                    
+	                                )
+	                        GROUP BY 
+	                            bjdong_nm, bonbeon, bubeon
+	                            ) deal
+	            WHERE 
+	                rn = 1
+	                AND sub.bjdong_nm = deal.bjdong_nm
+	                AND sub.jibeon = deal.jibeon
+	            ORDER BY
+	                deal_cnt desc
+	        )
+	    ),amtgrade
     WHERE
-        AVG_AMT BETWEEN low_amt AND high_amt 
-        AND GRADE = #{grade}
+        avg_amt BETWEEN low_amt AND high_amt 
+        AND grade = #{grade}
         )
-    WHERE
-		rno BETWEEN #{startRno} AND #{endRno}
+WHERE
+	rno BETWEEN #{startRno} AND #{endRno}
 	</select>
 	
 	<select id="selTotal" resultType="int" parameterType="cbVO">
@@ -132,7 +132,7 @@ FROM
                         GROUP BY 
                             bjdong_nm, bonbeon, bubeon
                             ) deal
-            WHERE 
+            WHERE
                 rn = 1
                 AND sub.bjdong_nm = deal.bjdong_nm
                 AND sub.jibeon = deal.jibeon
@@ -140,9 +140,7 @@ FROM
                 deal_cnt desc
         )
     ),amtgrade
-    
     WHERE
-        
         AVG_AMT BETWEEN low_amt AND high_amt
         AND GRADE = #{grade}
 	</select>
