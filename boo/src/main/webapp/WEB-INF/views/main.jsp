@@ -57,7 +57,7 @@
 		});
 		
 	});
-
+	
     Kakao.init("21c363680f2db21df7de0268a3a1f6f0");
 
     function kakaoLogin(){
@@ -119,6 +119,7 @@
     <button onclick="kakaoLogin()" class="mgw10 mgt20"><img src="/boo/image/kakao_login.png" width="220px"/></button>
     
 </c:if>
+
 	</div>
 </header>
 <div class="w3-left" style="margin-top: 0">
