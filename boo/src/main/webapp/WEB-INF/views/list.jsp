@@ -171,9 +171,9 @@ $(document).ready(function() {
 				<div class="w3-col m1 w3-border-reft w3-border-right w3-blue-gray" style="height:35px; line-height:35px" >거래랭킹</div>
 				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">법정동</div>
 				<div class="w3-col m4 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">아파트</div>
-				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">평균 매매가</div>
+				<div class="w3-col m2 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">매매가 분포 <small>(만원)</small></div>
 				<div class="w3-col m1 w3-border-right w3-blue-gray" style="height:35px; line-height:35px">거래량</div>
-				<div class="w3-rest w3-blue-gray" style="height:35px; line-height:35px">면적분포(평)</div>
+				<div class="w3-rest w3-blue-gray" style="height:35px; line-height:35px">면적분포 <small>(평)</small></div>
 			</div>
 			
 <c:if test="${not empty AptLIST}">
@@ -184,7 +184,7 @@ $(document).ready(function() {
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px" >${AptDATA.rno}</div>
 				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.bjdong_nm}</div>
 				<div class="w3-col m4 w3-border-right" style="height:45px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size:14px;line-height:45px">${AptDATA.bldg_nm}</div>
-				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px"><fmt:formatNumber type="number" maxFractionDigits="3" value="${AptDATA.avg_amt}" /> (만)원</div>
+				<div class="w3-col m2 w3-border-right" style="height:45px; line-height:45px">${AptDATA.range_amt}</div>
 				<div class="w3-col m1 w3-border-right" style="height:45px; line-height:45px">${AptDATA.deal_cnt} 건</div>
 				<div class="w3-rest " style="height:45px; line-height:45px">${AptDATA.range_area}</div>
 			</div>

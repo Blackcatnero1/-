@@ -5,7 +5,7 @@
  * @version V.1.0
  * 			2024.05.29 - 스케쥴러 클래스 제작 [ 담당자 : 김광섭 ] 
  */
-package com.human.boo.controller;
+package com.human.boo.scheduler;
 
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.Configuration;
