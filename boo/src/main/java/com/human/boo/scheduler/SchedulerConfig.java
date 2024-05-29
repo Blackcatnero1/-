@@ -35,7 +35,7 @@ public class SchedulerConfig {
     @Scheduled(cron = "0 0 12 * * ?") // 매일 정오에 스케쥴러 실행
     public void callSalesEndpoint() {
         LocalDateTime currentTime = LocalDateTime.now();
-        String url = "http://192.168.0.34:8000/sales";
+        String url = "http://192.168.0.34:8000/sales/";
         RestTemplate restTemplate = restTemplate();
         try {
             String result = restTemplate.getForObject(url, String.class);
