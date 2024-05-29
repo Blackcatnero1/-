@@ -23,69 +23,67 @@
 	</select>
 	
 	<select id="getAptList" resultType="cbVO" parameterType="cbVO">
-
-SELECT
-    rno, grade , SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
-FROM
-
-(
-	SELECT
-	    Rownum rno, grade , SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
-	FROM
-	    (
-	    SELECT 
-	        SGG_NM, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_area
-	    FROM
-	        (
-	            SELECT 
-	                sub.sgg_nm sgg_nm, sub.bjdong_nm bjdong_nm, sub.jibeon jibeon, sub.bldg_nm bldg_nm, deal_cnt, avg_amt, range_area
-	            FROM 
-	                (
-	                SELECT 
-	                    sgg_nm, bjdong_nm, jibeon, bldg_nm, ROW_NUMBER() OVER (PARTITION BY dongjibeon ORDER BY aptname) rn
-	                FROM 
-	                    (
-	                        SELECT
-	                            bjdong_nm, bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) jibeon, SGG_NM, bldg_nm, bjdong_nm || ' ' || bonbeon || DECODE(bubeon, '0', null, '-' || bubeon) dongjibeon,
-	                            sgg_nm || ' ' || bldg_nm  aptname
-	                        FROM
-	                            sales
-	                        GROUP BY
-	                            bjdong_nm, bonbeon, bubeon, sgg_nm, bldg_nm
-	                        ORDER BY
-	                            bjdong_nm, bonbeon, bubeon
-	                    )
-	                ) sub,(
-	                        SELECT 
-	                            bjdong_nm, bonbeon||DECODE(bubeon, '0', null, '-'||bubeon) jibeon,   DECODE(round(min(bldg_area) / 3.3), round(max(bldg_area) / 3.3), to_char(round(min(bldg_area) / 3.3)), round(min(bldg_area) / 3.3) || ' ~ ' || round(max(bldg_area) / 3.3)) range_area,round(avg(obj_amt)) avg_amt, count(*) deal_cnt 
-	                        FROM
-	                                  (
-	                                SELECT
-	                                    acc_year, sgg_nm, bjdong_nm, bonbeon, bubeon, bldg_nm, deal_ymd, obj_amt, bldg_area, build_year
-	                                FROM
-	                                    sales
-	                                WHERE
-	                                    sgg_nm = #{sgg_nm}
-	                                    AND bjdong_nm = #{bjdong_nm}
-	                                    
-	                                )
-	                        GROUP BY 
-	                            bjdong_nm, bonbeon, bubeon
-	                            ) deal
-	            WHERE 
-	                rn = 1
-	                AND sub.bjdong_nm = deal.bjdong_nm
-	                AND sub.jibeon = deal.jibeon
-	            ORDER BY
-	                deal_cnt desc
-	        )
-	    ),amtgrade
-    WHERE
-        avg_amt BETWEEN low_amt AND high_amt 
-        AND grade = #{grade}
-        )
-WHERE
-	rno BETWEEN #{startRno} AND #{endRno}
+		SELECT
+		    rno, grade, sgg_nm, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_amt, range_area
+		FROM
+		
+		(
+		SELECT
+		    Rownum rno, grade, sgg_nm, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_amt, range_area
+		FROM
+		    (
+		    SELECT 
+		        sgg_nm, bjdong_nm, jibeon, bldg_nm, deal_cnt, avg_amt, range_amt, range_area
+		    FROM
+		        (
+		            SELECT 
+		                sub.sgg_nm sgg_nm, sub.bjdong_nm bjdong_nm, sub.jibeon jibeon, sub.bldg_nm bldg_nm, deal_cnt deal_cnt, avg_amt, range_amt, range_area
+		            FROM 
+		                (
+		                SELECT 
+		                    sgg_nm, bjdong_nm, jibeon, bldg_nm, ROW_NUMBER() OVER (PARTITION BY 동지번 ORDER BY 아파트이름) AS rn
+		                FROM 
+		                    (
+		                        SELECT
+		                            bjdong_nm, bonbeon || DECODE(bubeon, '0', NULL, '-' || bubeon) jibeon, sgg_nm, bldg_nm, bjdong_nm || ' ' || bonbeon || DECODE(bubeon, '0', NULL, '-' || bubeon) AS 동지번,
+		                            SGG_NM || ' ' || BLDG_NM AS 아파트이름
+		                        FROM
+		                            SALES
+		                        GROUP BY
+		                            bjdong_nm, bonbeon, bubeon, SGG_NM, BLDG_NM
+		                        ORDER BY
+		                            bjdong_nm, bonbeon, bubeon
+		                    )
+		                ) sub,(
+		                        SELECT 
+		                            bjdong_nm, bonbeon||DECODE(bubeon, '0', NULL, '-'||bubeon) jibeon, DECODE(round(min(BLDG_AREA) / 3.3), ROUND(MAX(bldg_area) / 3.3), TO_CHAR(ROUND(MIN(bldg_area) / 3.3)), ROUND(MIN(bldg_area) / 3.3) || ' ~ ' || ROUND(MAX(bldg_area) / 3.3)) range_area, MIN(obj_amt)||DECODE(MAX(obj_amt), MIN(obj_amt), NULL, ' ~ '||MAX(obj_amt)) range_amt, ROUND(AVG(obj_amt)) avg_amt, COUNT(*) deal_cnt 
+		                        FROM
+		                                  (
+		                                SELECT
+		                                    acc_year, sgg_cd, sgg_nm, bjdong_cd, bjdong_nm, land_gbn, land_gbn_nm, bonbeon, bubeon, bldg_nm, deal_ymd, obj_amt, bldg_area, tot_area, floor, right_gbn, cntl_ymd, build_year, house_type, req_gbn, rdealer_lawdnm
+		                                FROM
+		                                    sales
+		                                WHERE
+		                                    sgg_nm = #{sgg_nm}
+		                                    AND bjdong_nm = #{bjdong_nm}
+		                                )
+		                        GROUP BY 
+		                            bjdong_nm, bonbeon, bubeon
+		                            ) deal
+		            WHERE 
+		                rn = 1
+		                AND sub.bjdong_nm = deal.bjdong_nm
+		                AND sub.jibeon = deal.jibeon
+		            ORDER BY
+		                deal_cnt DESC
+		        )
+		    ),amtgrade
+		    WHERE
+		        avg_amt BETWEEN low_amt AND high_amt 
+		        AND grade = #{grade}
+		        )
+		WHERE
+			rno BETWEEN #{startRno} AND #{endRno}
 	</select>
 	
 	<select id="selTotal" resultType="int" parameterType="cbVO">
