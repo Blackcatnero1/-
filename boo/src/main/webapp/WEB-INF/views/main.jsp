@@ -53,7 +53,7 @@
 		
 		$('#schat').click(function(){
 			// 원하는 URL로 이동
-			window.location.href = "http://pf.kakao.com/_ZdLUG/chat";
+			window.location.href = "http://pf.kakao.com/_ZdLUG/";
 		});
 		
 	});
