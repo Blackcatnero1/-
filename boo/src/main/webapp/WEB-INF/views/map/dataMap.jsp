@@ -190,8 +190,9 @@
                                     '   <div class="note w3-center">* 2023년 서울시 데이터 포털 기준 *</div>' + 
                                     '</div>';
                                 
+                                // 인포윈도우 셋팅
 		                        infowindow.setContent(content); 
-		                        infowindow.setPosition(mouseEvent.latLng); 
+		                        infowindow.setPosition(mouseEvent.latLng);
 		                        infowindow.setMap(map);
                     };
                 })(polygon, area, price, population));
